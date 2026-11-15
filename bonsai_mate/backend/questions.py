@@ -6,10 +6,15 @@ person to do right now" first:
 
   0. card questions      what the matched card must know before its first step
                          (which kind of bear?); from the card's ask_first list
-  1. life threats        awake? breathing? heavy bleeding?
-  2. case questions      the questions the matched wildmed case says matter most
+  1. case questions      the questions the matched wildmed case says matter most
+  2. safety check        one combined question: anything else wrong (breathing, bleeding, confusion)?
   3. circumstances       is it changing, when, what supplies and shelter, can help be reached
   4. basic information   conditions, medication and allergies, pain, age, who is there, food and drink
+
+When a red flag fired or the mechanism is serious (a fall, a collapse), the safety check
+is replaced by three separate life-threat questions (awake? breathing? heavy bleeding?)
+and they are asked before everything except the card's own questions. A wildlife card
+with nobody hurt gets no safety questions at all.
 
 A question is skipped when the user has already covered its topic in their own words.
 """
@@ -120,6 +125,15 @@ POOL: list[Question] = [
     ),
 ]
 
+LIFE_THREAT_IDS = {q.id for q in POOL if q.group == LIFE_THREAT}
+NO_PATIENT_IDS = ("supplies", "shelter", "group", "help")  # asked when the matched card is about wildlife, not a patient
+# Asked instead of the three life-threat questions when nothing suggests an emergency.
+OTHER_THREATS = Question(
+    "other_threats", LIFE_THREAT, "Anything else serious",
+    "Is anything else wrong: trouble breathing, heavy bleeding, or are they drowsy or confused?",
+    "Is anything else wrong: trouble breathing, heavy bleeding, or feeling faint or confused?",
+)
+
 _THIRD_PERSON = re.compile(
     r"\b(he|she|they|him|her|his|their|them|friend|buddy|partner|son|daughter|wife|husband|brother|sister|"
     r"dad|father|mom|mother|man|woman|guy|girl|boy|kid|child|someone|somebody|person|hiker|climber|patient)\b",
@@ -158,8 +172,11 @@ def neutral(question: str, to_self: bool) -> str:
     return text[:1].upper() + text[1:]
 
 
-def build_pool(cards: list[dict], cases: list[dict], to_self: bool) -> list[Question]:
-    """Every question that could be asked for this incident, in priority order."""
+def build_pool(cards: list[dict], cases: list[dict], to_self: bool, screen: str = "first") -> list[Question]:
+    """Every question that could be asked for this incident, in priority order.
+
+    `screen` says how to check for life threats: "first" (three questions, before the
+    case questions), "after" (one combined question, after them) or "none"."""
     life = [q for q in POOL if q.group == LIFE_THREAT]
     rest = [q for q in POOL if q.group != LIFE_THREAT]
     # A card's ask_first questions. The id comes from the label, so "Kind of bear" asked
@@ -177,7 +194,14 @@ def build_pool(cards: list[dict], cases: list[dict], to_self: bool) -> list[Ques
             if any(q.same_as and re.search(q.same_as, text, re.I) for q in POOL):
                 continue  # the general question already covers it
             from_cases.append(Question(f"case:{case['id']}:{i}", CASE, text.rstrip("?"), text))
-    return from_cards + life + from_cases[:MAX_CASE_QUESTIONS] + rest
+    from_cases = from_cases[:MAX_CASE_QUESTIONS]
+    if screen == "first":
+        return from_cards + life + from_cases + rest
+    if screen == "after":
+        return from_cards + from_cases + [OTHER_THREATS] + rest
+    # Nobody is hurt (a bear nearby): only what you have, where you can go and who is with you.
+    by_id = {q.id: q for q in rest}
+    return from_cards + from_cases + [by_id[i] for i in NO_PATIENT_IDS]
 
 
 _FILLER = set(

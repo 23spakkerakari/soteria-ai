@@ -88,10 +88,15 @@ When neither a card nor a case matches, the model answers from its own general f
 **The question pool** ([`backend/questions.py`](backend/questions.py)). The app chooses the questions, so they are never repeated and can be recorded exactly. They are asked in the order that most affects what to do right now:
 
 0. The matched card's own `ask_first` questions, when it has any: what it must know before its first step ("What kind of bear is it?").
-1. Life threats: awake and responding, breathing, heavy bleeding.
-2. Up to four questions from the matched wildmed case's `must_ask` list, reworded to "they" or "you".
+1. Up to four questions from the matched wildmed case's `must_ask` list, reworded to "they" or "you". These are about the actual problem: "Can you put weight on it?" for an ankle, "How big is the burn?" for a burn.
+2. One combined safety check: "Is anything else wrong: trouble breathing, heavy bleeding, or are they drowsy or confused?"
 3. Circumstances: getting better or worse, when it started, supplies, weather and shelter, reaching help.
 4. Basic information: medical conditions, medication and allergies, pain, age, who is there, food and drink.
+
+Two situations change that order:
+
+- **It looks serious.** If a red flag fired, or the mechanism is serious (a fall, a collapse, lightning), the safety check becomes three separate life-threat questions (awake, breathing, heavy bleeding) and they move ahead of the case questions.
+- **Nobody is hurt.** When the matched card is about wildlife (a bear nearby) and no red flag fired, the app asks only what you have, where you can shelter, who is with you and whether you can reach help.
 
 A question is skipped when the user has already covered it in their own words ("Are they shivering?" is not asked after "she can't stop shivering").
 
@@ -99,9 +104,9 @@ A question is skipped when the user has already covered it in their own words ("
 
 **The panel.** "What I know so far" sits beside the chat (above it on a phone) and updates on every turn: what was reported, what it could be, warning signs, each round of questions with the answer, and how many questions remain.
 
-Matching uses the first report in full, plus only the parts of later messages that describe a problem. Answers such as "no bleeding" or "breathing is fine" do not pull in the bleeding or breathing material. Red flags are checked on every word, because a false alarm is the safer mistake.
+Matching uses everything the user has said, minus what they have ruled out. "No bleeding", "not swollen" and "breathing is fine" are removed before matching, in the first message as well as in later answers, so "awake, no bleeding, but he had a seizure" matches seizure material. A denial that is itself the problem ("the bleeding is not stopping", "no pulse", "not breathing") is kept. Red flags are checked on every word, because a false alarm is the safer mistake.
 
-Weak matches are left out. Word search always finds something, so a card or case below a minimum score is dropped rather than handed to a small model (`CARD_MIN_SCORE` in `assistant.py`, `MIN_SCORE` in `wildmed.py`).
+Weak matches are left out. Word search always finds something, so a match has to earn its place (`match()` in `knowledge.py`, `MIN_SCORE` in `wildmed.py`). The bar depends on the message, because the score grows with the number of words that hit: a one- or two-word message ("burn") needs its one good word to hit, and a longer one needs either a strong score or a fair score with a clear lead over the next card. The thresholds are heuristics tuned on about twenty example messages (see `test_card_matching_depends_on_how_much_was_said`), not a learned model.
 
 The page shows the matched card, opened, under every answer. The model rewords the card and sometimes gets a step wrong; the card's own text is the reference.
 

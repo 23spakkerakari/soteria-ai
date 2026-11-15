@@ -40,14 +40,6 @@ Rules:
 
 NO_CARDS = "(No protocol card covers this.)"
 
-# Relevance limits (bm25: negative, lower is better; calibrated on the 9-card index).
-# The prompt is kept short on purpose: a small machine reads only ~50 tokens a second,
-# so the model gets the best card, a second one only if it matches at least half as
-# well, and the single best case. A weak match is left out rather than risk steering
-# a small model toward the wrong condition.
-CARD_MIN_SCORE = -4.0
-CARD_RUNNER_UP = 0.5
-
 QUESTIONS_PER_TURN = {"triage": 2, "assessment": 3}
 WANTS_PLAN = re.compile(r"give me the plan|just tell me what to do|skip the questions|what (do|should) (i|we) do", re.I)
 
@@ -71,26 +63,46 @@ INSTRUCTIONS = {
 }
 
 
-_CLAUSE = re.compile(r"[.,;!?]+|\b(?:but|and)\b", re.I)
-_NOT_A_SYMPTOM = re.compile(
-    r"\b(no|not|none|never|without|isn't|isnt|aren't|arent|wasn't|doesn't|doesnt|don't|dont|didn't|hasn't|haven't|"
-    r"fine|normal|normally|ok|okay|good|alright)\b",
+# "No bleeding", "not swollen", "breathing is fine": things the user has ruled out. They
+# must not count as symptoms when cards and cases are matched. Only the denied words are
+# removed, never the whole sentence, and a denial that is itself the problem stays in.
+_NO = r"(?:no|without|not any|isn'?t any|there'?s no|there is no|there are no)"
+_ADJ = r"(?:(?:heavy|much|real|major|obvious|visible|other|more|sign of|signs of)\s+)?"
+_NOT = r"(?:not|isn'?t|aren'?t|wasn'?t|doesn'?t seem|don'?t seem)"
+# "not stopping", "not breathing", "not waking up": the "not" is the emergency. Keep these.
+_KEEP_AFTER_NOT = (
+    r"(?!\s+(?:really\s+|very\s+)?(?:stop|breath|respond|wak|getting|able|moving|improv|making|going|leaving|"
+    r"eating|drinking|walking|talking|feeling|sure|go\b|let))"
+)
+_FINE = r"(?:fine|normal|normally|ok|okay|good|alright|well)"
+_DENIALS = re.compile(
+    rf"\b{_NO}\s+{_ADJ}\w+"
+    rf"|\b{_NOT}{_KEEP_AFTER_NOT}\s+(?:really\s+|very\s+)?\w+"
+    rf"|\b\w+\s+(?:is|are|was|looks?|seems?|sounds?|feels?)\s+(?:just\s+|totally\s+|pretty\s+)?{_FINE}\b"
+    rf"|\b(?:breathing|talking|walking|moving|pulse)\s+{_FINE}\b",
     re.I,
 )
 
 
+def without_denials(text: str) -> str:
+    """The text with ruled-out findings removed. "No pulse" and "not breathing" stay:
+    anything the red-flag rules treat as an emergency is never removed."""
+    return _DENIALS.sub(lambda m: m.group(0) if triage.red_flags(m.group(0)) else " ", text)
+
+
 def search_text(said: list[str]) -> str:
-    """What cards and cases are matched on: the first report in full, plus the parts
-    of later messages that describe a problem. Later messages are mostly answers to
-    the app's questions, and "no bleeding" or "breathing is fine" must not pull in
-    the bleeding or breathing material."""
-    later = [
-        clause
-        for message in said[1:]
-        for clause in _CLAUSE.split(message)
-        if clause.strip() and not _NOT_A_SYMPTOM.search(clause)
-    ]
-    return " ".join([said[0], *later])
+    """What cards and cases are matched on: everything the user has said, minus what they
+    have ruled out. "Awake, no bleeding, but he had a seizure" is about a seizure, and
+    an answer like "breathing is fine" must not pull in the breathing material."""
+    return " ".join(" ".join(without_denials(message).split()) for message in said)
+
+
+# A fall, a crash, a collapse: check for life threats before anything else, whatever was said.
+SERIOUS_MECHANISM = re.compile(
+    r"\b(fell|fall|fallen|crash\w*|collapsed?|hit by|struck|lightning|drown\w*|avalanche|rockfall|"
+    r"thrown|knocked (out|down|over)|car accident|rolled the)\b",
+    re.I,
+)
 
 
 @dataclass
@@ -154,7 +166,7 @@ def prepare(conn: sqlite3.Connection, messages: list[dict], incident_id: str | N
     for card_id in triage.flagged_cards(user_text):
         add(knowledge.get(conn, card_id))  # cards tied to a red flag always come first
     flagged = list(cards)
-    for card in knowledge.search(conn, matching, k=2, runner_up_ratio=CARD_RUNNER_UP, min_score=CARD_MIN_SCORE):
+    for card in knowledge.match(conn, matching):
         add(card)
     cards = cards[:2]
     cases = wildmed.search(conn, matching, k=1)
@@ -165,8 +177,18 @@ def prepare(conn: sqlite3.Connection, messages: list[dict], incident_id: str | N
     seen = {r["question_id"] for r in incident.rows(conn, incident_id)}
     case_budget = questions.MAX_CASE_QUESTIONS - sum(q.startswith("case:") for q in seen)
     open_questions: list[questions.Question] = []
-    for q in questions.build_pool(cards, cases, to_self):
-        if q.id in seen:
+    # Life-threat questions lead only when something calls for them: a red flag or a
+    # serious mechanism. Otherwise the questions about the actual problem come first and
+    # one combined safety check follows. A wildlife card with nobody hurt gets neither.
+    if flags or SERIOUS_MECHANISM.search(user_text):
+        screen = "first"
+    elif cards and all((c.get("applies_when") or {}).get("species") for c in cards):
+        screen = "none"
+    else:
+        screen = "after"
+    asked_each = bool(seen & questions.LIFE_THREAT_IDS)
+    for q in questions.build_pool(cards, cases, to_self, screen):
+        if q.id in seen or (q.id == questions.OTHER_THREATS.id and asked_each):
             continue
         if q.group == questions.CASE:
             if case_budget <= 0:

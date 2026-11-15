@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from backend import assistant, config, db, knowledge, triage, wildmed
+from backend import assistant, config, db, knowledge, questions, triage, wildmed
 from backend.schemas import Scenario
 from pipeline.evaluate import check
 from pipeline.variations import variations_for
@@ -161,8 +161,100 @@ def test_questions_already_answered_are_not_asked(conn):
 
 def test_self_report_is_asked_about_you(conn):
     turn = assistant.prepare(conn, say("I twisted my ankle and it is swelling"))
-    assert "Awake and responding" in turn.known["already_told"]  # they are talking to us
-    assert turn.asking[0].startswith("Is your breathing")
+    assert "Is anything else wrong: trouble breathing, heavy bleeding, or feeling faint or confused?" in turn.upcoming
+    assert not any("the person" in q or "they" in q.split() for q in turn.upcoming[:4])
+
+
+LIFE_THREAT_QUESTIONS = {
+    "Is the person awake and able to talk to you?",
+    "Is their breathing normal, or is it fast, noisy or a struggle?",
+    "Is your breathing normal, or is it fast, noisy or a struggle?",
+    "Is there any heavy bleeding?",
+}
+
+
+@pytest.mark.skipif(not config.WILDMED_CASES.exists(), reason="wildmed-kb not built")
+def test_first_questions_are_about_the_problem_not_a_fixed_list(conn):
+    openers = ["Someone was bitten by a snake.", "Someone has been burned.", "I twisted my ankle and it is swelling"]
+    first = [assistant.prepare(conn, say(o)).asking for o in openers]
+    assert len({tuple(q) for q in first}) == len(openers)  # three problems, three different pairs of questions
+    assert not any(set(q) & LIFE_THREAT_QUESTIONS for q in first)
+    assert first[2][0] == "Can you put weight on it?"
+
+
+@pytest.mark.parametrize(
+    "opener",
+    [
+        "My friend fell off a ledge and hurt his leg",  # serious mechanism
+        "Someone is bleeding heavily from a wound.",  # red flag
+        "The bleeding is not stopping",  # red flag, phrased as a negative
+    ],
+)
+def test_life_threat_questions_still_lead_when_it_looks_serious(conn, opener):
+    turn = assistant.prepare(conn, say(opener))
+    assert turn.asking[0] == "Is the person awake and able to talk to you?"
+    assert questions.OTHER_THREATS.ask not in turn.upcoming  # not asked twice in two forms
+
+
+def test_safety_check_is_not_repeated_after_the_separate_questions(conn):
+    incident_id = "test-safety-once"
+    first = "My friend fell off a ledge and hurt his leg"
+    assistant.prepare(conn, say(first), incident_id)
+    later = assistant.prepare(conn, say(first, "He is awake, breathing is okay"), incident_id)
+    assert questions.OTHER_THREATS.ask not in later.upcoming
+
+
+def test_a_bear_nearby_is_not_asked_patient_questions(conn):
+    turn = assistant.prepare(conn, say("There is a bear close to us and it is not leaving."))
+    assert turn.cards[0]["card_id"] == "KB_BEAR_ENCOUNTER" and not turn.flags
+    asked = set(turn.upcoming)
+    assert not asked & LIFE_THREAT_QUESTIONS and questions.OTHER_THREATS.ask not in asked
+    assert "Is it getting better, getting worse, or staying the same?" not in asked
+    assert "What do you have with you: a first-aid kit, warm layers, water, food?" in asked
+
+
+@pytest.mark.parametrize(
+    "text, card_id",
+    [
+        ("burn", "KB_BURNS"),  # one word cannot reach the bar a description can
+        ("Someone has been burned.", "KB_BURNS"),
+        ("I burned my hand", "KB_BURNS"),
+        ("snakebite", "KB_SNAKEBITE"),
+        ("My dad is burning up and talking nonsense. We've been out in the sun all day.", "KB_HEAT_ILLNESS"),
+        # Long descriptions of things no card covers: a few stray words must not pick a card.
+        ("We climbed to 13,000 feet yesterday and now my partner has a wet cough and gets out of breath just sitting in the tent.", None),
+        ("lightning hit close to our tent and my friend was knocked down", None),
+        ("I got something in my eye while chopping wood and it really hurts", None),
+        ("he has a bad stomach ache and fever since last night", None),
+    ],
+)
+def test_card_matching_depends_on_how_much_was_said(conn, text, card_id):
+    cards = knowledge.match(conn, text)
+    assert (cards[0]["card_id"] if cards else None) == card_id
+
+
+def test_what_the_user_ruled_out_is_not_matched(conn):
+    opener = "My friend is awake and breathing fine with no bleeding but had a seizure"
+    turn = assistant.prepare(conn, say(opener))
+    assert "KB_BLEEDING_SEVERE" not in [c["card_id"] for c in turn.cards]
+    if config.WILDMED_CASES.exists():
+        assert turn.cases and turn.cases[0]["condition"] == "seizure"
+        assert turn.asking[0] == "How long did the seizure last?"
+
+
+def test_a_denial_that_is_the_problem_is_kept():
+    kept = assistant.without_denials("The bleeding is not stopping, there is no pulse and he is not breathing")
+    assert "not stopping" in kept and "no pulse" in kept and "not breathing" in kept
+    removed = assistant.without_denials("A good friend of mine is not swollen, no heavy bleeding, and his breathing looks normal")
+    assert "good friend" in removed
+    assert not any(word in removed for word in ("swollen", "bleeding", "breathing"))
+
+
+def test_new_urgent_phrasings_raise_a_warning():
+    assert triage.red_flags("Someone is bleeding heavily from a wound.")
+    assert triage.red_flags("the bleeding is not stopping")
+    assert triage.red_flags("he is burning up and talking nonsense")
+    assert not triage.red_flags("No heavy bleeding.")  # an answer to the app's own question
 
 
 def test_every_question_and_answer_is_recorded_and_fed_back(conn):

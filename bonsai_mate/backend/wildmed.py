@@ -21,6 +21,7 @@ ALLOWED_REUSE = {"internal_reference_only", "noncommercial_only", "redistributab
 # model at all: a loosely related case steers a small model the wrong way.
 # (bm25 scores are negative; lower is better. Calibrated on the 56-case index.)
 MIN_SCORE = -9.0
+SHORT_MIN_SCORE = -5.0  # a one- or two-word message ("burn") cannot score as high as a description
 RUNNER_UP_RATIO = 0.75
 
 _ELEVATION = re.compile(r"\b\d{1,2},?\d{3}\s*(feet|foot|ft|meters|metres|m)\b", re.I)
@@ -46,7 +47,7 @@ def search(conn: sqlite3.Connection, text: str, k: int = 2) -> list[dict]:
     return [
         _summary(json.loads(r["json"]))
         for r in rows
-        if r["score"] <= MIN_SCORE and r["score"] <= rows[0]["score"] * RUNNER_UP_RATIO
+        if r["score"] <= (SHORT_MIN_SCORE if len(terms) <= 2 else MIN_SCORE) and r["score"] <= rows[0]["score"] * RUNNER_UP_RATIO
     ]
 
 

@@ -18,7 +18,8 @@ RED_FLAGS: list[tuple[str, str, str | None]] = [
     ),
     (
         r"(blood|bleeding) .{0,30}(won'?t stop|everywhere|spurting|pouring|soaked|a lot)"
-        r"|spurting|gushing|won'?t stop bleeding",
+        r"|spurting|gushing|won'?t stop bleeding|bleeding (heavily|badly|profusely|a lot)|(losing|lost) a lot of blood"
+        r"|(blood|bleeding) .{0,30}(not stopping|isn'?t stopping|doesn'?t stop|hasn'?t stopped|can'?t stop)",
         "Severe bleeding: press hard directly on the wound right now and do not let go.",
         "KB_BLEEDING_SEVERE",
     ),
@@ -33,7 +34,7 @@ RED_FLAGS: list[tuple[str, str, str | None]] = [
         None,
     ),
     (
-        r"confus|not making sense|slurr|acting (weird|strange|drunk)|doesn'?t know where"
+        r"confus|not making sense|talking nonsense|incoherent|delirious|slurr|acting (weird|strange|drunk)|doesn'?t know where"
         r"|stopped shivering",
         "Change in alertness or behaviour: this is a serious sign in cold, heat, altitude or head injury.",
         None,

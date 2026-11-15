@@ -8,7 +8,9 @@ STOPWORDS = set(
     "a an and are as at be been but by can cant could did do does dont for from get got had "
     "has have he her him his how i if im in is isnt it its just me my not of on or our she so "
     "some that the their them there they this to up was we were what when who will with wont "
-    "would you your really very much think feel feels feeling keep keeps help need now".split()
+    "would you your really very much think feel feels feeling keep keeps help need now "
+    # who it is about, and being awake, say nothing about what is wrong
+    "someone somebody person friend buddy partner awake".split()
 )
 
 
@@ -42,6 +44,48 @@ def search(
         for r in rows
         if r["score"] <= min_score and r["score"] <= rows[0]["score"] * runner_up_ratio
     ]
+
+
+# When is a word-search match good enough to hand a card to the model? (bm25 scores are
+# negative; lower is better. Calibrated on the 14-card index; see tests/test_core.py.)
+STRONG = -7.0       # many of the card's own words: take it
+FAIR = -4.0         # some of them: take it only if it clearly beats the next card
+CLEAR_LEAD = 0.8    # ... meaning the runner-up scores at most this fraction of it
+SHORT = -3.0        # a one- or two-word message ("burn") cannot score higher than this
+SECOND_CARD = 0.5   # a second card is added only if it scores at least half the first
+
+
+def match(conn: sqlite3.Connection, text: str) -> list[dict]:
+    """The card (or two) that the assistant should trust for this text, or none.
+
+    A fixed cut-off does not work: the score grows with the number of words that hit,
+    so "Someone has been burned" could never reach a bar that a long, unrelated
+    description clears by accident. So the bar depends on the message: a short message
+    needs its one good word to hit; a longer one needs either a strong score or a
+    fair score with a clear lead over the next card."""
+    terms = _terms(text)
+    if not terms:
+        return []
+    rows = conn.execute(
+        """
+        SELECT c.json, bm25(cards_fts, 0.0, 5.0, 3.0, 1.0) AS score
+        FROM cards_fts f JOIN cards c ON c.card_id = f.card_id
+        WHERE cards_fts MATCH ? AND c.clinical_review != 'rejected'
+        ORDER BY score LIMIT 3
+        """,
+        (" OR ".join(f'"{t}"' for t in terms),),
+    ).fetchall()
+    if not rows:
+        return []
+    best = rows[0]["score"]
+    lead = rows[1]["score"] / best if len(rows) > 1 else 0.0
+    trusted = best <= STRONG or (best <= FAIR and lead <= CLEAR_LEAD) or (len(terms) <= 2 and best <= SHORT)
+    if not trusted:
+        return []
+    cards = [json.loads(rows[0]["json"])]
+    if len(rows) > 1 and rows[1]["score"] <= FAIR and rows[1]["score"] <= best * SECOND_CARD:
+        cards.append(json.loads(rows[1]["json"]))
+    return cards
 
 
 def get(conn: sqlite3.Connection, card_id: str) -> dict | None:
