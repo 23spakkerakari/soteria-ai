@@ -101,3 +101,7 @@ class ChatMessage(BaseModel):
 class ChatRequest(BaseModel):
     messages: list[ChatMessage] = Field(min_length=1)
     thinking: bool = False
+    # One id per incident, made by the page. The question-and-answer record is kept under it.
+    incident_id: str | None = Field(default=None, max_length=64)
+    # The user tapped "Give me the plan now" instead of answering the questions.
+    plan_now: bool = False

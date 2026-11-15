@@ -4,7 +4,7 @@ import json
 import sqlite3
 from pathlib import Path
 
-from . import config
+from . import config, incident
 from .schemas import Card, Scenario
 
 SCHEMA = """
@@ -15,6 +15,15 @@ CREATE TABLE IF NOT EXISTS cards (
 );
 CREATE VIRTUAL TABLE IF NOT EXISTS cards_fts USING fts5(
     card_id UNINDEXED, title, keywords, body, tokenize = 'porter'
+);
+CREATE TABLE IF NOT EXISTS cases (
+    case_id TEXT PRIMARY KEY,
+    reuse_status TEXT NOT NULL,
+    clinical_review TEXT NOT NULL,
+    json TEXT NOT NULL
+);
+CREATE VIRTUAL TABLE IF NOT EXISTS cases_fts USING fts5(
+    case_id UNINDEXED, title, keywords, lay, body, tokenize = 'porter'
 );
 CREATE TABLE IF NOT EXISTS scenarios (
     scenario_id TEXT PRIMARY KEY,
@@ -40,7 +49,7 @@ CREATE TABLE IF NOT EXISTS eval_runs (
 def connect(path: Path | None = None) -> sqlite3.Connection:
     conn = sqlite3.connect(path or config.DB_PATH)
     conn.row_factory = sqlite3.Row
-    conn.executescript(SCHEMA)
+    conn.executescript(SCHEMA + incident.SCHEMA)
     return conn
 
 
@@ -71,13 +80,48 @@ def load_scenarios() -> list[Scenario]:
     return scenarios
 
 
+def load_cases() -> list[dict]:
+    """Sourced case studies from wildmed-kb (its build output, one record per line)."""
+    if not config.WILDMED_CASES.exists():
+        return []
+    with config.WILDMED_CASES.open(encoding="utf-8") as lines:
+        return [json.loads(line) for line in lines if line.strip()]
+
+
+def _index_case(conn: sqlite3.Connection, rec: dict) -> None:
+    """Index a case by what a bystander would say, not by its clinical write-up."""
+    cls, pres, ctx, retrieval = rec["classification"], rec["presentation"], rec["context"], rec["retrieval"]
+    words = lambda tags: " ".join(t.replace("_", " ") for t in tags if t)
+    conn.execute(
+        "INSERT INTO cases VALUES (?, ?, ?, ?)",
+        (rec["id"], rec["source"]["reuse_status"], rec["eval"]["clinical_review"], json.dumps(rec)),
+    )
+    conn.execute(
+        "INSERT INTO cases_fts VALUES (?, ?, ?, ?, ?)",
+        (
+            rec["id"],
+            rec["title"],
+            " ".join([*retrieval["keywords"], words(cls["conditions"]), words([cls.get("mechanism")])]),
+            " ".join(retrieval["lay_queries"]),
+            " ".join(
+                [pres["summary"], pres["chief_complaint"], *pres["symptoms"], *retrieval["red_flags"]]
+                + [str(ctx.get(k) or "") for k in ("setting", "activity", "terrain", "weather")]
+            ),
+        ),
+    )
+
+
 def rebuild(conn: sqlite3.Connection) -> tuple[int, int]:
-    """Validate every JSON record and reload the card and scenario tables."""
+    """Validate every JSON record and reload the card, case and scenario tables."""
     cards, scenarios = load_cards(), load_scenarios()
     with conn:
         conn.execute("DELETE FROM cards")
         conn.execute("DELETE FROM cards_fts")
         conn.execute("DELETE FROM scenarios")
+        conn.execute("DELETE FROM cases")
+        conn.execute("DELETE FROM cases_fts")
+        for rec in load_cases():
+            _index_case(conn, rec)
         for c in cards:
             conn.execute(
                 "INSERT INTO cards VALUES (?, ?, ?)",

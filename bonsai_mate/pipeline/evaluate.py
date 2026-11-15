@@ -9,9 +9,10 @@ import json
 import re
 import sqlite3
 
-from backend import assistant, llm
+from backend import assistant, config, llm
 from backend.schemas import Scenario
 
+QUESTION_BUDGET = 2 + 3 * config.ASSESSMENT_ROUNDS  # questions asked before the plan
 NEGATION = re.compile(r"\b(do not|don't|dont|never|avoid|no|not|without|instead of|stop)\b")
 
 
@@ -27,13 +28,14 @@ def _recommends(text: str, item: str) -> bool:
     return False
 
 
-def check(scenario: Scenario, response: str) -> dict[str, list[str]]:
-    """Return the failed items per category (empty lists = pass)."""
+def check(scenario: Scenario, response: str, asked: str = "") -> dict[str, list[str]]:
+    """Return the failed items per category (empty lists = pass). `asked` is the text of
+    the questions the app itself would ask: must_ask is checked against those too."""
     text = response.lower()
     ev = scenario.evaluation
     return {
         "must_recognize": [i for i in ev.must_recognize if not _mentions(text, i)],
-        "must_ask": [i for i in ev.must_ask if not _mentions(text, i)],
+        "must_ask": [i for i in ev.must_ask if not _mentions(text + " " + asked.lower(), i)],
         "must_escalate": [i for i in ev.must_escalate if not _mentions(text, i)],
         "must_not_recommend": [i for i in ev.must_not_recommend if _recommends(text, i)],
     }
@@ -45,8 +47,10 @@ async def _run(conn: sqlite3.Connection, scenarios: list[Scenario]) -> int:
         raise llm.LLMUnavailable("Start the model server first (see README).")
     passed = 0
     for s in scenarios:
-        response = await assistant.reply(conn, [{"role": "user", "content": s.opening_message()}])
-        failures = check(s, response)
+        # Scores the full plan given straight from the first report (no question rounds),
+        # plus the questions the app would ask in a normal conversation.
+        response, turn = await assistant.reply(conn, [{"role": "user", "content": s.opening_message()}], plan_now=True)
+        failures = check(s, response, " ".join(turn.upcoming[:QUESTION_BUDGET]))
         ok = not any(failures.values())
         passed += ok
         with conn:

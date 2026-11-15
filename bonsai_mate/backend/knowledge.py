@@ -17,20 +17,36 @@ def _terms(text: str) -> list[str]:
     return list(dict.fromkeys(w for w in words if len(w) > 2 and w not in STOPWORDS))
 
 
-def search(conn: sqlite3.Connection, text: str, k: int = 3) -> list[dict]:
+def search(
+    conn: sqlite3.Connection, text: str, k: int = 3, runner_up_ratio: float = 0.0, min_score: float = 0.0
+) -> list[dict]:
+    """Best-matching cards. The assistant passes two limits that the Protocols tab
+    does not: min_score drops weak matches entirely (word search always finds
+    something), and runner_up_ratio keeps later cards only if they score at least
+    that fraction of the best one. bm25 scores are negative; lower is better."""
     terms = _terms(text)
     if not terms:
         return []
     query = " OR ".join(f'"{t}"' for t in terms)
     rows = conn.execute(
         """
-        SELECT c.json FROM cards_fts f JOIN cards c ON c.card_id = f.card_id
+        SELECT c.json, bm25(cards_fts, 0.0, 5.0, 3.0, 1.0) AS score
+        FROM cards_fts f JOIN cards c ON c.card_id = f.card_id
         WHERE cards_fts MATCH ? AND c.clinical_review != 'rejected'
-        ORDER BY bm25(cards_fts, 0.0, 5.0, 3.0, 1.0) LIMIT ?
+        ORDER BY score LIMIT ?
         """,
         (query, k),
-    )
-    return [json.loads(r["json"]) for r in rows]
+    ).fetchall()
+    return [
+        json.loads(r["json"])
+        for r in rows
+        if r["score"] <= min_score and r["score"] <= rows[0]["score"] * runner_up_ratio
+    ]
+
+
+def get(conn: sqlite3.Connection, card_id: str) -> dict | None:
+    row = conn.execute("SELECT json FROM cards WHERE card_id = ?", (card_id,)).fetchone()
+    return json.loads(row["json"]) if row else None
 
 
 def format_card(card: dict) -> str:

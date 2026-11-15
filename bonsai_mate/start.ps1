@@ -38,11 +38,6 @@ if (-not $NoVoice) {
             Write-Host "argmax-windows-shim not found: voice is off. Pass -ShimPath <folder> to enable it."
         }
     }
-    # Once the speech models are downloaded, never go looking for the network again.
-    $hub = Join-Path $HOME ".cache\huggingface\hub"
-    if ((Test-Path "$hub\models--Systran--faster-whisper-base.en") -and (Test-Path "$hub\models--hexgrad--Kokoro-82M")) {
-        $env:HF_HUB_OFFLINE = "1"
-    }
 }
 
 if (-not $NoModel) {

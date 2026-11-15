@@ -4,6 +4,7 @@ __pycache__/
 
 # Rebuilt from the JSON files in data/ on every start
 data/mate.db*
+data/.voice_ready
 
 # Text extracted from third-party sources. Do not commit or redistribute
 # until the source's license has been checked.

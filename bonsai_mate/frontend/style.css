@@ -81,6 +81,32 @@ nav { flex-wrap: wrap; align-items: center; }
 #mic.live { background: var(--danger); border-color: var(--danger); color: #fff; max-width: 110px; }
 @media (prefers-reduced-motion: no-preference) { #mic.live svg { animation: pulse 1.2s ease-in-out infinite; } }
 @keyframes pulse { 50% { transform: scale(1.2); } }
+/* Assist view: chat, plus the "What I know so far" panel (beside it on a wide screen, above it on a phone). */
+#view-assist { max-width: 1120px; }
+.chat { flex: 1; min-height: 0; min-width: 0; display: flex; flex-direction: column; width: 100%; max-width: 760px; margin: 0 auto; }
+#known { flex: none; border-bottom: 1px solid var(--line); max-height: 45vh; overflow-y: auto; font-size: 15px; }
+#known[hidden] { display: none; }
+#known summary { cursor: pointer; padding: 10px 16px; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
+#known-body { padding: 0 16px 14px; }
+#known h4 { margin: 14px 0 4px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+#known p { margin: 0; }
+#known ul { margin: 0; padding-left: 20px; }
+#known .phase { color: var(--accent); font-weight: 600; }
+#known .muted { color: var(--muted); margin-top: 12px; }
+#known .round { margin-top: 12px; padding: 8px 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+#known .round.asked { border-color: var(--accent); }
+#known .said { margin-top: 6px; color: var(--muted); }
+#known .round.answered .said { color: var(--fg); }
+@media (min-width: 900px) {
+  #view-assist { flex-direction: row-reverse; }
+  #known { width: 340px; max-height: none; border-bottom: none; border-left: 1px solid var(--line); }
+}
+.grounding { margin: 0; font-size: 14px; color: var(--accent); border-left: 3px solid var(--accent); padding: 2px 10px; }
+.questions { background: var(--panel); border: 1px solid var(--accent); border-radius: 12px; padding: 12px 14px; }
+.questions strong { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.questions ol { margin: 6px 0 10px; padding-left: 22px; }
+.questions li { margin: 4px 0; font-weight: 600; }
+.plan-now { font-size: 14px; min-height: 40px; padding: 6px 12px; }
 #send { background: var(--accent); color: var(--accent-ink); border: none; font-weight: 700; padding: 0 20px; }
 #send:disabled { opacity: 0.5; }
 #view-cards { padding: 16px; gap: 12px; overflow-y: auto; }

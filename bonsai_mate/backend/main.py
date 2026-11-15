@@ -10,7 +10,7 @@ from fastapi.responses import Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from . import assistant, config, db, knowledge, llm, voice, wildmed
+from . import assistant, config, db, incident, knowledge, llm, voice
 from .schemas import ChatRequest
 
 
@@ -20,10 +20,12 @@ async def lifespan(app: FastAPI):
     cards, scenarios = db.rebuild(conn)
     conn.close()
     print(f"Loaded {cards} protocol cards and {scenarios} benchmark scenarios.")
-    if not wildmed.available():
-        print("wildmed-kb index not found: run  python wildmed-kb/scripts/build.py")
+    if not config.WILDMED_CASES.exists():
+        print("wildmed-kb case studies not found: run  python wildmed-kb/scripts/build.py")
     voice.start_loading()
+    warm_up = asyncio.create_task(assistant.warm_up())
     yield
+    warm_up.cancel()
 
 
 app = FastAPI(title="Bonsai Mate", lifespan=lifespan)
@@ -38,7 +40,7 @@ async def health():
             "model": await llm.model_id(),
             "cards": count("cards"),
             "scenarios": count("scenarios"),
-            "cases": wildmed.available(),
+            "cases": count("cases"),
             "voice": voice.status,
         }
     finally:
@@ -74,7 +76,7 @@ async def chat(req: ChatRequest):
     async def events():
         conn = db.connect()
         try:
-            async for event in assistant.stream_reply(conn, messages, req.thinking):
+            async for event in assistant.stream_reply(conn, messages, req.thinking, req.incident_id, req.plan_now):
                 yield json.dumps(event) + "\n"
         finally:
             conn.close()
@@ -82,14 +84,30 @@ async def chat(req: ChatRequest):
     return StreamingResponse(events(), media_type="application/x-ndjson")
 
 
+@app.get("/api/incidents/{incident_id}")
+def incident_record(incident_id: str):
+    """Every question asked and answer given in one incident (for a handover note)."""
+    conn = db.connect()
+    try:
+        record = incident.record(conn, incident_id)
+    finally:
+        conn.close()
+    if record is None:
+        raise HTTPException(404, "No such incident.")
+    return record
+
+
 # ---------- voice ----------
+
+MAX_UTTERANCE_SECONDS = 90  # then the recording is sent as if the user had tapped stop
 
 
 @app.websocket("/api/listen")
 async def listen(ws: WebSocket):
     """Live speech-to-text. The browser sends {"sample_rate": N}, then raw float32
-    mono audio frames, then {"stop": true}. The server sends {"confirmed", "hypothesis"}
-    updates while the user talks, and {"final": text} at the end."""
+    mono audio frames, then {"stop": true}. While the user talks the server sends
+    {"preview": text} from the real-time session; at the end it sends {"final": text}
+    from one clean pass over the whole utterance."""
     await ws.accept()
     if voice.status["listen"] != "ready" or not voice.listen_lock.acquire(blocking=False):
         await ws.send_json({"error": "Voice input is busy or not ready yet."})
@@ -98,48 +116,51 @@ async def listen(ws: WebSocket):
 
     loop = asyncio.get_running_loop()
     updates: asyncio.Queue = asyncio.Queue()
-    continuation, session = voice.open_session()
+    mic_audio, session = voice.open_session()
 
     def read_results() -> None:  # session.results is a blocking iterator
-        try:
-            for result in session.results:
-                loop.call_soon_threadsafe(updates.put_nowait, (result.text, result.hypothesis_text or ""))
-        finally:
-            loop.call_soon_threadsafe(updates.put_nowait, None)
+        for result in session.results:
+            loop.call_soon_threadsafe(updates.put_nowait, (result.text, result.hypothesis_text or ""))
 
     threading.Thread(target=read_results, daemon=True).start()
 
-    async def send_updates() -> str:
+    async def send_previews() -> None:
         confirmed = ""
-        while (update := await updates.get()) is not None:
-            confirmed = f"{confirmed} {update[0]}".strip()
-            await ws.send_json({"confirmed": confirmed, "hypothesis": update[1]})
-        return confirmed
+        while True:
+            newly_confirmed, hypothesis = await updates.get()
+            confirmed = f"{confirmed} {newly_confirmed}".strip()
+            await ws.send_json({"preview": f"{confirmed} {hypothesis}".strip()})
 
-    sender = asyncio.create_task(send_updates())
+    sender = asyncio.create_task(send_previews())
+    recorded: list[np.ndarray] = []
     try:
         sample_rate = voice.SAMPLE_RATE
-        while True:
+        seconds = 0.0
+        while seconds < MAX_UTTERANCE_SECONDS:
             message = await ws.receive()
             if message["type"] == "websocket.disconnect":
-                break
+                return
             if message.get("bytes"):
-                samples = np.frombuffer(message["bytes"], dtype=np.float32)
-                continuation.yield_(voice.to_16k(samples, sample_rate))
+                samples = voice.to_16k(np.frombuffer(message["bytes"], dtype=np.float32), sample_rate)
+                recorded.append(samples)
+                seconds += len(samples) / voice.SAMPLE_RATE
+                mic_audio.yield_(samples)
             elif message.get("text"):
                 control = json.loads(message["text"])
                 sample_rate = int(control.get("sample_rate", sample_rate))
                 if control.get("stop"):
                     break
-        continuation.finish()  # the session confirms whatever is left, then ends
-        await ws.send_json({"final": await sender})
+        audio = np.concatenate(recorded) if recorded else np.zeros(0, np.float32)
+        final = await asyncio.to_thread(voice.transcribe, audio)
+        sender.cancel()
+        await ws.send_json({"final": final})
         await ws.close()
     except (WebSocketDisconnect, RuntimeError):
         pass  # browser went away
     finally:
-        continuation.finish()
-        session.stop()
         sender.cancel()
+        mic_audio.finish()  # only now, so the session's own last pass does not compete with the final one
+        session.stop()
         voice.listen_lock.release()
 
 

@@ -14,6 +14,10 @@ const QUICK = [
 
 let messages = [];
 let busy = false;
+// One id per incident. The server keeps every question and answer under it.
+const incidentId = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+let shownContext = ""; // which cards and case are already on screen
+const shownFlags = new Set(); // warnings already shown (the panel keeps the full list)
 let health = { voice: { listen: "loading", speak: "browser" } };
 
 // ---------- small DOM helpers (textContent only: model output is never treated as HTML) ----------
@@ -63,6 +67,45 @@ function renderCase(c) {
   ]);
   node.querySelector(".body").append(el("p", "used", `Source: ${c.source}. A teaching case about a different patient.`));
   return node;
+}
+
+// ---------- "What I know so far" panel ----------
+const PHASES = {
+  triage: "Step 1 of 3 · Urgent action",
+  assessment: "Step 2 of 3 · Questions",
+  plan: "Step 3 of 3 · Plan",
+  follow_up: "Step 3 of 3 · Plan given",
+};
+const GROUNDING = {
+  card: "",
+  case: "From a similar case study. No protocol card covers this.",
+  general: "General guidance from the model's own knowledge. No protocol card or case study covers this.",
+};
+
+function renderKnown(meta) {
+  const known = meta.known;
+  const body = $("known-body");
+  const section = (title, node) => { if (node) body.append(el("h4", null, title), node); };
+  body.replaceChildren(el("p", "phase", PHASES[meta.phase]));
+  section("You reported", el("p", null, known.reported));
+  const couldBe = [...meta.cards.map((c) => c.title), ...meta.cases.map((c) => `${c.condition} (similar case)`)];
+  section("Could be", couldBe.length ? list("ul", couldBe) : el("p", "muted", "Nothing in the protocols or case studies matches."));
+  if (meta.red_flags.length) section("Warning signs", list("ul", meta.red_flags));
+  if (known.already_told.length) section("You already told me about", list("ul", known.already_told));
+  for (const round of known.rounds) {
+    const block = el("div", `round ${round.status}`);
+    block.append(list("ul", round.questions));
+    block.append(el("p", "said", round.status === "answered" ? `You said: “${round.answer}”`
+      : round.status === "skipped" ? "Skipped" : "Waiting for your answer"));
+    body.append(block);
+  }
+  if (meta.remaining > 0 && (meta.phase === "triage" || meta.phase === "assessment")) {
+    body.append(el("p", "muted", `${meta.remaining} more question${meta.remaining === 1 ? "" : "s"} I may ask.`));
+  }
+  if ($("known").hidden) {
+    $("known").hidden = false;
+    $("known-details").open = window.matchMedia("(min-width: 900px)").matches; // closed on a phone
+  }
 }
 
 // ---------- status ----------
@@ -138,7 +181,7 @@ $("speak-toggle").addEventListener("change", (e) => {
 try { $("speak-toggle").checked = localStorage.getItem("mate.speak") === "1"; } catch {}
 
 // ---------- chat ----------
-async function send(text) {
+async function send(text, planNow) {
   $("welcome")?.remove();
   speaker.stop();
   messages.push({ role: "user", content: text });
@@ -156,6 +199,7 @@ async function send(text) {
   let spokenTo = 0;
   let cards = [];
   let cases = [];
+  let meta = null;
   const speakFinishedLines = (all) => {
     const end = all ? content.length : content.lastIndexOf("\n") + 1;
     for (const line of content.slice(spokenTo, end).split("\n")) speaker.say(line);
@@ -163,12 +207,21 @@ async function send(text) {
   };
   const handle = (event) => {
     if (event.type === "meta") {
+      meta = event;
       ({ cards, cases } = event);
-      if (event.red_flags.length) {
+      renderKnown(event);
+      document.querySelectorAll(".plan-now").forEach((b) => b.remove()); // only the newest reply offers it
+      if (GROUNDING[event.grounding]) {
+        bubble.prepend(el("p", "grounding", GROUNDING[event.grounding]));
+        if (event.grounding === "general" && event.phase === "triage") speaker.say("This is general guidance, not from a protocol.");
+      }
+      const newFlags = event.red_flags.filter((flag) => !shownFlags.has(flag));
+      if (newFlags.length) {
+        newFlags.forEach((flag) => shownFlags.add(flag));
         const alert = el("div", "alert");
-        alert.append(el("strong", null, "Possible emergency"), list("ul", event.red_flags), el("p", null, event.reach_help));
+        alert.append(el("strong", null, "Possible emergency"), list("ul", newFlags), el("p", null, event.reach_help));
         bubble.prepend(alert);
-        speaker.say(`Warning. ${event.red_flags[0]}`);
+        speaker.say(`Warning. ${newFlags[0]}`);
       }
     } else if (event.type === "reasoning") {
       if (!thoughts.isConnected) answer.before(thoughts);
@@ -187,13 +240,32 @@ async function send(text) {
       speaker.say(answer.textContent);
       cards.forEach((card, i) => bubble.append(renderCard(card, i === 0)));
       cards = [];
+      shownContext = "";
     } else if (event.type === "done") {
       speakFinishedLines(true);
-      if (cards.length) {
-        bubble.append(el("p", "used", "Based on these protocol cards:"));
-        for (const card of cards) bubble.append(renderCard(card));
+      // The app asks the questions itself, so they are never repeated and always recorded.
+      if (meta?.asking.length) {
+        const ask = el("div", "questions");
+        ask.append(el("strong", null, "Please tell me:"), list("ol", meta.asking));
+        const planNow = el("button", "plan-now ghost", "Skip the questions: give me the plan now");
+        planNow.type = "button";
+        planNow.addEventListener("click", () => submit("Give me the plan now.", true));
+        ask.append(planNow);
+        bubble.append(ask);
+        speaker.say("Please tell me.");
+        for (const question of meta.asking) speaker.say(question);
       }
-      for (const c of cases) bubble.append(renderCase(c));
+      // Show the cards and the case again only when they change.
+      const context = [...cards.map((c) => c.card_id), ...cases.map((c) => c.id)].join("|");
+      if (context !== shownContext) {
+        shownContext = context;
+        if (cards.length) {
+          // The model rewords the card and can get a step wrong: keep the card's own text in view.
+          bubble.append(el("p", "used", "Check the steps against the protocol card:"));
+          cards.forEach((card, i) => bubble.append(renderCard(card, i === 0)));
+        }
+        for (const c of cases) bubble.append(renderCase(c));
+      }
     }
     scrollDown();
   };
@@ -201,7 +273,7 @@ async function send(text) {
   const res = await fetch("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ messages }),
+    body: JSON.stringify({ messages, incident_id: incidentId, plan_now: !!planNow }),
   });
   if (!res.ok) throw new Error(`${res.status} ${await res.text()}`);
 
@@ -217,18 +289,19 @@ async function send(text) {
     buffer = lines.pop();
     for (const line of lines) if (line.trim()) handle(JSON.parse(line));
   }
-  // Keep the turn in history even when only cards were shown, so follow-ups have context.
+  // History holds the model's words only. The questions and answers reach the model through
+  // the server's record, so they are not duplicated here.
   messages.push({ role: "assistant", content: content.trim() || "(Protocol cards were shown; the model did not answer.)" });
 }
 
-async function submit(text) {
+async function submit(text, planNow = false) {
   text = text.trim();
   if (!text || busy) return;
   $("input").value = "";
   busy = true;
   $("send").disabled = true;
   try {
-    await send(text);
+    await send(text, planNow);
   } catch (err) {
     if (messages.at(-1)?.role === "user") messages.pop();
     $("log").append(el("div", "alert", `Could not reach the app server: ${err.message}`));
@@ -317,8 +390,9 @@ async function startListening() {
     } else if (update.final != null) {
       $("input").value = "";
       if (update.final) submit(update.final);
+      else $("log").append(el("div", "used", "I didn't catch anything. Tap Speak and try again."));
     } else {
-      $("input").value = `${update.confirmed} ${update.hypothesis}`.trim();
+      $("input").value = update.preview; // rough live text; the final text replaces it
     }
   };
   socket.onclose = () => {

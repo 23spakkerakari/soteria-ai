@@ -35,6 +35,10 @@ def _body(messages: list[dict], model: str, thinking: bool, **extra) -> dict:
         "model": model,
         "messages": messages,
         "chat_template_kwargs": {"enable_thinking": thinking},
+        # llama-server: always use the same slot, so the unchanging start of the prompt
+        # (the rules) stays cached between requests instead of being re-read each time.
+        "id_slot": 0,
+        "cache_prompt": True,
         **PRESETS[thinking],
         **extra,
     }

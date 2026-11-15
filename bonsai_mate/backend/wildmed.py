@@ -5,46 +5,49 @@ responders did in a comparable situation. They are educational case studies,
 not protocols: every record is clinical_review "pending", and most come from
 all-rights-reserved material (see wildmed-kb/README.md). ALLOWED_REUSE decides
 which records may be used at all.
+
+The records are indexed into mate.db on start (db.rebuild), weighted toward
+the title, keywords and everyday phrasings rather than the clinical write-up.
 """
 import json
+import re
 import sqlite3
 
-from . import config
 from .knowledge import _terms
 
 # Narrow this before shipping anything, e.g. {"redistributable_attribution"}.
 ALLOWED_REUSE = {"internal_reference_only", "noncommercial_only", "redistributable_attribution"}
+# Word search always finds something. A case weaker than this is not shown to the
+# model at all: a loosely related case steers a small model the wrong way.
+# (bm25 scores are negative; lower is better. Calibrated on the 56-case index.)
+MIN_SCORE = -9.0
 RUNNER_UP_RATIO = 0.75
 
-
-def available() -> bool:
-    return config.WILDMED_DB.exists()
+_ELEVATION = re.compile(r"\b\d{1,2},?\d{3}\s*(feet|foot|ft|meters|metres|m)\b", re.I)
 
 
-def search(text: str, k: int = 2) -> list[dict]:
+def search(conn: sqlite3.Connection, text: str, k: int = 2) -> list[dict]:
     """Best-matching cases for what the user described, as compact summaries."""
     terms = _terms(text)
-    if not terms or not available():
+    if _ELEVATION.search(text):
+        terms.append("altitude")  # "we're at 13,000 feet" never says the word
+    if not terms:
         return []
-    conn = sqlite3.connect(f"file:{config.WILDMED_DB.as_posix()}?mode=ro", uri=True)
-    try:
-        # Match on the presentation chunk: symptoms, findings and lay phrasings.
-        rows = conn.execute(
-            f"""
-            SELECT s.record_json, bm25(chunks_fts) FROM chunks_fts f JOIN scenarios s ON s.id = f.scenario_id
-            WHERE chunks_fts MATCH ? AND f.chunk_type = 'presentation'
-              AND s.clinical_review != 'rejected'
-              AND s.reuse_status IN ({",".join("?" * len(ALLOWED_REUSE))})
-            ORDER BY bm25(chunks_fts) LIMIT ?
-            """,
-            (" OR ".join(f'"{t}"' for t in terms), *ALLOWED_REUSE, k),
-        ).fetchall()
-    finally:
-        conn.close()
-    # Word search always returns something. Keep a runner-up only if it matches
-    # nearly as well as the best case (bm25 scores are negative; lower is better),
-    # so a loosely related case does not steer a small model.
-    return [_summary(json.loads(record)) for record, score in rows if score <= rows[0][1] * RUNNER_UP_RATIO]
+    rows = conn.execute(
+        f"""
+        SELECT c.json, bm25(cases_fts, 0.0, 3.0, 5.0, 4.0, 1.0) AS score
+        FROM cases_fts f JOIN cases c ON c.case_id = f.case_id
+        WHERE cases_fts MATCH ? AND c.clinical_review != 'rejected'
+          AND c.reuse_status IN ({",".join("?" * len(ALLOWED_REUSE))})
+        ORDER BY score LIMIT ?
+        """,
+        (" OR ".join(f'"{t}"' for t in terms), *ALLOWED_REUSE, k),
+    ).fetchall()
+    return [
+        _summary(json.loads(r["json"]))
+        for r in rows
+        if r["score"] <= MIN_SCORE and r["score"] <= rows[0]["score"] * RUNNER_UP_RATIO
+    ]
 
 
 def _summary(rec: dict) -> dict:
@@ -72,11 +75,10 @@ def format_case(case: dict) -> str:
 
     parts = [
         f"### Case: {case['title']} (possible {case['condition']}; {case['acuity']})",
-        block("Questions worth asking", case["ask"], 6),
-        block("Warning signs", case["red_flags"], 5),
-        block("What trained responders did", case["plan"], 7),
-        block("Key points", case["teaching_points"], 3),
-        block("Avoid", case["avoid"], 4),
+        block("Questions worth asking", case["ask"], 5),
+        block("Warning signs", case["red_flags"], 4),
+        block("What trained responders did (their shorthand)", case["plan"], 5),
+        block("Avoid", case["avoid"], 3),
         f"When to get help: {case['escalate']}" if case["escalate"] else "",
     ]
     return "\n".join(p for p in parts if p)
