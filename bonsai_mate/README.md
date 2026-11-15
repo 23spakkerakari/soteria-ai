@@ -120,6 +120,12 @@ Things to know:
 - **The model's output varies from run to run.** The same hypothermia description produced the "get emergency help now" line in one run and not in the next. The built-in warning does not vary.
 - **Keep the benchmark separate.** The synthetic scenarios test the assistant precisely because they are not in the case-study index. Evaluating on the wildmed cases themselves would be circular.
 
+## Landing page
+
+A marketing page for the product under the name **TerraMind** lives in [`frontend/landing/`](frontend/landing/) and is served at **http://localhost:8000/landing/** (the app itself stays at `/`). It is plain HTML, CSS and a small script, with local photographs and a self-hosted typeface, so it also loads offline. Photo and font sources are in [`frontend/landing/CREDITS.md`](frontend/landing/CREDITS.md).
+
+Its "Get the App" and "Download" buttons open the local app at `/`; there is no store listing yet. The phone on the page is a drawn preview, not a screenshot. Two lines of its copy ("grounded in established medical resources", "built around established medical and first-aid resources") describe the goal, not the current data: see **Data** above.
+
 ## Scenario pipeline
 
 Run from this folder with the venv's Python (`.venv\Scripts\python.exe` or `.venv/bin/python`):

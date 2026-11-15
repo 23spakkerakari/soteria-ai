@@ -1,6 +1,7 @@
 """Bonsai Mate API + static frontend.  Run:  uvicorn backend.main:app --port 8000"""
 import asyncio
 import json
+import mimetypes
 import threading
 from contextlib import asynccontextmanager
 
@@ -176,5 +177,9 @@ async def speak(req: SpeakRequest):
     return Response(wav, media_type="audio/wav")
 
 
-# Last, so /api routes win.
+# Windows does not know these types, and the landing page's images and font need them.
+mimetypes.add_type("image/webp", ".webp")
+mimetypes.add_type("font/woff2", ".woff2")
+
+# Last, so /api routes win. The landing page is frontend/landing/, served at /landing/.
 app.mount("/", StaticFiles(directory=config.FRONTEND, html=True), name="frontend")
