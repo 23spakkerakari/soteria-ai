@@ -59,11 +59,17 @@ def _read_records(path: Path) -> list[dict]:
 
 
 def load_cards() -> list[Card]:
-    return [
+    cards = [
         Card.model_validate(rec)
         for path in sorted(config.CARDS_DIR.glob("*.json"))
         for rec in _read_records(path)
     ]
+    ids = {c.card_id for c in cards}
+    for c in cards:
+        for ref in [c.applies_when.fallback, *(r.card for r in c.routes)]:
+            if ref and ref not in ids:
+                raise ValueError(f"{c.card_id} refers to a card that does not exist: {ref}")
+    return cards
 
 
 def load_scenarios() -> list[Scenario]:

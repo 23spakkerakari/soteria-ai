@@ -1,0 +1,262 @@
+[
+  {
+    "card_id": "KB_BEAR_ENCOUNTER",
+    "title": "Bear encounter (no contact)",
+    "keywords": [
+      "bear", "bears", "grizzly", "grizzlies", "black bear", "brown bear", "cub", "cubs",
+      "camp", "campsite", "near", "close", "approaching", "coming toward", "following",
+      "standing up", "huffing", "growling", "bluff", "charge", "charging", "charged",
+      "won't leave", "wont leave", "food", "trail", "woods", "saw a bear", "there's a bear"
+    ],
+    "recognize": [
+      "A bear has seen you and is close: standing up, huffing, following you or charging, but has not touched anyone",
+      "A bear in or near your camp or your food"
+    ],
+    "do_first": [
+      "Stay calm. Talk to the bear in a low, calm voice so it knows you are a person, and slowly wave your arms.",
+      "Stand your ground. Do not run: a bear can run as fast as a racehorse.",
+      "Pick up small children straight away. Stay together as a group and make yourselves look as large as you can.",
+      "Keep your pack on, and never let the bear get to your food.",
+      "If the bear is not moving, back away slowly and sideways, keeping an eye on it. If it follows you, stop and hold your ground.",
+      "Leave the area or take a wide detour, and always leave the bear a way out."
+    ],
+    "do_not": [
+      "Do not run",
+      "Do not climb a tree: grizzlies and black bears both climb",
+      "Do not imitate bear sounds or make high-pitched squeals",
+      "Do not drop your pack or leave food for the bear",
+      "Never get between a mother and her cubs"
+    ],
+    "escalate_when": [
+      "The bear makes contact with anyone: see the bear attack card",
+      "Anyone is hurt"
+    ],
+    "applies_when": {
+      "species": ["any bear"],
+      "regions": ["North America"],
+      "situation": "encounter_no_contact"
+    },
+    "routes": [
+      {
+        "when": "attack|maul|bitten|pinned|dragg|(biting|clawing|bit|on top of|knocked) (him|her|me|us|them|my|his|their|someone|the (man|woman|guy|girl|kid|child|boy|person|hiker|climber))",
+        "card": "KB_BEAR_ATTACK"
+      }
+    ],
+    "source": {
+      "organization": "US National Park Service",
+      "source_type": "government",
+      "source_url": "https://www.nps.gov/subjects/bears/safety.htm",
+      "license": "public_domain",
+      "license_verified": true,
+      "retrieved_on": "2026-11-14",
+      "verbatim_allowed": true
+    },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_BEAR_ATTACK",
+    "title": "Bear attack (kind of bear not known)",
+    "keywords": [
+      "bear", "grizzly", "black bear", "attack", "attacking", "attacked", "mauling", "mauled",
+      "biting", "bitten", "clawing", "on top of", "knocked down", "pinned"
+    ],
+    "recognize": [
+      "A bear has made contact: knocked someone down, biting or clawing",
+      "You do not know yet whether it is a grizzly or a black bear, or whether it came into a tent or stalked you"
+    ],
+    "do_first": [
+      "Keep your pack on: it protects your back.",
+      "Bear came into your tent, or followed you first: do not play dead. Fight back at its face with everything you have.",
+      "Grizzly or brown bear (shoulder hump, dished face): play dead. Lie on your stomach, hands behind your neck, legs spread, still until it leaves. Fight back only if it keeps attacking.",
+      "Black bear (no hump, straight face): do not play dead. Get to a car or building if you can; otherwise fight back, hitting its face and muzzle."
+    ],
+    "do_not": [
+      "Do not run",
+      "Do not climb a tree",
+      "Do not play dead for a black bear, or for any bear that came into your tent or stalked you"
+    ],
+    "escalate_when": [
+      "Always: anyone injured by a bear needs medical care. Report the attack to park rangers or wildlife authorities."
+    ],
+    "applies_when": {
+      "species": ["any bear"],
+      "regions": ["North America"],
+      "situation": "attack_species_unknown",
+      "requires": "attack|maul|bitten|pinned|dragg|(biting|clawing|bit|on top of|knocked) (him|her|me|us|them|my|his|their|someone|the (man|woman|guy|girl|kid|child|boy|person|hiker|climber))",
+      "fallback": "KB_BEAR_ENCOUNTER"
+    },
+    "routes": [
+      { "when": "tent|stalk|follow|dragg|sleeping", "card": "KB_BEAR_ATTACK_PREDATORY" },
+      { "when": "grizz|brown bear|hump|dish|kodiak|silvertip", "card": "KB_BEAR_ATTACK_GRIZZLY" },
+      { "when": "\\bblack\\b|no hump|straight face|cinnamon", "card": "KB_BEAR_ATTACK_BLACK" }
+    ],
+    "ask_first": [
+      {
+        "question": "What kind of bear is it? A grizzly has a big shoulder hump and a dished face; a black bear has no hump and a straight face. Colour does not tell you.",
+        "label": "Kind of bear",
+        "topic": "grizz|brown bear|hump|dish|kodiak|silvertip|\\bblack\\b|straight face|cinnamon"
+      },
+      {
+        "question": "Did the bear come into your tent, or follow you before it attacked?",
+        "label": "Tent or stalking attack",
+        "topic": "tent|stalk|follow|dragg|sleeping|surprised (it|the bear)|cubs|defending"
+      }
+    ],
+    "source": {
+      "organization": "US National Park Service",
+      "source_type": "government",
+      "source_url": "https://www.nps.gov/subjects/bears/safety.htm",
+      "license": "public_domain",
+      "license_verified": true,
+      "retrieved_on": "2026-11-14",
+      "verbatim_allowed": true
+    },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_BEAR_ATTACK_GRIZZLY",
+    "title": "Grizzly or brown bear attack",
+    "keywords": [
+      "grizzly", "grizzlies", "grizz", "brown bear", "kodiak", "hump", "shoulder hump",
+      "attack", "attacking", "attacked", "mauling", "mauled", "biting", "clawing", "on top of"
+    ],
+    "recognize": [
+      "A grizzly or brown bear (big shoulder hump, dished face, long claws) has made contact",
+      "Usually a surprise, or a mother with cubs: the bear is defending itself"
+    ],
+    "do_first": [
+      "Keep your pack on and play dead.",
+      "Lie flat on your stomach with your hands clasped behind your neck.",
+      "Spread your legs so the bear cannot easily roll you over.",
+      "Stay still and quiet until the bear leaves the area. Fighting back usually makes the attack worse.",
+      "If the attack continues anyway, fight back as hard as you can with whatever you have, hitting the bear in the face.",
+      "When the bear is gone, treat injuries (stop heavy bleeding first) and get medical help."
+    ],
+    "do_not": [
+      "Do not run",
+      "Do not climb a tree",
+      "Do not fight back first: see whether playing dead stops the attack",
+      "Do not play dead if the bear came into your tent or stalked you: fight back"
+    ],
+    "escalate_when": [
+      "Always: anyone injured by a bear needs medical care. Report the attack to park rangers or wildlife authorities."
+    ],
+    "applies_when": {
+      "species": ["grizzly bear", "brown bear"],
+      "regions": [
+        "Alaska",
+        "Northern Rocky Mountains (Montana, Wyoming, Idaho, Washington)",
+        "Western and northern Canada"
+      ],
+      "situation": "defensive_attack",
+      "requires": "grizz|brown bear|hump|dish|kodiak|silvertip",
+      "fallback": "KB_BEAR_ATTACK"
+    },
+    "routes": [
+      { "when": "tent|stalk|follow|dragg|sleeping", "card": "KB_BEAR_ATTACK_PREDATORY" }
+    ],
+    "ask_first": [
+      {
+        "question": "Did the bear come into your tent, or follow you before it attacked?",
+        "label": "Tent or stalking attack",
+        "topic": "tent|stalk|follow|dragg|sleeping|surprised (it|the bear)|cubs|defending"
+      }
+    ],
+    "source": {
+      "organization": "US National Park Service",
+      "source_type": "government",
+      "source_url": "https://www.nps.gov/subjects/bears/safety.htm",
+      "license": "public_domain",
+      "license_verified": true,
+      "retrieved_on": "2026-11-14",
+      "verbatim_allowed": true
+    },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_BEAR_ATTACK_BLACK",
+    "title": "Black bear attack",
+    "keywords": [
+      "black bear", "no hump", "attack", "attacking", "attacked", "mauling", "mauled",
+      "biting", "clawing", "on top of"
+    ],
+    "recognize": [
+      "A black bear (no shoulder hump, straight face, shorter claws; the coat can be black, brown or cinnamon) has made contact"
+    ],
+    "do_first": [
+      "Do not play dead.",
+      "If you can, get to a secure place such as a car or building.",
+      "If you cannot escape, fight back with any object you have.",
+      "Aim your kicks and blows at the bear's face and muzzle.",
+      "When the bear is gone, treat injuries (stop heavy bleeding first) and get medical help."
+    ],
+    "do_not": [
+      "Do not play dead",
+      "Do not run unless you can reach a car or building",
+      "Do not climb a tree: black bears climb well"
+    ],
+    "escalate_when": [
+      "Always: anyone injured by a bear needs medical care. Report the attack to park rangers or wildlife authorities."
+    ],
+    "applies_when": {
+      "species": ["black bear"],
+      "regions": ["North America"],
+      "situation": "attack",
+      "requires": "\\bblack\\b|no hump|straight face|cinnamon",
+      "fallback": "KB_BEAR_ATTACK"
+    },
+    "source": {
+      "organization": "US National Park Service",
+      "source_type": "government",
+      "source_url": "https://www.nps.gov/subjects/bears/safety.htm",
+      "license": "public_domain",
+      "license_verified": true,
+      "retrieved_on": "2026-11-14",
+      "verbatim_allowed": true
+    },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_BEAR_ATTACK_PREDATORY",
+    "title": "Bear attack in a tent, or after stalking",
+    "keywords": [
+      "bear", "tent", "stalking", "stalked", "followed", "following", "dragged", "night",
+      "sleeping", "attack", "attacking", "biting"
+    ],
+    "recognize": [
+      "A bear attacked inside a tent or shelter",
+      "A bear followed or stalked someone and then attacked",
+      "Any kind of bear: this bear may be looking for food and see people as prey"
+    ],
+    "do_first": [
+      "Do not play dead. Fight back with everything you have, and get everyone else to help.",
+      "Hit and kick at the bear's face and muzzle with any object: rocks, sticks, poles, pans.",
+      "Keep fighting until the bear gives up and leaves.",
+      "When the bear is gone, treat injuries (stop heavy bleeding first) and get medical help."
+    ],
+    "do_not": [
+      "Do not play dead",
+      "Do not run"
+    ],
+    "escalate_when": [
+      "Always: anyone injured by a bear needs medical care. This kind of attack is very rare and serious: report it to park rangers or wildlife authorities straight away."
+    ],
+    "applies_when": {
+      "species": ["any bear"],
+      "regions": ["North America"],
+      "situation": "predatory_attack",
+      "requires": "tent|stalk|follow|dragg|sleeping",
+      "fallback": "KB_BEAR_ATTACK"
+    },
+    "source": {
+      "organization": "US National Park Service",
+      "source_type": "government",
+      "source_url": "https://www.nps.gov/subjects/bears/safety.htm",
+      "license": "public_domain",
+      "license_verified": true,
+      "retrieved_on": "2026-11-14",
+      "verbatim_allowed": true
+    },
+    "clinical_review": "pending"
+  }
+]

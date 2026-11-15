@@ -66,6 +66,7 @@ When neither a card nor a case matches, the model answers from its own general f
 
 **The question pool** ([`backend/questions.py`](backend/questions.py)). The app chooses the questions, so they are never repeated and can be recorded exactly. They are asked in the order that most affects what to do right now:
 
+0. The matched card's own `ask_first` questions, when it has any: what it must know before its first step ("What kind of bear is it?").
 1. Life threats: awake and responding, breathing, heavy bleeding.
 2. Up to four questions from the matched wildmed case's `must_ask` list, reworded to "they" or "you".
 3. Circumstances: getting better or worse, when it started, supplies, weather and shelter, reaching help.
@@ -108,9 +109,23 @@ The microphone only works on `http://localhost` or over HTTPS. Opening the page 
 
 | Layer | Folder | Role |
 |---|---|---|
-| Protocol cards | `data/knowledge/` | What to do. 9 placeholder cards written from general first-aid knowledge, labelled "unsourced draft". |
+| Protocol cards | `data/knowledge/` | What to do. 9 placeholder cards written from general first-aid knowledge, labelled "unsourced draft", plus 5 bear cards taken from the US National Park Service (public domain, source and retrieval date recorded). |
 | Case studies | `wildmed-kb/` | 56 sourced cases: questions to ask, warning signs, what responders did. Rebuild with `python wildmed-kb/scripts/build.py`; the app re-indexes them on every start. |
 | Benchmark | `data/scenarios/` | 8 original synthetic scenarios and 80 variations, used only to test the assistant. |
+
+### Card schema
+
+A card ([`backend/schemas.py`](backend/schemas.py), `Card`) says what to do: `recognize`, `do_first`, `do_not`, `escalate_when`, and `keywords` in the words frightened people use. Its `source` records `organization`, `source_url`, `license`, whether someone verified that license on the publisher's site (`license_verified`), `retrieved_on`, and `verbatim_allowed`: for authoritative public-domain text the model is told to keep the card's own wording and change only who it is addressed to.
+
+Three optional fields handle advice that depends on facts the user may not have given yet. The bear cards are the example: for a grizzly defending itself you play dead, for a black bear you fight back, and for any bear that came into your tent you fight back. Word search cannot tell those cards apart, because they share nearly all their words, so the choice is made by rules in the card data (`knowledge.resolve`), deterministically, like the red flags:
+
+| Field | Meaning | Bear example |
+|---|---|---|
+| `applies_when` | `species`, `regions` and `situation` the card is for, plus `requires`: a pattern the user must have said, otherwise the `fallback` card is used | The grizzly card requires `grizz\|brown bear\|hump\|dish`; without it, the general "Bear attack" card is used |
+| `routes` | Once the user has said enough (`when`), use a more specific card | "Bear attack" routes `tent\|stalk` to the tent card, then `grizz` and `black bear` to the species cards; the tent rule comes first because it overrides species |
+| `ask_first` | Questions the app asks before anything else, because the answer changes the first step. `topic` says when the user has already answered | "What kind of bear is it?" and "Did it come into your tent?" |
+
+The answer to an `ask_first` question is matched on the next turn like any other message, so "it has a hump" routes to the grizzly card. The same `label` across a family means the same question, so it is never asked twice. `regions` is recorded but not yet used for filtering: it is there for regional packs.
 
 Things to know:
 
@@ -150,7 +165,8 @@ Covers data validation, card and case search with everyday language, red-flag ru
 
 ## Next steps
 
-- Replace the placeholder cards with content from authoritative guidelines, with sources recorded.
+- Replace the remaining placeholder cards with content from authoritative guidelines, with sources recorded (the bear cards show the pattern; snakebite from CDC and hypothermia, frostbite and heat from the Joint Trauma System guidelines are next).
+- Bear spray: the NPS has a separate page on it; the bear cards do not cover it yet.
 - Get permission for, or replace, the all-rights-reserved case studies before sharing the app.
 - Clinical review, and only then set `clinical_review` to `approved`.
 - Embeddings for case search.

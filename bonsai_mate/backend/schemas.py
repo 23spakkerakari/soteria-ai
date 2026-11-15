@@ -5,6 +5,7 @@
 
 Both carry source attribution and a clinical-review status on every record.
 """
+from datetime import date
 from typing import Literal
 
 from pydantic import BaseModel, Field
@@ -16,15 +17,22 @@ SourceType = Literal[
     "first_aid_training",
     "academic_simulation",
     "guideline",
+    "government",
     "synthetic",
 ]
+License = Literal["public_domain", "cc_by", "cc_by_sa", "cc_by_nc", "all_rights_reserved", "unknown"]
 
 
 class Source(BaseModel):
     organization: str
     source_type: SourceType
     source_url: str | None = None
-    license_verified: bool = False
+    license: License = "unknown"
+    license_verified: bool = False  # someone read the license on the publisher's own site
+    retrieved_on: date | None = None  # when the content was taken from source_url
+    # The steps may be given to the user in the card's own words. Only for authoritative,
+    # redistributable text; the model then rewords only to address the user.
+    verbatim_allowed: bool = False
 
 
 class Environment(BaseModel):
@@ -81,6 +89,35 @@ class Scenario(BaseModel):
         return " ".join(t.answer for t in self.conversation) or self.presentation.chief_complaint
 
 
+class AppliesWhen(BaseModel):
+    """What a card's steps are for. Cards in a family (the bear cards) share most of
+    their words, so word search alone cannot tell them apart and may land on the
+    wrong one. `requires` and `fallback` make the choice deterministic: a card that
+    needs a fact the user has not given hands over to a more general card."""
+
+    species: list[str] = []  # empty = any
+    regions: list[str] = []  # where this applies; empty = anywhere (for regional packs later)
+    situation: str | None = None  # short label, e.g. "defensive_attack"
+    requires: str | None = None  # regex: what the user must have said for this card to apply...
+    fallback: str | None = None  # ...otherwise this card is used instead
+
+
+class Route(BaseModel):
+    """From a general card to a more specific one, once the user has said enough."""
+
+    when: str  # regex over what the user has said
+    card: str  # card id
+
+
+class AskFirst(BaseModel):
+    """A question whose answer changes the very first step (which kind of bear?).
+    The app asks it before anything else, and the answer drives the routes."""
+
+    question: str
+    label: str  # short name for the "What I know" panel; the same label = the same question across a family
+    topic: str | None = None  # regex: if the user's words match, it has already been answered
+
+
 class Card(BaseModel):
     card_id: str = Field(pattern=r"^KB_[A-Z_]+$")
     title: str
@@ -89,6 +126,9 @@ class Card(BaseModel):
     do_first: list[str]
     do_not: list[str] = []
     escalate_when: list[str] = []
+    applies_when: AppliesWhen = AppliesWhen()
+    routes: list[Route] = []
+    ask_first: list[AskFirst] = []
     source: Source
     clinical_review: ReviewStatus = "pending"
 

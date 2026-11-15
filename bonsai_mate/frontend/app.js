@@ -10,6 +10,7 @@ const QUICK = [
   ["Allergic reaction", "Someone is having an allergic reaction with swelling after a sting."],
   ["Burn", "Someone has been burned."],
   ["Snakebite", "Someone was bitten by a snake."],
+  ["Bear", "There is a bear close to us and it is not leaving."],
 ];
 
 let messages = [];
@@ -49,12 +50,25 @@ function foldout(title, tag, tagClass, sections, open = false) {
 
 function renderCard(card, open = false) {
   const approved = card.clinical_review === "approved";
-  return foldout(card.title, approved ? "clinically reviewed" : "unreviewed draft", approved ? "approved" : "", [
+  const src = card.source || {};
+  const sourced = src.license_verified && src.source_url;
+  const tag = approved ? "clinically reviewed" : sourced ? "sourced, not clinically reviewed" : "unreviewed draft";
+  const node = foldout(card.title, tag, approved ? "approved" : "", [
     ["", "Signs", "ul", card.recognize],
     ["do", "Do first", "ol", card.do_first],
     ["dont", "Do not", "ul", card.do_not],
     ["urgent", "Get help urgently if", "ul", card.escalate_when],
   ], open);
+  const body = node.querySelector(".body");
+  const applies = card.applies_when || {};
+  const scope = [];
+  if (applies.species && applies.species.length) scope.push(`Applies to: ${applies.species.join(", ")}`);
+  if (applies.situation) scope.push(applies.situation.replace(/_/g, " "));
+  if (applies.regions && applies.regions.length) scope.push(applies.regions.join("; "));
+  if (scope.length) body.prepend(el("p", "used", scope.join(" · ")));
+  const license = src.license === "public_domain" ? " (public domain)" : "";
+  body.append(el("p", "used", `Source: ${src.organization || "unknown"}${license}`));
+  return node;
 }
 
 function renderCase(c) {

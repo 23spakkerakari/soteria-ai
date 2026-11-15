@@ -4,6 +4,8 @@ The app picks the questions, not the model. That makes them predictable, never
 repeated, and exactly recordable. The order is "what changes what we tell the
 person to do right now" first:
 
+  0. card questions      what the matched card must know before its first step
+                         (which kind of bear?); from the card's ask_first list
   1. life threats        awake? breathing? heavy bleeding?
   2. case questions      the questions the matched wildmed case says matter most
   3. circumstances       is it changing, when, what supplies and shelter, can help be reached
@@ -14,7 +16,9 @@ A question is skipped when the user has already covered its topic in their own w
 import re
 from dataclasses import dataclass
 
-LIFE_THREAT, CASE, CIRCUMSTANCES, BASIC = "life_threat", "case", "circumstances", "basic"
+from .knowledge import said
+
+CARD, LIFE_THREAT, CASE, CIRCUMSTANCES, BASIC = "card", "life_threat", "case", "circumstances", "basic"
 MAX_CASE_QUESTIONS = 4
 
 
@@ -154,10 +158,18 @@ def neutral(question: str, to_self: bool) -> str:
     return text[:1].upper() + text[1:]
 
 
-def build_pool(cases: list[dict], to_self: bool) -> list[Question]:
+def build_pool(cards: list[dict], cases: list[dict], to_self: bool) -> list[Question]:
     """Every question that could be asked for this incident, in priority order."""
     life = [q for q in POOL if q.group == LIFE_THREAT]
     rest = [q for q in POOL if q.group != LIFE_THREAT]
+    # A card's ask_first questions. The id comes from the label, so "Kind of bear" asked
+    # for the general bear card is not asked again when the answer routes to a specific one.
+    from_cards: list[Question] = []
+    for card in cards:
+        for ask in card.get("ask_first", []):
+            qid = "card:" + re.sub(r"[^a-z0-9]+", "_", ask["label"].lower()).strip("_")
+            if all(q.id != qid for q in from_cards):
+                from_cards.append(Question(qid, CARD, ask["label"], ask["question"], topic=ask.get("topic")))
     from_cases: list[Question] = []
     for case in cases:
         for i, raw in enumerate(case["ask"]):
@@ -165,7 +177,7 @@ def build_pool(cases: list[dict], to_self: bool) -> list[Question]:
             if any(q.same_as and re.search(q.same_as, text, re.I) for q in POOL):
                 continue  # the general question already covers it
             from_cases.append(Question(f"case:{case['id']}:{i}", CASE, text.rstrip("?"), text))
-    return life + from_cases[:MAX_CASE_QUESTIONS] + rest
+    return from_cards + life + from_cases[:MAX_CASE_QUESTIONS] + rest
 
 
 _FILLER = set(
@@ -182,6 +194,10 @@ def _stems(text: str) -> set[str]:
 def already_covered(question: Question, user_text: str, to_self: bool) -> bool:
     if question.id == "responsive" and to_self:
         return True  # they are typing or talking to us
+    if question.group == CARD:
+        # "Not a grizzly" has not answered "what kind of bear?": the same negation-aware
+        # check as the card routes, so a question is never both unanswered and skipped.
+        return bool(question.topic) and said(question.topic, user_text)
     if question.group == CASE:
         # "Are they shivering?" is pointless after "she can't stop shivering": skip a case
         # question when the user has already used most of its words.
