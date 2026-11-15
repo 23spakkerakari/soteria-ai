@@ -5,13 +5,11 @@ import mimetypes
 import threading
 from contextlib import asynccontextmanager
 
-import numpy as np
-from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
-from fastapi.responses import Response, StreamingResponse
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import StreamingResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
 
-from . import assistant, config, db, incident, knowledge, llm, voice
+from . import assistant, config, db, incident, knowledge, llm, transcribe, voice
 from .schemas import ChatRequest
 
 
@@ -100,81 +98,19 @@ def incident_record(incident_id: str):
 
 # ---------- voice ----------
 
-MAX_UTTERANCE_SECONDS = 90  # then the recording is sent as if the user had tapped stop
 
-
-@app.websocket("/api/listen")
-async def listen(ws: WebSocket):
-    """Live speech-to-text. The browser sends {"sample_rate": N}, then raw float32
-    mono audio frames, then {"stop": true}. While the user talks the server sends
-    {"preview": text} from the real-time session; at the end it sends {"final": text}
-    from one clean pass over the whole utterance."""
-    await ws.accept()
-    if voice.status["listen"] != "ready" or not voice.listen_lock.acquire(blocking=False):
-        await ws.send_json({"error": "Voice input is busy or not ready yet."})
-        await ws.close()
-        return
-
-    loop = asyncio.get_running_loop()
-    updates: asyncio.Queue = asyncio.Queue()
-    mic_audio, session = voice.open_session()
-
-    def read_results() -> None:  # session.results is a blocking iterator
-        for result in session.results:
-            loop.call_soon_threadsafe(updates.put_nowait, (result.text, result.hypothesis_text or ""))
-
-    threading.Thread(target=read_results, daemon=True).start()
-
-    async def send_previews() -> None:
-        confirmed = ""
-        while True:
-            newly_confirmed, hypothesis = await updates.get()
-            confirmed = f"{confirmed} {newly_confirmed}".strip()
-            await ws.send_json({"preview": f"{confirmed} {hypothesis}".strip()})
-
-    sender = asyncio.create_task(send_previews())
-    recorded: list[np.ndarray] = []
+@app.post("/api/transcribe")
+async def transcribe_audio(request: Request):
+    """Transcribe an uploaded recording (raw body bytes) with Argmax Pro Tiny."""
+    content_type = request.headers.get("content-type", "audio/wav")
+    data = await request.body()
     try:
-        sample_rate = voice.SAMPLE_RATE
-        seconds = 0.0
-        while seconds < MAX_UTTERANCE_SECONDS:
-            message = await ws.receive()
-            if message["type"] == "websocket.disconnect":
-                return
-            if message.get("bytes"):
-                samples = voice.to_16k(np.frombuffer(message["bytes"], dtype=np.float32), sample_rate)
-                recorded.append(samples)
-                seconds += len(samples) / voice.SAMPLE_RATE
-                mic_audio.yield_(samples)
-            elif message.get("text"):
-                control = json.loads(message["text"])
-                sample_rate = int(control.get("sample_rate", sample_rate))
-                if control.get("stop"):
-                    break
-        audio = np.concatenate(recorded) if recorded else np.zeros(0, np.float32)
-        final = await asyncio.to_thread(voice.transcribe, audio)
-        sender.cancel()
-        await ws.send_json({"final": final})
-        await ws.close()
-    except (WebSocketDisconnect, RuntimeError):
-        pass  # browser went away
-    finally:
-        sender.cancel()
-        mic_audio.finish()  # only now, so the session's own last pass does not compete with the final one
-        session.stop()
-        voice.listen_lock.release()
-
-
-class SpeakRequest(BaseModel):
-    text: str = Field(min_length=1, max_length=600)
-
-
-@app.post("/api/speak")
-async def speak(req: SpeakRequest):
-    if voice.status["speak"] != "ready":
-        raise HTTPException(503, "Server text-to-speech is not available.")
-    wav = await asyncio.to_thread(voice.speak, req.text)
-    return Response(wav, media_type="audio/wav")
+        text = await transcribe.transcribe_bytes(data, content_type)
+    except transcribe.TranscriptionError as err:
+        raise HTTPException(422, str(err))
+    except Exception as err:  # keep the app up on unexpected failures
+        raise HTTPException(503, f"Transcription failed: {err}")
+    return {"text": text}
 
 
 # Windows does not know these types, and the landing page's images and font need them.

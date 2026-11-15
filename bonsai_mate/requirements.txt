@@ -7,5 +7,5 @@ beautifulsoup4>=4.12
 pymupdf>=1.24
 pytest>=8.0
 
-# Voice is installed separately by the start scripts, from your copy of the
-# Argmax Windows shim:  pip install -e "<path>/argmax-windows-shim[whisper,tts-kokoro]"
+# Voice uses the native Argmax Pro Tiny Swift binary (see ../argmax-pro-sdk/native),
+# not a Python shim. No extra Python voice packages are required.

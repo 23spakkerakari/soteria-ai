@@ -3,10 +3,13 @@
 #   ./start.sh            # model server (4B) + app on http://localhost:8000
 #   ./start.sh 2B         # 2B | 4B | 9B
 #   NO_MODEL=1 ./start.sh # app only: protocol cards still work without the model
-#   NO_VOICE=1 ./start.sh # skip the voice packages (typing only)
-#   ARGMAX_SHIM_PATH=~/code/argmax-windows-shim ./start.sh
-# The first run needs internet (Python packages, llama.cpp runtime, language and speech models).
-# After that it runs offline.
+#   NO_VOICE=1 ./start.sh # skip the transcription-binary notice (typing only)
+# The first run needs internet (Python packages, llama.cpp runtime, language and
+# speech models). After that it runs offline.
+#
+# Voice transcription uses the native Argmax Pro Tiny Swift binary. Build it once:
+#   cd ../argmax-pro-sdk/native && swift build -c release --product soteria-transcribe
+# and keep ARGMAX_API_KEY exported in the shell that runs this script.
 set -euo pipefail
 cd "$(dirname "$0")"
 SIZE="${1:-4B}"
@@ -17,18 +20,12 @@ if [ ! -x .venv/bin/python ]; then
   .venv/bin/python -m pip install --quiet -r requirements.txt
 fi
 
-if [ -z "${NO_VOICE:-}" ] && ! .venv/bin/python -c "import argmax_shim, faster_whisper, kokoro" 2>/dev/null; then
-  # Voice runs on the Argmax SDK API, through the development shim on non-Apple machines.
-  SHIM="${ARGMAX_SHIM_PATH:-}"
-  for candidate in ../../argmax-windows-shim "$HOME/argmax-windows-shim"; do
-    [ -z "$SHIM" ] && [ -d "$candidate" ] && SHIM="$candidate"
-  done
-  if [ -n "$SHIM" ]; then
-    echo "Installing voice packages from $SHIM (large download the first time)..."
-    .venv/bin/python -m pip install --quiet -e "$SHIM[whisper,tts-kokoro]"
-  else
-    echo "argmax-windows-shim not found: voice is off. Set ARGMAX_SHIM_PATH to enable it."
-  fi
+TRANSCRIBE_BIN="../argmax-pro-sdk/native/.build/release/soteria-transcribe"
+if [ -z "${NO_VOICE:-}" ] && [ ! -x "$TRANSCRIBE_BIN" ]; then
+  echo "Voice transcription binary not found at $TRANSCRIBE_BIN."
+  echo "Build it:  cd ../argmax-pro-sdk/native && swift build -c release --product soteria-transcribe"
+  echo "The app will run with typing only until then."
+  echo
 fi
 
 if [ -z "${NO_MODEL:-}" ]; then

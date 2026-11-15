@@ -12,10 +12,11 @@ let package = Package(
     name: "MeetingScribe",
     platforms: [
         // Pro SDK minimum: macOS 15 on M1 or newer (Intel Macs are not supported).
-        .macOS(.v15),
+        .macOS("15.0"),
     ],
     products: [
         .executable(name: "meeting-scribe", targets: ["MeetingScribe"]),
+        .executable(name: "soteria-transcribe", targets: ["SoteriaTranscribe"]),
     ],
     dependencies: [
         // Pro SDK from the Argmax registry (not GitHub). `from:` == up to next major.
@@ -30,6 +31,15 @@ let package = Package(
             dependencies: [
                 .product(name: "Argmax", package: "argmaxinc.argmax-sdk-swift"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ]
+        ),
+        // Minimal file-transcription wrapper for Soteria AI. Transcribes one audio
+        // file with the `tiny` model and prints a single JSON line to stdout:
+        //   {"text": "..."}
+        .executableTarget(
+            name: "SoteriaTranscribe",
+            dependencies: [
+                .product(name: "Argmax", package: "argmaxinc.argmax-sdk-swift"),
             ]
         ),
     ]
