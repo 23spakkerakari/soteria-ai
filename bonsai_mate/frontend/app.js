@@ -127,50 +127,25 @@ async function refreshStatus() {
     status.className = "status offline";
   }
   const listen = health.voice.listen;
-  if (!mic.active) {
+  if (!recorder.active) {
     $("mic").disabled = listen !== "ready";
-    $("mic").title = listen === "ready" ? "Tap, speak, tap again to send"
+    $("mic").title = listen === "ready" ? "Tap to record, tap again to transcribe"
       : listen === "loading" ? "Voice input is loading" : `Voice input unavailable (${listen})`;
   }
-  if (listen === "loading" || health.voice.speak === "loading") setTimeout(refreshStatus, 4000);
+  if (listen === "loading") setTimeout(refreshStatus, 4000);
 }
 
 // ---------- reading replies aloud ----------
 // Each line is fetched as audio from the server (Argmax TTSKit) as soon as it is
 // complete, and played in order. If the server has no TTS, the browser's voice is used.
 const speaker = {
-  generation: 0,
-  chain: Promise.resolve(),
-  audio: null,
   get enabled() { return $("speak-toggle").checked; },
   say(text) {
     text = text.trim().replace(/^(\d+)[.)]\s+/, "Step $1. ").replace(/^[-•]\s+/, "");
     if (!this.enabled || !/[a-z0-9]/i.test(text)) return;
-    if (health.voice.speak !== "ready") {
-      if (window.speechSynthesis) speechSynthesis.speak(new SpeechSynthesisUtterance(text));
-      return;
-    }
-    const generation = this.generation;
-    const clip = fetch("/api/speak", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: text.slice(0, 600) }),
-    }).then((res) => (res.ok ? res.blob() : null)).catch(() => null);
-    this.chain = this.chain.then(async () => {
-      const blob = await clip;
-      if (!blob || generation !== this.generation) return;
-      const url = URL.createObjectURL(blob);
-      this.audio = new Audio(url);
-      await new Promise((resolve) => {
-        this.audio.onended = this.audio.onerror = this.audio.onpause = resolve;
-        this.audio.play().catch(resolve);
-      });
-      URL.revokeObjectURL(url);
-    });
+    if (window.speechSynthesis) speechSynthesis.speak(new SpeechSynthesisUtterance(text));
   },
   stop() {
-    this.generation++;
-    this.audio?.pause();
     window.speechSynthesis?.cancel();
   },
 };
@@ -325,97 +300,155 @@ for (const [label, text] of QUICK) {
 }
 
 // ---------- voice input ----------
-// Microphone audio is streamed to /api/listen (Argmax real-time transcription on the
-// server). Text appears in the box while you talk; tapping again sends it.
+// Push-to-talk, file-based transcription. The browser captures 16 kHz mono PCM
+// through an AudioWorklet, encodes it to a WAV Blob on Stop, and POSTs it to
+// /api/transcribe (Argmax Pro `tiny`, via a local Swift binary). The returned
+// text fills the input and is submitted through the normal chat pipeline.
 const WORKLET = `registerProcessor("pcm", class extends AudioWorkletProcessor {
   process(inputs) { const ch = inputs[0][0]; if (ch) this.port.postMessage(ch.slice()); return true; }
 });`;
-const mic = { active: false, stream: null, context: null, socket: null, pending: [], pendingLength: 0 };
 
-function micState(label, pressed) {
+const recorder = {
+  active: false,       // recording or transcribing/generating (voice flow in progress)
+  recording: false,    // actually capturing audio right now
+  stream: null,
+  context: null,
+  node: null,
+  sampleRate: 16000,
+  chunks: [],
+  total: 0,
+};
+
+function micState(label, recording, disabled) {
   $("mic-label").textContent = label;
-  $("mic").setAttribute("aria-pressed", String(pressed));
-  $("mic").classList.toggle("live", pressed);
+  $("mic").setAttribute("aria-pressed", String(recording));
+  $("mic").classList.toggle("live", recording);
+  if (disabled !== undefined) $("mic").disabled = disabled;
 }
 
-function flushAudio() {
-  if (!mic.pendingLength || mic.socket?.readyState !== WebSocket.OPEN) return;
-  const merged = new Float32Array(mic.pendingLength);
+function releaseRecorder() {
+  recorder.recording = false;
+  recorder.node?.disconnect();
+  recorder.node = null;
+  recorder.stream?.getTracks().forEach((t) => t.stop());
+  recorder.stream = null;
+  recorder.context?.close().catch(() => {});
+  recorder.context = null;
+}
+
+function mergeSamples() {
+  const merged = new Float32Array(recorder.total);
   let offset = 0;
-  for (const chunk of mic.pending) { merged.set(chunk, offset); offset += chunk.length; }
-  mic.socket.send(merged.buffer);
-  mic.pending = [];
-  mic.pendingLength = 0;
+  for (const chunk of recorder.chunks) { merged.set(chunk, offset); offset += chunk.length; }
+  recorder.chunks = [];
+  recorder.total = 0;
+  return merged;
 }
 
-function releaseMic() {
-  mic.stream?.getTracks().forEach((t) => t.stop());
-  mic.context?.close().catch(() => {});
-  mic.stream = mic.context = null;
+// Encode mono Float32 samples as a 16-bit PCM WAV ArrayBuffer.
+function encodeWav(samples, sampleRate) {
+  const n = samples.length;
+  const buffer = new ArrayBuffer(44 + n * 2);
+  const view = new DataView(buffer);
+  const str = (offset, s) => { for (let i = 0; i < s.length; i++) view.setUint8(offset + i, s.charCodeAt(i)); };
+  str(0, "RIFF");
+  view.setUint32(4, 36 + n * 2, true);
+  str(8, "WAVE");
+  str(12, "fmt ");
+  view.setUint32(16, 16, true);        // fmt chunk size
+  view.setUint16(20, 1, true);         // PCM
+  view.setUint16(22, 1, true);         // mono
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * 2, true);
+  view.setUint16(32, 2, true);         // block align
+  view.setUint16(34, 16, true);        // bits per sample
+  str(36, "data");
+  view.setUint32(40, n * 2, true);
+  let offset = 44;
+  for (let i = 0; i < n; i++, offset += 2) {
+    const s = Math.max(-1, Math.min(1, samples[i]));
+    view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+  }
+  return buffer;
 }
 
-async function startListening() {
+async function startRecording() {
+  if (recorder.active) return;
+  recorder.active = true;
   speaker.stop();
-  if (!$("speak-toggle").checked) { $("speak-toggle").checked = true; $("speak-toggle").dispatchEvent(new Event("change")); }
+
+  let stream;
   try {
-    mic.stream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true } });
+    stream = await navigator.mediaDevices.getUserMedia({
+      audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true },
+    });
   } catch (err) {
+    recorder.active = false;
     $("log").append(el("div", "alert", `Microphone not available: ${err.message}`));
     return;
   }
-  mic.active = true;
-  micState("Connecting…", true);
-  // 16 kHz is what the speech model wants; if the browser refuses, the server resamples.
-  try { mic.context = new AudioContext({ sampleRate: 16000 }); } catch { mic.context = new AudioContext(); }
-  await mic.context.audioWorklet.addModule(URL.createObjectURL(new Blob([WORKLET], { type: "application/javascript" })));
-  const node = new AudioWorkletNode(mic.context, "pcm");
-  node.port.onmessage = (e) => {
-    mic.pending.push(e.data);
-    mic.pendingLength += e.data.length;
-    if (mic.pendingLength >= mic.context?.sampleRate / 5) flushAudio(); // about 5 messages a second
-  };
-  mic.context.createMediaStreamSource(mic.stream).connect(node);
+  recorder.stream = stream;
+  recorder.recording = true;
+  recorder.chunks = [];
+  recorder.total = 0;
+  micState("Recording… tap to stop", true, false);
 
-  const socket = new WebSocket(`${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/api/listen`);
-  socket.binaryType = "arraybuffer";
-  mic.socket = socket;
-  socket.onopen = () => {
-    socket.send(JSON.stringify({ sample_rate: mic.context.sampleRate }));
-    micState("Listening… tap to send", true);
-  };
-  socket.onmessage = (e) => {
-    const update = JSON.parse(e.data);
-    if (update.error) {
-      $("log").append(el("div", "alert", update.error));
-    } else if (update.final != null) {
-      $("input").value = "";
-      if (update.final) submit(update.final);
-      else $("log").append(el("div", "used", "I didn't catch anything. Tap Speak and try again."));
-    } else {
-      $("input").value = update.preview; // rough live text; the final text replaces it
-    }
-  };
-  socket.onclose = () => {
-    releaseMic();
-    mic.active = false;
-    mic.pending = [];
-    mic.pendingLength = 0;
+  // 16 kHz is what the speech model wants; fall back if the browser refuses.
+  try { recorder.context = new AudioContext({ sampleRate: 16000 }); }
+  catch { recorder.context = new AudioContext(); }
+  recorder.sampleRate = recorder.context.sampleRate;
+  try {
+    await recorder.context.audioWorklet.addModule(URL.createObjectURL(new Blob([WORKLET], { type: "application/javascript" })));
+  } catch (err) {
+    releaseRecorder();
+    recorder.active = false;
     micState("Speak", false);
-    refreshStatus();
-  };
+    $("log").append(el("div", "alert", `Audio capture unavailable: ${err.message}`));
+    return;
+  }
+  const node = new AudioWorkletNode(recorder.context, "pcm");
+  node.port.onmessage = (e) => { recorder.chunks.push(e.data); recorder.total += e.data.length; };
+  recorder.context.createMediaStreamSource(recorder.stream).connect(node);
+  recorder.node = node;
 }
 
-function stopListening() {
-  flushAudio();
-  releaseMic();
-  micState("Transcribing…", true);
-  if (mic.socket?.readyState === WebSocket.OPEN) mic.socket.send(JSON.stringify({ stop: true }));
-  else mic.socket?.close();
+function stopRecording() {
+  if (!recorder.recording) return;
+  const sampleRate = recorder.sampleRate;
+  releaseRecorder();
+  micState("Transcribing…", false, true);
+  const wav = encodeWav(mergeSamples(), sampleRate);
+  transcribeToList(wav);
+}
+
+// Transcribe the recording and leave the text in the input field for review.
+// The user presses Send (or Enter) to submit it through the normal pipeline.
+async function transcribeToList(wav) {
+  try {
+    const res = await fetch("/api/transcribe", {
+      method: "POST",
+      headers: { "Content-Type": "audio/wav" },
+      body: wav,
+    });
+    if (!res.ok) throw new Error(`${res.status} ${(await res.text()).slice(0, 300)}`);
+    const data = await res.json();
+    const text = (data.text || "").trim();
+    if (!text) throw new Error("No speech detected. Try again.");
+    $("input").value = text;
+    $("input").focus();
+    $("send").disabled = false;
+  } catch (err) {
+    $("log").append(el("div", "alert", `Transcription failed: ${err.message}`));
+  } finally {
+    recorder.active = false;
+    micState("Speak", false);
+    refreshStatus();
+  }
 }
 
 $("mic").addEventListener("click", () => {
-  if (!mic.active) startListening();
-  else if (mic.stream) stopListening(); // ignore taps while the last words are being transcribed
+  if (!recorder.active) startRecording();
+  else if (recorder.recording) stopRecording(); // ignore taps while transcribing/generating
 });
 
 // ---------- protocols tab ----------

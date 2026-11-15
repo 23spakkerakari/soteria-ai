@@ -16,19 +16,19 @@ RAW_DIR = DATA / "raw"
 # Sourced case studies, built by wildmed-kb/scripts/build.py. Indexed into mate.db on start.
 WILDMED_CASES = ROOT / "wildmed-kb" / "data" / "build" / "scenarios.jsonl"
 
-# Voice (Argmax). Whisper model name as the Argmax SDK spells it. base.en keeps up
-# with speech on a laptop CPU through the Windows shim; on Apple Silicon with the
-# real SDK use large-v3-v20240930_626MB.
-ASR_MODEL = os.environ.get("MATE_ASR_MODEL", "base.en")
-# Spoken replies: "kokoro" = TTSKit on the server, "browser" = the browser's built-in voice,
-# "auto" = TTSKit if this machine runs it faster than real time, otherwise the browser voice.
-TTS_ENGINE = os.environ.get("MATE_TTS", "auto")
+# Voice: file-based transcription via the native Argmax Pro Tiny (Swift) CLI.
+# Path to the compiled binary (built from ../argmax-pro-sdk/native).
+TRANSCRIBE_BIN = os.environ.get(
+    "MATE_TRANSCRIBE_BIN",
+    str(ROOT.parent / "argmax-pro-sdk" / "native" / ".build" / "release" / "soteria-transcribe"),
+)
+# Seconds before a transcription attempt is abandoned.
+TRANSCRIBE_TIMEOUT = int(os.environ.get("MATE_TRANSCRIBE_TIMEOUT", "300"))
+# Maximum accepted recording size in bytes.
+MAX_AUDIO_BYTES = int(os.environ.get("MATE_MAX_AUDIO_BYTES", str(25 * 1024 * 1024)))
 
 # Rounds of questions between the first reply and the full plan (3 questions a round).
 ASSESSMENT_ROUNDS = int(os.environ.get("MATE_ASSESSMENT_ROUNDS", "3"))
-
-# Written after the speech models have loaded once; from then on they load without the network.
-VOICE_READY = DATA / ".voice_ready"
 
 DB_PATH = Path(os.environ.get("MATE_DB", DATA / "mate.db"))
 # Any OpenAI-compatible local server (llama-server from ../bonsai-models/gguf by default).

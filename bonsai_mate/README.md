@@ -3,7 +3,7 @@
 A first-aid assistant for people in the wilderness or anywhere without a connection. You talk to it or type. It tells you the most urgent thing to do, asks questions to understand the situation, and then gives a plan fitted to your answers. Everything runs on your own machine:
 
 - **Language model:** [Bonsai 2 Small](../bonsai-models/README.md) through a local llama.cpp server
-- **Voice in and out:** the [Argmax SDK](../argmax-pro-sdk/README.md) API (real-time transcription and TTSKit)
+- **Voice in:** the [Argmax Pro SDK](../argmax-pro-sdk/README.md) using the `tiny` model (file-based transcription via a local Swift binary), read-aloud via the browser's built-in speech synthesis
 - **Knowledge:** protocol cards plus the sourced case studies in [`wildmed-kb/`](wildmed-kb/README.md), searched with SQLite
 - **App:** FastAPI backend and a web page with no external assets
 
@@ -22,21 +22,42 @@ A first-aid assistant for people in the wilderness or anywhere without a connect
 
 Then open **http://localhost:8000**.
 
-The first run needs internet for Python packages, the llama.cpp runtime and the language model (through [`../bonsai-models/gguf`](../bonsai-models/gguf/README.md)), and the speech models. After that everything works offline: once the speech models have loaded successfully one time, the app stops contacting Hugging Face at all.
+The first run needs internet for Python packages, the llama.cpp runtime and the language model (through [`../bonsai-models/gguf`](../bonsai-models/gguf/README.md)), and the Argmax `tiny` speech model. After that everything works offline.
 
-Voice needs your copy of `argmax-windows-shim`. The start scripts look for it next to this repo and in your home folder; otherwise pass `-ShimPath` or set `ARGMAX_SHIM_PATH`. Without it the app runs with typing only.
+Voice transcription runs through the native Argmax Pro SDK. Set your key and build the `tiny` transcription binary once:
+
+```bash
+export ARGMAX_API_KEY=ax_...            # from https://app.argmaxinc.com (starts with ax_)
+cd ../argmax-pro-sdk/native
+swift package-registry set --global --scope argmaxinc https://api.argmaxinc.com/v1/sdk
+swift package-registry login https://api.argmaxinc.com/v1/sdk/login --token "$ARGMAX_SECRET_TOKEN"
+swift build -c release --product soteria-transcribe
+```
+
+`ARGMAX_API_KEY` must stay exported in the shell that runs `./start.sh`. The Argmax license is cached in the Keychain after first use, so transcription keeps working with Wi-Fi off once the `tiny` model is cached. Without the binary or the key, the app runs with typing only; `start.sh` prints a note when the binary is missing.
+
+#### Stop the "login password" Keychain prompt
+
+macOS may ask for your login password on every transcription. Argmax stores its offline license in the Keychain, and the access decision is tied to the binary's signing identity — a `swift build` binary is only ad-hoc signed, so macOS can't pin "Always Allow" and re-prompts. Two fixes:
+
+1. **Quick:** the next time the dialog appears, click **Always Allow** and enter your password once (not just "Allow").
+2. **Permanent:** sign the binary with a stable identity. Create a self-signed certificate once (Keychain Access → Certificate Assistant → Create a Certificate → Name "Soteria Dev", Identity Type "Self Signed Root", Certificate Type "Code Signing"), then run `./sign.sh` from `../argmax-pro-sdk/native` after every `swift build`. After the next "Always Allow", the prompt stops — and offline transcription keeps working.
+
+> Do **not** set Argmax's `keychainPersistence = false` to silence the prompt: that stops caching the offline license, so transcription would need to reach Argmax's server on every run and fail with Wi-Fi off.
 
 | Setting | Default | Meaning |
 |---|---|---|
 | `MATE_LLM_URL` | `http://localhost:8080` | Any OpenAI-compatible local server |
-| `MATE_ASR_MODEL` | `base.en` | Speech model, by its Argmax name. `base.en` keeps up with speech on a laptop CPU. |
 | `MATE_ASSESSMENT_ROUNDS` | `3` | Rounds of questions between the first reply and the plan |
-| `MATE_TTS` | `auto` | `kokoro` = TTSKit on the server, `browser` = the browser's built-in voice (instant, more robotic), `auto` = TTSKit only if this machine runs it faster than real time |
+| `MATE_TRANSCRIBE_BIN` | `../argmax-pro-sdk/native/.build/release/soteria-transcribe` | Compiled Argmax transcription binary |
+| `ARGMAX_API_KEY` | *(required)* | Argmax Pro license key (starts with `ax_`). Never commit it. |
+| `MATE_TRANSCRIBE_TIMEOUT` | `300` | Seconds before a transcription attempt is abandoned |
+| `MATE_MAX_AUDIO_BYTES` | `26214400` | Largest accepted recording (25 MiB) |
 
 ## How it works
 
 ```
- microphone ──> /api/listen ──> Argmax real-time transcription ──┐
+ microphone ──> /api/transcribe ──> Argmax Pro tiny (Swift) ──┐
  keyboard ───────────────────────────────────────────────────────┤
                                                                  v
                     /api/chat   1. red-flag rules        triage.py     (no model)
@@ -44,7 +65,7 @@ Voice needs your copy of `argmax-windows-shim`. The start scripts look for it ne
                                 3. similar cases         wildmed.py    (wildmed-kb, SQLite FTS5)
                                 4. Bonsai                llm.py        (llama-server :8080)
                                                                  │
- speaker <── /api/speak <── Argmax TTSKit <── reply, line by line┘
+ speaker <── browser speech synthesis <── reply, line by line┘
 ```
 
 1. **Red flags.** Pattern rules look for life threats ("not breathing", "blood won't stop", "confused"). The warning shows and is spoken immediately, and does not depend on the model. A red flag also forces its protocol card into the prompt: "he's not breathing" always brings the CPR card.
@@ -91,16 +112,13 @@ Measured on a laptop with Intel Iris Xe graphics and Bonsai 2 4B: the model read
 
 ### Voice
 
-Tap **Speak**, talk, and tap again to send. A rough version of your words appears in the text box while you talk; the text that is sent comes a few seconds after you stop. Replies are read aloud line by line as they are written ("Read aloud" turns this off).
+Tap **Speak**, talk, and tap again to stop. The browser records your speech as 16 kHz mono audio, encodes it to WAV, and posts it to `/api/transcribe`. A local Swift binary ([`argmax-pro-sdk/native/Sources/SoteriaTranscribe`](../argmax-pro-sdk/native/Sources/SoteriaTranscribe)) transcribes the file with the real Argmax Pro SDK using the `tiny` model and returns `{"text": "..."}`. The transcript fills the input box and is submitted through the normal chat pipeline, so the question pool, safety checks, and Bonsai behave exactly as they do for typed messages.
 
-[`backend/voice.py`](backend/voice.py) uses the same calls as the Argmax samples in this repo: `ArgmaxSDK.with`, `WhisperKitPro`, `makeStreamSession(options:)`, `start(audioInputStream:)`, `results`, `transcribe(audioArray:)` and `TTSKit.generate`. The browser streams microphone audio to the server over a WebSocket, and the server feeds it into the stream session.
+[`backend/transcribe.py`](backend/transcribe.py) saves the recording to a temporary file, runs the Swift binary in a worker thread (never the event loop), and cleans up afterwards. Transcription is file-based rather than streamed, which is the reliable path for the `tiny` model.
 
-On Windows and Linux those calls run on `argmax_shim`, the development stand-in for the Pro SDK: open-source models on the CPU, slower and less accurate than the real thing, and not meant to ship. Two choices follow from that:
+State shown on the button: **Speak** → **Recording… tap to stop** → **Transcribing…** → **Generating response…**, then back to **Speak** (with an alert if anything fails). Taps are ignored while a transcription or reply is in flight, so a recording can't be submitted twice.
 
-- **The sent text comes from one pass over the whole recording, not from the live stream.** On a laptop CPU the shim's live stream sometimes dropped words from the middle of a sentence. The stream is used for the on-screen preview only. On the real SDK the stream's confirmed text could be used directly.
-- **Replies are spoken by the browser's built-in voice unless TTSKit is fast enough.** On the first start the app times TTSKit (Kokoro in the shim). Below 1.2x real time, speech would stall between lines, so it uses the browser voice and remembers that choice in `data/.voice_ready`. Delete that file to measure again, or set `MATE_TTS=kokoro` to force TTSKit.
-
-The real SDK is Swift and Kotlin only, so a shipped phone app would make the same calls natively and keep the rest of this design.
+Replies are read aloud by the browser's built-in speech synthesis ("Read aloud" turns this off), so no server TTS or extra models are needed.
 
 The microphone only works on `http://localhost` or over HTTPS. Opening the page from a phone at `http://<laptop-ip>:8000` will load, but the browser will refuse the microphone.
 
