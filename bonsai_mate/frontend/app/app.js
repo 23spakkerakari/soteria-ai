@@ -52,7 +52,7 @@ function renderCard(card, open = false) {
   const approved = card.clinical_review === "approved";
   const src = card.source || {};
   const sourced = src.license_verified && src.source_url;
-  const tag = approved ? "clinically reviewed" : sourced ? "sourced, not clinically reviewed" : "unreviewed draft";
+  const tag = approved ? "clinically reviewed" : sourced ? "sourced, not clinically reviewed" : "Not Clinician Reviewed";
   const node = foldout(card.title, tag, approved ? "approved" : "", [
     ["", "Signs", "ul", card.recognize],
     ["do", "Do first", "ol", card.do_first],
