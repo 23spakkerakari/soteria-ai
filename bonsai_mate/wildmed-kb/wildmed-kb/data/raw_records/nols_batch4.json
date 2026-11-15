@@ -1,0 +1,163 @@
+[
+{
+ "id": "nols-cs20-flu-like-illness-backpacker",
+ "title": "Backpacker with sudden fever, aches and nausea on day 10",
+ "source": {"ref": "nols", "title": "Case Study 20: Flu-like Illness", "url": "https://www.nols.edu/case-studies/case-study-20/", "published": "2011-07"},
+ "classification": {"category": "medical", "conditions": ["viral_illness", "fever"], "primary_condition": "viral_illness", "mechanism": "infectious", "acuity": "semi_urgent", "acuity_basis": "No evacuation criteria met; persistent symptoms and upcoming high pass prompted supported walk-out."},
+ "context": {"setting": "wilderness", "activity": "12-day backpacking", "region": "Bob Marshall Wilderness, Montana", "weather": "fine", "connectivity": "unknown", "distance_to_care": "3 mi to trailhead", "responder_training": "WFR leader", "group": "leader + patient + 5", "resources_available": ["ibuprofen", "thermometer"]},
+ "patient": {"age_years": 21, "age_group": "adult", "sex": "male", "medications": ["ibuprofen 200 mg q4h"], "allergies": ["possible penicillin-class, reaction unknown"]},
+ "presentation": {"summary": "Day 10 of a trip, a participant has had sudden headache, nausea, muscle aches, fever, chills and low energy for 24 hours. No one else is sick.", "chief_complaint": "headache, nausea, aches, fever, chills", "symptoms": ["dull headache", "nausea", "myalgia", "fatigue", "anorexia", "chills"], "exam_findings": ["no rash, bites, or wounds"], "pertinent_negatives": ["no vomiting or diarrhea", "no respiratory symptoms initially", "no severe headache"], "last_intake_output": "3 L yesterday, little food, clear urine"},
+ "vitals": [{"time": "08:00", "loc": "A+Ox4", "hr": 72, "hr_quality": "strong, regular", "rr": 14, "rr_quality": "regular, easy", "skin": "pale, warm, dry", "bp_note": "radial pulses present", "pupils": "PERRL", "temp_c": 37.8}],
+ "source_management": {
+  "assessment": ["flu-like illness; no evacuation trigger yet"],
+  "plan": ["rest in camp, hydrate, monitor", "boil utensils, group handwashing to limit spread"],
+  "anticipated_problems": ["persistence/worsening needing evacuation", "weather complicating evacuation"],
+  "teaching_points": ["Flu-like and GI illness are ~40% of NOLS illness incidents; most spread by hands.", "Flu-like symptoms can mask pneumonia, PE, or MI.", "Evacuate for: fever >48 h or >39C; stiff neck, severe headache, breathing difficulty or wheeze; pneumonia signs; GI pain >12 h, bloody diarrhea, dehydration; can't keep fluids >48 h; sore throat unable to swallow or with fever and white patches; sudden severe headache or altered mental status.", "Care: rest, fluids, hygiene, analgesic/antipyretic, bland diet."],
+  "decision_points": [{"question": "Evacuate?", "source_decision": "Day 2: walk out supported, without pack", "basis": ["new productive cough", "symptoms persisting", "high pass ahead", "patient wants to go home", "only 3 mi to trailhead"]}]
+ },
+ "outcome": {"summary": "Developed productive cough by next day; walked out supported by group. Final diagnosis not given.", "evacuation_mode": "assisted_walk"},
+ "eval": {"must_recognize": ["flu-like illness evacuation thresholds"], "must_ask": ["how high is the fever and for how long?", "stiff neck or severe headache?", "trouble breathing or coughing up phlegm?", "can you keep fluids down?"], "must_escalate": "Evacuate if fever >39C or >48 h, stiff neck, breathing difficulty, or altered mental status.", "must_not_recommend": ["crossing a high pass while ill without reassessment"]},
+ "retrieval": {"keywords": ["flu", "fever", "chills", "body aches", "viral illness", "backpacking sick"], "lay_queries": ["I have a fever and body aches on a backpacking trip", "friend got sick with chills and nausea in the backcountry"], "red_flags": ["fever over 39C", "stiff neck", "shortness of breath", "fever lasting more than 2 days"]}
+},
+{
+ "id": "nols-cs19-kayaker-abdominal-pain-appendicitis",
+ "title": "Sea kayaker with cramps and a positive heel-tap sign: ruptured appendix",
+ "source": {"ref": "nols", "title": "Case Study 19: Stomach Cramps on a Kayaking Trip", "url": "https://www.nols.edu/case-studies/case-study-19/", "published": "2011-05", "based_on_real_event": true},
+ "classification": {"category": "medical", "conditions": ["abdominal_pain", "appendicitis_possible", "gastroenteritis"], "primary_condition": "appendicitis_possible", "mechanism": "illness", "acuity": "urgent", "acuity_basis": "Severe pain episode and peritoneal sign met evacuation criteria; helicopter; ruptured appendix."},
+ "context": {"setting": "backcountry_water", "activity": "sea kayaking, day 5", "region": "Prince William Sound, Alaska", "connectivity": "limited", "distance_to_care": "paddle to town/hatchery; Coast Guard helicopter", "responder_training": "WFR", "group": "friends", "resources_available": ["marine_VHF_radio"]},
+ "patient": {"age_years": 26, "age_group": "adult", "sex": "male", "pertinent_history": ["appendix present"], "medications": ["ibuprofen 400 mg QID x1 week"]},
+ "presentation": {"summary": "Two days of feeling poorly with occasional diarrhea, then 30 minutes of 10/10 cramping pain overnight with a board-hard belly. Now 2/10 dull generalized pain. Declines full exam.", "chief_complaint": "don't feel great but I've felt worse", "symptoms": ["2 days malaise", "occasional diarrhea", "low appetite", "severe overnight cramping pain 10/10", "now dull generalized pain 2/10"], "exam_findings": ["pale, alert, walking", "generalized abdominal tenderness", "sharp RLQ pain with right heel tap (peritoneal sign)"], "pertinent_negatives": ["no fever", "no injury"], "last_intake_output": "hydrated, clear urine, light breakfast, no BM today"},
+ "vitals": [
+  {"time": "08:30", "loc": "A+Ox4", "hr": 90, "hr_quality": "strong, regular", "rr": 15, "skin": "pale, warm, dry", "bp_note": "strong radial pulse", "temp_c": 36.9},
+  {"time": "09:30", "loc": "A+Ox4", "hr": 94, "hr_quality": "strong, regular", "rr": 15, "skin": "pale, warm, dry", "bp_note": "strong radial pulse"}
+ ],
+ "source_management": {
+  "assessment": ["possible gastroenteritis", "possible appendicitis or other serious abdominal problem"],
+  "plan": ["persuade patient to evacuate", "arrange evacuation by marine radio", "monitor vitals"],
+  "anticipated_problems": ["worsening illness", "return of pain"],
+  "teaching_points": ["Use OPQRST to characterize abdominal pain.", "Focus on evacuation triggers, not diagnosis.", "Evacuate abdominal pain >12 h; localized pain with guarding, rigidity, distension; peritoneal signs (pain with jarring/heel tap); shock signs; blood in vomit/stool/urine; prolonged N/V/D; fever >39C; possible pregnancy.", "Patients who minimize symptoms can delay critical care."],
+  "decision_points": [{"question": "Evacuate despite improved pain?", "source_decision": "Yes (criteria met)", "basis": ["severe pain episode", "peritoneal sign", "rising HR"]}]
+ },
+ "outcome": {"summary": "Patient refused radio; paddled toward town, pain worsened, vomited; Coast Guard helicopter from fish hatchery. Ruptured appendix with serious infection; full recovery after long stay.", "evacuation_mode": "helicopter", "final_diagnosis": "ruptured appendicitis"},
+ "eval": {"must_recognize": ["pain improvement after severe episode can mean rupture", "peritoneal signs"], "must_ask": ["where exactly is the pain?", "does it hurt when you jump, walk, or hit a bump?", "fever, vomiting, blood?", "how long has it hurt?"], "must_escalate": "Evacuate abdominal pain >12 h or with peritoneal signs.", "must_not_recommend": ["waiting it out because pain improved", "laxatives"]},
+ "retrieval": {"keywords": ["abdominal pain", "appendicitis", "stomach cramps", "right lower belly pain", "peritoneal sign", "kayaking"], "lay_queries": ["really bad stomach cramps last night and now it's a dull ache", "belly hurts when I bump it on the kayak", "pain in lower right stomach"], "red_flags": ["pain with jarring", "localized right lower quadrant pain", "severe pain then sudden relief"]}
+},
+{
+ "id": "nols-feverish-patient-tick-fever",
+ "title": "Ranch biologist with spiking fever two days after a tick bite",
+ "source": {"ref": "nols", "title": "Case Study: Treating a Feverish Patient", "url": "https://www.nols.edu/case-study-treating-a-feverish-patient/", "published": "2019-06-13"},
+ "classification": {"category": "medical", "conditions": ["tick_borne_illness", "fever", "viral_illness"], "primary_condition": "tick_borne_illness", "mechanism": "tick_bite", "acuity": "urgent", "acuity_basis": "Fever to 40C after tick bite meets evacuation threshold; clinic overnight."},
+ "context": {"setting": "frontcountry", "activity": "field research on remote ranch", "region": "southern Idaho sagebrush plains", "weather": "early May, fine; heavy tick season (Dermacentor)", "connectivity": "limited", "distance_to_care": "clinic ~2 h by dirt road; satellite phone", "responder_training": "WFR", "resources_available": ["thermometer", "ibuprofen", "satellite_phone", "vehicle"]},
+ "patient": {"age_years": 21, "age_group": "adult", "sex": "male", "medications": ["ibuprofen 400 mg q6h"], "allergies": ["possible penicillin-class"]},
+ "presentation": {"summary": "Colleague has 24 hours of headache, nausea, aches, fever and chills. A tick was found embedded in his armpit two days ago. Temperature swings between 38 and 40C over the morning.", "chief_complaint": "feels unwell, aches and nausea, worse overnight", "symptoms": ["dull headache", "nausea", "myalgia", "fever", "chills", "fatigue", "anorexia"], "exam_findings": ["unremarkable head-to-toe"], "pertinent_negatives": ["no stiff neck", "no SOB or cough", "no vomiting/diarrhea", "no sore throat"], "last_intake_output": "3 L yesterday, little food, clear urine", "events_leading_up": "embedded tick removed from left axilla 2 days ago"},
+ "vitals": [
+  {"time": "06:30", "loc": "A+Ox4", "hr": 72, "rr": 14, "skin": "pale, warm, dry", "bp_note": "radial pulses present", "pupils": "PERRL", "temp_c": 38.3},
+  {"time": "08:30", "loc": "A+Ox4", "hr": 72, "rr": 14, "skin": "pale, warm, dry", "bp_note": "radial pulses present", "pupils": "PERRL", "temp_c": 40.0},
+  {"time": "10:30", "loc": "A+Ox4", "hr": 72, "rr": 14, "skin": "pale, warm, dry", "bp_note": "radial pulses present", "pupils": "PERRL", "temp_c": 38.0},
+  {"time": "11:30", "loc": "A+Ox4", "hr": 72, "rr": 14, "skin": "pale, warm, dry", "bp_note": "radial pulses present", "pupils": "PERRL", "temp_c": 40.0}
+ ],
+ "source_management": {
+  "assessment": ["flu-like illness with high fever at evacuation threshold", "recent tick bite"],
+  "plan": ["rest, hydrate, monitor", "call clinic by satellite phone when it opens", "evacuate by vehicle"],
+  "anticipated_problems": ["worsening", "weather delaying evacuation"],
+  "teaching_points": ["Tick-borne diseases include spotted fever, tick fever, relapsing fever, tularemia, babesiosis, Lyme.", "Check body for ticks at least twice daily; permethrin-treated clothing.", "Remove with tweezers close to skin, steady pull, wash site; no heat, nail polish, or alcohol.", "Tick bite plus fever, rash, flu-like symptoms or myalgia needs physician evaluation.", "Evacuate fever >48 h, >39C, or with severe headache or stiff neck."],
+  "decision_points": [{"question": "Evacuate?", "source_decision": "Yes", "basis": ["temp 40C", "recent tick bite", "doctor agreed"]}]
+ },
+ "outcome": {"summary": "Driven to clinic; overnight stay; probable tick fever; ill ~1 week, weak another, then returned.", "evacuation_mode": "vehicle_private", "final_diagnosis": "probable Colorado tick fever"},
+ "eval": {"must_recognize": ["fever after tick bite needs medical evaluation"], "must_ask": ["any tick bites in the last few weeks?", "how high is the fever?", "rash? stiff neck? severe headache?"], "must_escalate": "See a physician for fever after tick exposure; evacuate if >39C.", "must_not_recommend": ["burning or smothering a tick", "dismissing as flu without asking about ticks"]},
+ "retrieval": {"keywords": ["tick bite", "fever", "tick fever", "Lyme", "Rocky Mountain spotted fever", "tick removal"], "lay_queries": ["I had a tick bite and now I have a high fever", "how do I remove a tick", "fever and aches after being in tick country"], "red_flags": ["fever over 39C", "rash after tick bite", "stiff neck"]}
+},
+{
+ "id": "nols-cs10-seizure-in-camp",
+ "title": "Known epileptic has a generalized seizure in camp",
+ "source": {"ref": "nols", "title": "Case Study 10: Seizure in Camp", "url": "https://www.nols.edu/case-studies/case-study-10/", "published": "2009-01"},
+ "classification": {"category": "medical", "conditions": ["seizure", "laceration"], "primary_condition": "seizure", "mechanism": "known_seizure_disorder", "acuity": "semi_urgent", "acuity_basis": "Single seizure, full recovery to A+Ox4; walked out per protocol for physician evaluation."},
+ "context": {"setting": "wilderness", "activity": "college orientation backpacking", "weather": "sunny", "connectivity": "unknown", "distance_to_care": "hike to road same evening", "responder_training": "WFR leader", "group": "orientation group"},
+ "patient": {"age_years": 19, "age_group": "adult", "sex": "male", "pertinent_history": ["seizure disorder after head injury 6 years ago; seizure-free 1 year"], "medications": ["phenytoin 100 mg TID (taken as scheduled)"]},
+ "presentation": {"summary": "After a 4-mile hike a participant rolls out of a camp chair and has a ~45-second generalized seizure with incontinence. Leader removes a spoon from his mouth; he remains unresponsive with noisy breathing that clears after wiping saliva.", "chief_complaint": "witnessed seizure", "symptoms": ["urinary incontinence"], "exam_findings": ["unresponsive to pain post-seizure", "1/2 in laceration tongue tip", "noisy breathing improved with clearing saliva"], "pertinent_negatives": ["no other injuries", "no spine mechanism"], "last_intake_output": "3 L water, lunch"},
+ "vitals": [
+  {"time": "15:00", "loc": "unresponsive to pain", "hr": 100, "hr_quality": "strong, regular", "rr": 22, "rr_quality": "regular, noisy", "skin": "pale, cool, clammy", "bp_note": "radial pulses present", "pupils": "PERRL"},
+  {"time": "15:20", "loc": "A+Ox4", "hr": 80, "hr_quality": "strong, regular", "rr": 14, "rr_quality": "regular, unlabored", "skin": "pink, warm, dry", "bp_note": "radial pulses present", "pupils": "PERRL", "temp_c": 36.7}
+ ],
+ "source_management": {
+  "assessment": ["generalized seizure", "no injury mechanism", "recovered to A+Ox4"],
+  "plan": ["protect airway in postictal period, recovery position", "take scheduled seizure medication", "walk to trailhead and evacuate for physician evaluation"],
+  "anticipated_problems": ["failure to wake or repeat seizures -> rapid evacuation"],
+  "teaching_points": ["Seizure care is protective: move hazards, cushion head, don't restrain.", "Never force the mouth open or insert anything; people don't swallow their tongue.", "After: open airway, recovery position, check injuries; postictal confusion may last 10+ min.", "Serious: repeated seizures without waking between, or seizure from diabetes or head injury -> rapid evacuation.", "Isolated seizure in known epileptic: physician evaluation but not necessarily rapid evacuation; check for missed doses."],
+  "decision_points": [{"question": "Evacuate?", "source_decision": "Yes, walk out (program protocol)", "basis": ["isolated seizure", "full recovery", "walking distance to road"]}]
+ },
+ "outcome": {"summary": "Rested, ate, hiked to trailhead by 21:00; physician cleared for home but not field.", "evacuation_mode": "self_evac_walk", "final_diagnosis": "generalized seizure (known epilepsy)"},
+ "eval": {"must_recognize": ["generalized seizure", "airway priority in postictal phase"], "must_ask": ["how long did the seizure last?", "is he breathing now?", "has he had seizures before? taken his medicine?", "did he hit his head?"], "must_escalate": "Call for rapid evacuation if seizure >5 min, repeated seizures, no recovery, injury, diabetes, or first-ever seizure.", "must_not_recommend": ["putting anything in the mouth", "restraining the person", "giving food or drink before fully awake"]},
+ "retrieval": {"keywords": ["seizure", "convulsions", "epilepsy", "fit", "shaking", "unconscious", "postictal"], "lay_queries": ["my friend is having a seizure what do I do", "he was shaking all over and now won't wake up", "someone had a fit and bit their tongue"], "red_flags": ["seizure longer than 5 minutes", "repeated seizures", "not waking up", "first-ever seizure"]}
+},
+{
+ "id": "nols-anxious-rappel-hyperventilation",
+ "title": "Anxious student hyperventilating mid-rappel",
+ "source": {"ref": "nols", "title": "Case Study: An Anxious Rappel", "url": "https://www.nols.edu/case-study-an-anxious-rappel/", "published": "2020-07-31"},
+ "classification": {"category": "medical", "conditions": ["hyperventilation", "anxiety_panic", "asthma", "abrasion"], "primary_condition": "hyperventilation", "mechanism": "acute_anxiety_on_exposure", "acuity": "field_manageable", "acuity_basis": "Resolved with 20 min of breathing coaching; no evacuation."},
+ "context": {"setting": "wilderness", "activity": "rappelling practice", "region": "Arizona desert", "weather": "windy, dusty", "connectivity": "unknown", "responder_training": "WFR instructor", "group": "college spring break group"},
+ "patient": {"age_years": 19, "age_group": "adult", "sex": "male", "pertinent_history": ["anxiety on steep terrain", "says he 'may have asthma', never used inhaler"]},
+ "presentation": {"summary": "Fifteen feet below the edge on rappel, an anxious student freezes, clenching the brake. Once lowered he is dizzy, says he can't breathe, with numb painful hands and tingling lips.", "chief_complaint": "dizzy, feels faint, can't breathe", "symptoms": ["dizziness", "near-syncope", "headache", "numb painful hands", "perioral tingling", "hand cramping"], "exam_findings": ["RR 28 deep", "flushed moist skin", "rope-burn abrasions right hand"], "pertinent_negatives": ["no wheeze or cough", "no rash", "good circulation hands/feet"], "last_intake_output": "normal"},
+ "vitals": [
+  {"time": "15:30", "loc": "A+Ox4", "hr": 90, "hr_quality": "strong, regular", "rr": 28, "rr_quality": "regular, deep", "skin": "flushed, warm, moist", "bp_note": "radial pulses present", "pupils": "PERRL"},
+  {"time": "~15:50", "rr": 12, "rr_quality": "steady", "note": "symptoms resolved"}
+ ],
+ "source_management": {
+  "assessment": ["hyperventilation", "possible asthma (dust)"],
+  "plan": ["calm patient", "coach slow breathing", "move to shade out of wind", "clean hand abrasions"],
+  "anticipated_problems": ["unresolved hyperventilation"],
+  "teaching_points": ["Hyperventilation lowers CO2: tingling, hand/foot spasm, sometimes chest pain, sense of suffocation.", "Treat by calming and coaching slow breaths; may take time.", "Paper-bag rebreathing is no longer recommended.", "No wheeze or allergic signs makes asthma unlikely.", "Don't give someone else's inhaler without indication."],
+  "decision_points": [{"question": "Asthma or hyperventilation?", "source_decision": "Hyperventilation", "basis": ["no wheeze", "no cough", "perioral and hand tingling", "anxiety trigger"]}]
+ },
+ "outcome": {"summary": "RR 12 after ~20 min coaching; spasms resolved; rested rest of afternoon.", "evacuation_mode": "none", "final_diagnosis": "anxiety-related hyperventilation"},
+ "eval": {"must_recognize": ["hyperventilation syndrome", "rule out asthma/allergy"], "must_ask": ["any wheezing?", "history of asthma or panic attacks?", "any chest pain?"], "must_escalate": "Evacuate if wheeze, chest pain, or no resolution.", "must_not_recommend": ["paper bag rebreathing", "using another person's inhaler without wheeze"]},
+ "retrieval": {"keywords": ["hyperventilation", "panic attack", "can't breathe", "tingling hands", "anxiety", "rappel"], "lay_queries": ["he's panicking and says he can't breathe and his hands are tingling", "breathing really fast and lips are numb"], "red_flags": ["wheezing", "chest pain", "no improvement with coaching"]}
+},
+{
+ "id": "nols-cs04-teen-abdominal-pain-evacuation",
+ "title": "Teen with 22 hours of worsening lower abdominal pain 12 miles from a road",
+ "source": {"ref": "nols", "title": "Case Study 4: Abdominal Pain on the Trail", "url": "https://www.nols.edu/case-studies/case-study-4/", "published": "2008-10"},
+ "classification": {"category": "medical", "conditions": ["abdominal_pain", "appendicitis_possible"], "primary_condition": "abdominal_pain", "mechanism": "illness", "acuity": "urgent", "acuity_basis": "Pain >12 h, worse with jarring: meets evacuation protocol; helicopter requested."},
+ "context": {"setting": "wilderness", "activity": "12-day teen backpacking, day 5", "region": "western US wilderness", "weather": "warm, dry", "connectivity": "limited", "distance_to_care": "12 mi to nearest road", "responder_training": "WFR", "group": "teen group with leaders", "resources_available": ["cell_phone (uncertain signal)"]},
+ "patient": {"age_years": 17, "age_group": "adolescent", "sex": "male"},
+ "presentation": {"summary": "A teen moaned all night with lower belly pain that began as a cramp yesterday morning and is now sharp, 8/10, worse with walking downhill or hopping. Nauseated.", "chief_complaint": "severe abdominal pain", "symptoms": ["lower abdominal pain 8/10, sharp", "nausea", "pain worse with walking/hopping"], "exam_findings": ["obviously uncomfortable", "no point tenderness or rebound", "no rigidity"], "pertinent_negatives": ["no diarrhea", "no injury", "tentmates not ill"], "last_intake_output": "little dinner, 1 cup water this AM, clear urine, no BM today"},
+ "vitals": [
+  {"time": "06:45", "loc": "A+Ox4", "hr": 84, "rr": 16, "skin": "pale, warm, dry", "pupils": "PERRL", "temp_c": 37.2},
+  {"time": "07:15", "loc": "A+Ox4", "hr": 84, "rr": 16, "skin": "pale, warm, dry", "pupils": "PERRL", "temp_c": 37.2},
+  {"time": "08:00", "loc": "A+Ox4", "hr": 84, "rr": 16, "skin": "pale, warm, dry", "pupils": "PERRL", "temp_c": 37.2}
+ ],
+ "source_management": {
+  "assessment": ["acute abdominal pain meeting evacuation protocol (>12 h, worse with movement/jarring)"],
+  "plan": ["request helicopter evacuation via program base", "if no signal, team of four hikes out to call", "keep comfortable", "clear fluids only if tolerated and evacuation delayed, otherwise nothing by mouth"],
+  "anticipated_problems": ["dehydration and shock", "ongoing pain"],
+  "teaching_points": ["~27% of NOLS illness is GI; ~7% acute abdominal pain.", "Gastroenteritis: intermittent diffuse cramps, vomiting/diarrhea, low fever.", "Appendicitis classically dull periumbilical pain moving to RLQ with nausea and anorexia; often atypical.", "Look for evacuation triggers rather than a diagnosis."],
+  "decision_points": [{"question": "Evacuate?", "source_decision": "Yes, helicopter", "basis": ["pain >12 h", "pain with jarring (peritoneal sign)", "12 mi from road"]}]
+ },
+ "outcome": {"summary": "Not described.", "evacuation_mode": "helicopter"},
+ "eval": {"must_recognize": ["abdominal pain >12 h with jarring pain = evacuate"], "must_ask": ["how long has it hurt?", "does walking or hopping make it worse?", "where is the pain?", "vomiting, fever, blood in stool?"], "must_escalate": "Evacuate.", "must_not_recommend": ["hiking him out with full pack", "solid food"]},
+ "retrieval": {"keywords": ["stomach pain", "abdominal pain", "appendicitis", "belly ache", "teen", "evacuation criteria"], "lay_queries": ["kid's stomach has hurt all night and walking makes it worse", "sharp lower belly pain while backpacking"], "red_flags": ["pain over 12 hours", "pain with walking or hopping", "localized pain"]}
+},
+{
+ "id": "nols-anxiety-or-cardiac-rappel",
+ "title": "49-year-old with racing heart and hyperventilation on a corporate rappel",
+ "source": {"ref": "nols", "title": "Case Study: Anxiety or Cardiac Episode?", "url": "https://www.nols.edu/case-study-anxiety-or-cardiac-episode/", "published": "2015-07-10"},
+ "classification": {"category": "medical", "conditions": ["anxiety_panic", "hyperventilation", "chest_pain", "acute_coronary_syndrome", "abrasion"], "primary_condition": "anxiety_panic", "mechanism": "acute_anxiety_on_exposure", "acuity": "urgent", "acuity_basis": "Cardiac cause could not be excluded in a 49-year-old with palpitations; EMS called."},
+ "context": {"setting": "frontcountry", "activity": "corporate team-building rappel", "connectivity": "available", "distance_to_care": "off-road vehicle to ambulance at paved lot", "responder_training": "WFR guide"},
+ "patient": {"age_years": 49, "age_group": "adult", "sex": "male", "pertinent_history": ["panic attacks 3 years ago (disclosed later)", "declined to share other history"], "medications": ["several, not disclosed"]},
+ "presentation": {"summary": "Reluctant, height-fearful participant stops 15 ft below a cliff lip looking very unwell, gripping the ropes. Lowered to ground he is pacing, dizzy, 'wired', with pounding heart, nausea, tingling hands and lips.", "chief_complaint": "dizziness, racing heart, can't breathe", "symptoms": ["dizziness", "palpitations", "nausea", "numb painful hands", "perioral tingling", "dyspnea", "agitation"], "exam_findings": ["RR 40 deep", "flushed moist skin", "rope-burn hand abrasions"], "pertinent_negatives": ["denies chest pain", "no wheeze or cough"], "last_intake_output": "normal"},
+ "vitals": [
+  {"time": "10:30", "loc": "A+Ox4", "hr": 104, "hr_quality": "strong, regular", "rr": 40, "rr_quality": "regular, deep, unlabored", "skin": "flushed, warm, moist", "bp_note": "radial pulses present", "pupils": "PERRL", "note": "source tables list HR 100 and 104"},
+  {"time": "10:50", "loc": "A+Ox4", "hr": 84, "hr_quality": "strong, regular", "rr": 20, "rr_quality": "regular, deep", "skin": "flushed, warm, moist", "bp_note": "radial pulses present", "pupils": "PERRL"}
+ ],
+ "source_management": {
+  "assessment": ["hyperventilation", "anxiety attack?", "cardiac?", "hand abrasions"],
+  "plan": ["calm patient, slow breathing", "clean and dress abrasions", "evacuate via EMS because cardiac cause cannot be ruled out"],
+  "anticipated_problems": [],
+  "teaching_points": ["Don't let an emotional presentation hide a physical problem.", "Stress reactions that resolve can stay in the field; persistent or unpredictable ones usually need evacuation.", "Evacuate chest pain that isn't clearly musculoskeletal.", "Cardiac events don't always cause classic chest pain; be conservative."],
+  "decision_points": [{"question": "Anxiety only, or evacuate?", "source_decision": "Evacuate", "basis": ["age 49", "persistent pounding heart", "undisclosed meds/history", "cardiac not excludable"]}]
+ },
+ "outcome": {"summary": "EMS transported to hospital; rejoined group that evening feeling better. Diagnosis not stated.", "evacuation_mode": "ems_ground"},
+ "eval": {"must_recognize": ["cardiac symptoms can mimic panic", "age and risk factors"], "must_ask": ["any chest pain, pressure, or pain in arm/jaw?", "heart problems or medications?", "has this happened before?"], "must_escalate": "Call EMS if cardiac cause can't be excluded.", "must_not_recommend": ["dismissing as just anxiety in an older adult with palpitations"]},
+ "retrieval": {"keywords": ["panic attack", "palpitations", "racing heart", "hyperventilation", "heart attack", "chest"], "lay_queries": ["my coworker's heart is racing and he can't breathe after the rappel", "is this a panic attack or a heart attack"], "red_flags": ["persistent palpitations", "age over 40 with cardiac symptoms", "undisclosed medications"]}
+}
+]

@@ -1,0 +1,640 @@
+[
+  {
+    "scenario_id": "WILD_0003_V01",
+    "title": "Blow to the head from rockfall",
+    "variation_of": "WILD_0003",
+    "tags": [
+      "trauma",
+      "head_injury",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "mountain",
+      "weather": "clear",
+      "connectivity": "none",
+      "distance_to_help": "remote"
+    },
+    "patient": {
+      "age": 33,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "hit on the head by a rock",
+      "symptoms": [
+        "brief_loss_of_consciousness",
+        "headache",
+        "vomiting"
+      ],
+      "lay_descriptions": [
+        "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice.",
+        "She got knocked on the head and keeps asking me the same question over and over.",
+        "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "head injury|concussion|brain"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "continue climbing",
+        "keep climbing",
+        "sleep it off"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0003_V02",
+    "title": "Blow to the head from rockfall",
+    "variation_of": "WILD_0003",
+    "tags": [
+      "trauma",
+      "head_injury",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "mountain",
+      "weather": "clear",
+      "connectivity": "none",
+      "distance_to_help": "remote"
+    },
+    "patient": {
+      "age": 33,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "hit on the head by a rock",
+      "symptoms": [
+        "brief_loss_of_consciousness",
+        "headache",
+        "vomiting"
+      ],
+      "lay_descriptions": [
+        "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice.",
+        "She got knocked on the head and keeps asking me the same question over and over.",
+        "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "She got knocked on the head and keeps asking me the same question over and over."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "head injury|concussion|brain"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "continue climbing",
+        "keep climbing",
+        "sleep it off"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0003_V03",
+    "title": "Blow to the head from rockfall",
+    "variation_of": "WILD_0003",
+    "tags": [
+      "trauma",
+      "head_injury",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "mountain",
+      "weather": "clear",
+      "connectivity": "none",
+      "distance_to_help": "remote"
+    },
+    "patient": {
+      "age": 33,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "hit on the head by a rock",
+      "symptoms": [
+        "brief_loss_of_consciousness",
+        "headache",
+        "vomiting"
+      ],
+      "lay_descriptions": [
+        "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice.",
+        "She got knocked on the head and keeps asking me the same question over and over.",
+        "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "head injury|concussion|brain"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "continue climbing",
+        "keep climbing",
+        "sleep it off"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0003_V04",
+    "title": "Blow to the head from rockfall",
+    "variation_of": "WILD_0003",
+    "tags": [
+      "trauma",
+      "head_injury",
+      "var:alone"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "mountain",
+      "weather": "clear",
+      "connectivity": "none",
+      "distance_to_help": "remote"
+    },
+    "patient": {
+      "age": 33,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "hit on the head by a rock",
+      "symptoms": [
+        "brief_loss_of_consciousness",
+        "headache",
+        "vomiting"
+      ],
+      "lay_descriptions": [
+        "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice.",
+        "She got knocked on the head and keeps asking me the same question over and over.",
+        "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "A falling rock hit my partner on the head. He blacked out for about a minute, and now he has a bad headache and has vomited twice."
+      },
+      {
+        "question": "Is anyone else with you?",
+        "answer": "No. It's just the two of us and nobody knows exactly where we are."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "head injury|concussion|brain"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "continue climbing",
+        "keep climbing",
+        "sleep it off"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0003_V05",
+    "title": "Blow to the head from rockfall",
+    "variation_of": "WILD_0003",
+    "tags": [
+      "trauma",
+      "head_injury",
+      "var:no_supplies"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "mountain",
+      "weather": "clear",
+      "connectivity": "none",
+      "distance_to_help": "remote"
+    },
+    "patient": {
+      "age": 33,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "hit on the head by a rock",
+      "symptoms": [
+        "brief_loss_of_consciousness",
+        "headache",
+        "vomiting"
+      ],
+      "lay_descriptions": [
+        "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice.",
+        "She got knocked on the head and keeps asking me the same question over and over.",
+        "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "A falling rock hit my partner on the head. He blacked out for about a minute, and now he has a bad headache and has vomited twice."
+      },
+      {
+        "question": "What supplies do you have?",
+        "answer": "We don't have a first-aid kit. Just our day packs, water and a couple of jackets."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "head injury|concussion|brain"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "continue climbing",
+        "keep climbing",
+        "sleep it off"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0003_V06",
+    "title": "Blow to the head from rockfall",
+    "variation_of": "WILD_0003",
+    "tags": [
+      "trauma",
+      "head_injury",
+      "var:has_supplies"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "mountain",
+      "weather": "clear",
+      "connectivity": "none",
+      "distance_to_help": "remote"
+    },
+    "patient": {
+      "age": 33,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "hit on the head by a rock",
+      "symptoms": [
+        "brief_loss_of_consciousness",
+        "headache",
+        "vomiting"
+      ],
+      "lay_descriptions": [
+        "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice.",
+        "She got knocked on the head and keeps asking me the same question over and over.",
+        "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "A falling rock hit my partner on the head. He blacked out for about a minute, and now he has a bad headache and has vomited twice."
+      },
+      {
+        "question": "What supplies do you have?",
+        "answer": "We have a full first-aid kit, a tarp, sleeping bags and a stove."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "head injury|concussion|brain"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "continue climbing",
+        "keep climbing",
+        "sleep it off"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0003_V07",
+    "title": "Blow to the head from rockfall",
+    "variation_of": "WILD_0003",
+    "tags": [
+      "trauma",
+      "head_injury",
+      "var:bad_weather"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "mountain",
+      "weather": "rain and wind",
+      "connectivity": "none",
+      "distance_to_help": "remote"
+    },
+    "patient": {
+      "age": 33,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "hit on the head by a rock",
+      "symptoms": [
+        "brief_loss_of_consciousness",
+        "headache",
+        "vomiting"
+      ],
+      "lay_descriptions": [
+        "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice.",
+        "She got knocked on the head and keeps asking me the same question over and over.",
+        "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "A falling rock hit my partner on the head. He blacked out for about a minute, and now he has a bad headache and has vomited twice."
+      },
+      {
+        "question": "What is the weather doing?",
+        "answer": "It's raining hard and the wind is picking up."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "head injury|concussion|brain"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "continue climbing",
+        "keep climbing",
+        "sleep it off"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0003_V08",
+    "title": "Blow to the head from rockfall",
+    "variation_of": "WILD_0003",
+    "tags": [
+      "trauma",
+      "head_injury",
+      "var:high_altitude"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "high altitude",
+      "weather": "clear",
+      "connectivity": "none",
+      "distance_to_help": "remote"
+    },
+    "patient": {
+      "age": 33,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "hit on the head by a rock",
+      "symptoms": [
+        "brief_loss_of_consciousness",
+        "headache",
+        "vomiting"
+      ],
+      "lay_descriptions": [
+        "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice.",
+        "She got knocked on the head and keeps asking me the same question over and over.",
+        "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "A falling rock hit my partner on the head. He blacked out for about a minute, and now he has a bad headache and has vomited twice."
+      },
+      {
+        "question": "Where are you?",
+        "answer": "We're camped high up, above 11,000 feet."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "head injury|concussion|brain"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "continue climbing",
+        "keep climbing",
+        "sleep it off"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0003_V09",
+    "title": "Blow to the head from rockfall",
+    "variation_of": "WILD_0003",
+    "tags": [
+      "trauma",
+      "head_injury",
+      "var:denies_problem"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "mountain",
+      "weather": "clear",
+      "connectivity": "none",
+      "distance_to_help": "remote"
+    },
+    "patient": {
+      "age": 33,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "hit on the head by a rock",
+      "symptoms": [
+        "brief_loss_of_consciousness",
+        "headache",
+        "vomiting"
+      ],
+      "lay_descriptions": [
+        "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice.",
+        "She got knocked on the head and keeps asking me the same question over and over.",
+        "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "A falling rock hit my partner on the head. He blacked out for about a minute, and now he has a bad headache and has vomited twice."
+      },
+      {
+        "question": "How does the person say they feel?",
+        "answer": "They keep saying they're fine and that I should stop fussing."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "head injury|concussion|brain"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "continue climbing",
+        "keep climbing",
+        "sleep it off"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0003_V10",
+    "title": "Blow to the head from rockfall",
+    "variation_of": "WILD_0003",
+    "tags": [
+      "trauma",
+      "head_injury",
+      "var:worsening"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "mountain",
+      "weather": "clear",
+      "connectivity": "none",
+      "distance_to_help": "remote"
+    },
+    "patient": {
+      "age": 33,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "hit on the head by a rock",
+      "symptoms": [
+        "brief_loss_of_consciousness",
+        "headache",
+        "vomiting"
+      ],
+      "lay_descriptions": [
+        "A rock came down and hit my climbing partner in the head. He was out for maybe a minute and now he's thrown up twice.",
+        "She got knocked on the head and keeps asking me the same question over and over.",
+        "My friend took a rock to the helmet. He says he's fine but he seems dazed and his headache is getting worse."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "A falling rock hit my partner on the head. He blacked out for about a minute, and now he has a bad headache and has vomited twice."
+      },
+      {
+        "question": "Has anything changed?",
+        "answer": "It's been getting worse over the last few minutes."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "head injury|concussion|brain"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "continue climbing",
+        "keep climbing",
+        "sleep it off"
+      ],
+      "clinical_review": "pending"
+    }
+  }
+]

@@ -1,0 +1,630 @@
+[
+  {
+    "scenario_id": "WILD_0005_V01",
+    "title": "Bee sting with a swelling throat",
+    "variation_of": "WILD_0005",
+    "tags": [
+      "allergy",
+      "anaphylaxis",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "warm",
+      "connectivity": "none",
+      "distance_to_help": "2 hours on foot"
+    },
+    "patient": {
+      "age": 29,
+      "sex": "unknown",
+      "medical_history": "known bee allergy"
+    },
+    "presentation": {
+      "chief_complaint": "allergic reaction after a sting",
+      "symptoms": [
+        "throat_tightness",
+        "hives",
+        "wheezing"
+      ],
+      "lay_descriptions": [
+        "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight.",
+        "He's covered in hives after a wasp sting and he's wheezing.",
+        "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "anaphylaxis|severe allergic|allergic reaction"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "wait and see",
+        "antihistamine alone"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0005_V02",
+    "title": "Bee sting with a swelling throat",
+    "variation_of": "WILD_0005",
+    "tags": [
+      "allergy",
+      "anaphylaxis",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "warm",
+      "connectivity": "none",
+      "distance_to_help": "2 hours on foot"
+    },
+    "patient": {
+      "age": 29,
+      "sex": "unknown",
+      "medical_history": "known bee allergy"
+    },
+    "presentation": {
+      "chief_complaint": "allergic reaction after a sting",
+      "symptoms": [
+        "throat_tightness",
+        "hives",
+        "wheezing"
+      ],
+      "lay_descriptions": [
+        "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight.",
+        "He's covered in hives after a wasp sting and he's wheezing.",
+        "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "He's covered in hives after a wasp sting and he's wheezing."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "anaphylaxis|severe allergic|allergic reaction"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "wait and see",
+        "antihistamine alone"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0005_V03",
+    "title": "Bee sting with a swelling throat",
+    "variation_of": "WILD_0005",
+    "tags": [
+      "allergy",
+      "anaphylaxis",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "warm",
+      "connectivity": "none",
+      "distance_to_help": "2 hours on foot"
+    },
+    "patient": {
+      "age": 29,
+      "sex": "unknown",
+      "medical_history": "known bee allergy"
+    },
+    "presentation": {
+      "chief_complaint": "allergic reaction after a sting",
+      "symptoms": [
+        "throat_tightness",
+        "hives",
+        "wheezing"
+      ],
+      "lay_descriptions": [
+        "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight.",
+        "He's covered in hives after a wasp sting and he's wheezing.",
+        "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "anaphylaxis|severe allergic|allergic reaction"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "wait and see",
+        "antihistamine alone"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0005_V04",
+    "title": "Bee sting with a swelling throat",
+    "variation_of": "WILD_0005",
+    "tags": [
+      "allergy",
+      "anaphylaxis",
+      "var:alone"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "warm",
+      "connectivity": "none",
+      "distance_to_help": "2 hours on foot"
+    },
+    "patient": {
+      "age": 29,
+      "sex": "unknown",
+      "medical_history": "known bee allergy"
+    },
+    "presentation": {
+      "chief_complaint": "allergic reaction after a sting",
+      "symptoms": [
+        "throat_tightness",
+        "hives",
+        "wheezing"
+      ],
+      "lay_descriptions": [
+        "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight.",
+        "He's covered in hives after a wasp sting and he's wheezing.",
+        "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My friend was stung by a bee ten minutes ago. Her face is swelling, she has hives, and she says it's getting hard to breathe. She has an EpiPen in her pack."
+      },
+      {
+        "question": "Is anyone else with you?",
+        "answer": "No. It's just the two of us and nobody knows exactly where we are."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "anaphylaxis|severe allergic|allergic reaction"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "wait and see",
+        "antihistamine alone"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0005_V05",
+    "title": "Bee sting with a swelling throat",
+    "variation_of": "WILD_0005",
+    "tags": [
+      "allergy",
+      "anaphylaxis",
+      "var:no_supplies"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "warm",
+      "connectivity": "none",
+      "distance_to_help": "2 hours on foot"
+    },
+    "patient": {
+      "age": 29,
+      "sex": "unknown",
+      "medical_history": "known bee allergy"
+    },
+    "presentation": {
+      "chief_complaint": "allergic reaction after a sting",
+      "symptoms": [
+        "throat_tightness",
+        "hives",
+        "wheezing"
+      ],
+      "lay_descriptions": [
+        "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight.",
+        "He's covered in hives after a wasp sting and he's wheezing.",
+        "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My friend was stung by a bee ten minutes ago. Her face is swelling, she has hives, and she says it's getting hard to breathe. She has an EpiPen in her pack."
+      },
+      {
+        "question": "What supplies do you have?",
+        "answer": "We don't have a first-aid kit. Just our day packs, water and a couple of jackets."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "anaphylaxis|severe allergic|allergic reaction"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "wait and see",
+        "antihistamine alone"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0005_V06",
+    "title": "Bee sting with a swelling throat",
+    "variation_of": "WILD_0005",
+    "tags": [
+      "allergy",
+      "anaphylaxis",
+      "var:has_supplies"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "warm",
+      "connectivity": "none",
+      "distance_to_help": "2 hours on foot"
+    },
+    "patient": {
+      "age": 29,
+      "sex": "unknown",
+      "medical_history": "known bee allergy"
+    },
+    "presentation": {
+      "chief_complaint": "allergic reaction after a sting",
+      "symptoms": [
+        "throat_tightness",
+        "hives",
+        "wheezing"
+      ],
+      "lay_descriptions": [
+        "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight.",
+        "He's covered in hives after a wasp sting and he's wheezing.",
+        "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My friend was stung by a bee ten minutes ago. Her face is swelling, she has hives, and she says it's getting hard to breathe. She has an EpiPen in her pack."
+      },
+      {
+        "question": "What supplies do you have?",
+        "answer": "We have a full first-aid kit, a tarp, sleeping bags and a stove."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "anaphylaxis|severe allergic|allergic reaction"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "wait and see",
+        "antihistamine alone"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0005_V07",
+    "title": "Bee sting with a swelling throat",
+    "variation_of": "WILD_0005",
+    "tags": [
+      "allergy",
+      "anaphylaxis",
+      "var:bad_weather"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "rain and wind",
+      "connectivity": "none",
+      "distance_to_help": "2 hours on foot"
+    },
+    "patient": {
+      "age": 29,
+      "sex": "unknown",
+      "medical_history": "known bee allergy"
+    },
+    "presentation": {
+      "chief_complaint": "allergic reaction after a sting",
+      "symptoms": [
+        "throat_tightness",
+        "hives",
+        "wheezing"
+      ],
+      "lay_descriptions": [
+        "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight.",
+        "He's covered in hives after a wasp sting and he's wheezing.",
+        "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My friend was stung by a bee ten minutes ago. Her face is swelling, she has hives, and she says it's getting hard to breathe. She has an EpiPen in her pack."
+      },
+      {
+        "question": "What is the weather doing?",
+        "answer": "It's raining hard and the wind is picking up."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "anaphylaxis|severe allergic|allergic reaction"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "wait and see",
+        "antihistamine alone"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0005_V08",
+    "title": "Bee sting with a swelling throat",
+    "variation_of": "WILD_0005",
+    "tags": [
+      "allergy",
+      "anaphylaxis",
+      "var:high_altitude"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "high altitude",
+      "weather": "warm",
+      "connectivity": "none",
+      "distance_to_help": "2 hours on foot"
+    },
+    "patient": {
+      "age": 29,
+      "sex": "unknown",
+      "medical_history": "known bee allergy"
+    },
+    "presentation": {
+      "chief_complaint": "allergic reaction after a sting",
+      "symptoms": [
+        "throat_tightness",
+        "hives",
+        "wheezing"
+      ],
+      "lay_descriptions": [
+        "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight.",
+        "He's covered in hives after a wasp sting and he's wheezing.",
+        "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My friend was stung by a bee ten minutes ago. Her face is swelling, she has hives, and she says it's getting hard to breathe. She has an EpiPen in her pack."
+      },
+      {
+        "question": "Where are you?",
+        "answer": "We're camped high up, above 11,000 feet."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "anaphylaxis|severe allergic|allergic reaction"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "wait and see",
+        "antihistamine alone"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0005_V09",
+    "title": "Bee sting with a swelling throat",
+    "variation_of": "WILD_0005",
+    "tags": [
+      "allergy",
+      "anaphylaxis",
+      "var:denies_problem"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "warm",
+      "connectivity": "none",
+      "distance_to_help": "2 hours on foot"
+    },
+    "patient": {
+      "age": 29,
+      "sex": "unknown",
+      "medical_history": "known bee allergy"
+    },
+    "presentation": {
+      "chief_complaint": "allergic reaction after a sting",
+      "symptoms": [
+        "throat_tightness",
+        "hives",
+        "wheezing"
+      ],
+      "lay_descriptions": [
+        "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight.",
+        "He's covered in hives after a wasp sting and he's wheezing.",
+        "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My friend was stung by a bee ten minutes ago. Her face is swelling, she has hives, and she says it's getting hard to breathe. She has an EpiPen in her pack."
+      },
+      {
+        "question": "How does the person say they feel?",
+        "answer": "They keep saying they're fine and that I should stop fussing."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "anaphylaxis|severe allergic|allergic reaction"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "wait and see",
+        "antihistamine alone"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0005_V10",
+    "title": "Bee sting with a swelling throat",
+    "variation_of": "WILD_0005",
+    "tags": [
+      "allergy",
+      "anaphylaxis",
+      "var:worsening"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "warm",
+      "connectivity": "none",
+      "distance_to_help": "2 hours on foot"
+    },
+    "patient": {
+      "age": 29,
+      "sex": "unknown",
+      "medical_history": "known bee allergy"
+    },
+    "presentation": {
+      "chief_complaint": "allergic reaction after a sting",
+      "symptoms": [
+        "throat_tightness",
+        "hives",
+        "wheezing"
+      ],
+      "lay_descriptions": [
+        "My wife got stung by a bee and now her lips are swelling and she says her throat feels tight.",
+        "He's covered in hives after a wasp sting and he's wheezing.",
+        "I got stung and I'm allergic. My throat feels funny and I'm getting itchy all over."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My friend was stung by a bee ten minutes ago. Her face is swelling, she has hives, and she says it's getting hard to breathe. She has an EpiPen in her pack."
+      },
+      {
+        "question": "Has anything changed?",
+        "answer": "It's been getting worse over the last few minutes."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "anaphylaxis|severe allergic|allergic reaction"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "wait and see",
+        "antihistamine alone"
+      ],
+      "clinical_review": "pending"
+    }
+  }
+]

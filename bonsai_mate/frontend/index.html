@@ -1,0 +1,54 @@
+<!doctype html>
+<!-- Bonsai Mate. Plain HTML + JS, no build step, no CDN: everything must load with no internet. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bonsai Mate</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <h1>Bonsai Mate</h1>
+    <span id="status" class="status">checking…</span>
+  </div>
+  <nav>
+    <button id="tab-assist" class="tab active" type="button">Assist</button>
+    <button id="tab-cards" class="tab" type="button">Protocols</button>
+    <label class="toggle"><input type="checkbox" id="speak-toggle"> Read aloud</label>
+    <button id="reset" class="ghost" type="button">New incident</button>
+  </nav>
+</header>
+
+<p class="notice">
+  Prototype. The protocols and case studies here are unreviewed, not medical advice.
+  If you can reach emergency services by any means, do that first.
+</p>
+
+<main id="view-assist">
+  <div id="log">
+    <section id="welcome">
+      <h2>What's happening?</h2>
+      <p>Tap the microphone and say it, type it, or tap the closest match.</p>
+      <div id="quick" class="quick"></div>
+    </section>
+  </div>
+  <form id="form">
+    <button type="button" id="mic" disabled aria-pressed="false" title="Voice input is loading">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2Z"/></svg>
+      <span id="mic-label">Speak</span>
+    </button>
+    <textarea id="input" rows="2" placeholder="e.g. My friend fell and hit her head, she's dizzy…"></textarea>
+    <button type="submit" id="send">Send</button>
+  </form>
+</main>
+
+<main id="view-cards" hidden>
+  <input id="card-search" type="search" placeholder="Search protocols (works without the model)">
+  <div id="card-list"></div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

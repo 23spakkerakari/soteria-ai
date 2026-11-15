@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Rebuilt from the JSON files in data/ on every start
+data/mate.db*
+
+# Text extracted from third-party sources. Do not commit or redistribute
+# until the source's license has been checked.
+data/raw/

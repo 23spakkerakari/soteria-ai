@@ -1,0 +1,620 @@
+[
+  {
+    "scenario_id": "WILD_0008_V01",
+    "title": "Collapse on the trail",
+    "variation_of": "WILD_0008",
+    "tags": [
+      "cardiac",
+      "cpr",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "mild",
+      "connectivity": "none",
+      "distance_to_help": "1 hour on foot"
+    },
+    "patient": {
+      "age": 62,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "collapsed and not breathing",
+      "symptoms": [
+        "unresponsive",
+        "not_breathing"
+      ],
+      "lay_descriptions": [
+        "My husband just dropped on the trail and he's not breathing. What do I do?",
+        "A man in our group collapsed. He won't wake up and he's only gasping every so often.",
+        "She grabbed her chest and fell over. I can't wake her."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My husband just dropped on the trail and he's not breathing. What do I do?"
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "cpr|compressions|cardiac arrest"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|help|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "give him water",
+        "wait for him to wake"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0008_V02",
+    "title": "Collapse on the trail",
+    "variation_of": "WILD_0008",
+    "tags": [
+      "cardiac",
+      "cpr",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "mild",
+      "connectivity": "none",
+      "distance_to_help": "1 hour on foot"
+    },
+    "patient": {
+      "age": 62,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "collapsed and not breathing",
+      "symptoms": [
+        "unresponsive",
+        "not_breathing"
+      ],
+      "lay_descriptions": [
+        "My husband just dropped on the trail and he's not breathing. What do I do?",
+        "A man in our group collapsed. He won't wake up and he's only gasping every so often.",
+        "She grabbed her chest and fell over. I can't wake her."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "A man in our group collapsed. He won't wake up and he's only gasping every so often."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "cpr|compressions|cardiac arrest"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|help|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "give him water",
+        "wait for him to wake"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0008_V03",
+    "title": "Collapse on the trail",
+    "variation_of": "WILD_0008",
+    "tags": [
+      "cardiac",
+      "cpr",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "mild",
+      "connectivity": "none",
+      "distance_to_help": "1 hour on foot"
+    },
+    "patient": {
+      "age": 62,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "collapsed and not breathing",
+      "symptoms": [
+        "unresponsive",
+        "not_breathing"
+      ],
+      "lay_descriptions": [
+        "My husband just dropped on the trail and he's not breathing. What do I do?",
+        "A man in our group collapsed. He won't wake up and he's only gasping every so often.",
+        "She grabbed her chest and fell over. I can't wake her."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "She grabbed her chest and fell over. I can't wake her."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "cpr|compressions|cardiac arrest"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|help|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "give him water",
+        "wait for him to wake"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0008_V04",
+    "title": "Collapse on the trail",
+    "variation_of": "WILD_0008",
+    "tags": [
+      "cardiac",
+      "cpr",
+      "var:alone"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "mild",
+      "connectivity": "none",
+      "distance_to_help": "1 hour on foot"
+    },
+    "patient": {
+      "age": 62,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "collapsed and not breathing",
+      "symptoms": [
+        "unresponsive",
+        "not_breathing"
+      ],
+      "lay_descriptions": [
+        "My husband just dropped on the trail and he's not breathing. What do I do?",
+        "A man in our group collapsed. He won't wake up and he's only gasping every so often.",
+        "She grabbed her chest and fell over. I can't wake her."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "An older man in our hiking group just collapsed. He doesn't respond when I shake him and I don't think he's breathing."
+      },
+      {
+        "question": "Is anyone else with you?",
+        "answer": "No. It's just the two of us and nobody knows exactly where we are."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "cpr|compressions|cardiac arrest"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|help|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "give him water",
+        "wait for him to wake"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0008_V05",
+    "title": "Collapse on the trail",
+    "variation_of": "WILD_0008",
+    "tags": [
+      "cardiac",
+      "cpr",
+      "var:no_supplies"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "mild",
+      "connectivity": "none",
+      "distance_to_help": "1 hour on foot"
+    },
+    "patient": {
+      "age": 62,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "collapsed and not breathing",
+      "symptoms": [
+        "unresponsive",
+        "not_breathing"
+      ],
+      "lay_descriptions": [
+        "My husband just dropped on the trail and he's not breathing. What do I do?",
+        "A man in our group collapsed. He won't wake up and he's only gasping every so often.",
+        "She grabbed her chest and fell over. I can't wake her."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "An older man in our hiking group just collapsed. He doesn't respond when I shake him and I don't think he's breathing."
+      },
+      {
+        "question": "What supplies do you have?",
+        "answer": "We don't have a first-aid kit. Just our day packs, water and a couple of jackets."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "cpr|compressions|cardiac arrest"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|help|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "give him water",
+        "wait for him to wake"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0008_V06",
+    "title": "Collapse on the trail",
+    "variation_of": "WILD_0008",
+    "tags": [
+      "cardiac",
+      "cpr",
+      "var:has_supplies"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "mild",
+      "connectivity": "none",
+      "distance_to_help": "1 hour on foot"
+    },
+    "patient": {
+      "age": 62,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "collapsed and not breathing",
+      "symptoms": [
+        "unresponsive",
+        "not_breathing"
+      ],
+      "lay_descriptions": [
+        "My husband just dropped on the trail and he's not breathing. What do I do?",
+        "A man in our group collapsed. He won't wake up and he's only gasping every so often.",
+        "She grabbed her chest and fell over. I can't wake her."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "An older man in our hiking group just collapsed. He doesn't respond when I shake him and I don't think he's breathing."
+      },
+      {
+        "question": "What supplies do you have?",
+        "answer": "We have a full first-aid kit, a tarp, sleeping bags and a stove."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "cpr|compressions|cardiac arrest"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|help|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "give him water",
+        "wait for him to wake"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0008_V07",
+    "title": "Collapse on the trail",
+    "variation_of": "WILD_0008",
+    "tags": [
+      "cardiac",
+      "cpr",
+      "var:bad_weather"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "rain and wind",
+      "connectivity": "none",
+      "distance_to_help": "1 hour on foot"
+    },
+    "patient": {
+      "age": 62,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "collapsed and not breathing",
+      "symptoms": [
+        "unresponsive",
+        "not_breathing"
+      ],
+      "lay_descriptions": [
+        "My husband just dropped on the trail and he's not breathing. What do I do?",
+        "A man in our group collapsed. He won't wake up and he's only gasping every so often.",
+        "She grabbed her chest and fell over. I can't wake her."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "An older man in our hiking group just collapsed. He doesn't respond when I shake him and I don't think he's breathing."
+      },
+      {
+        "question": "What is the weather doing?",
+        "answer": "It's raining hard and the wind is picking up."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "cpr|compressions|cardiac arrest"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|help|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "give him water",
+        "wait for him to wake"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0008_V08",
+    "title": "Collapse on the trail",
+    "variation_of": "WILD_0008",
+    "tags": [
+      "cardiac",
+      "cpr",
+      "var:high_altitude"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "high altitude",
+      "weather": "mild",
+      "connectivity": "none",
+      "distance_to_help": "1 hour on foot"
+    },
+    "patient": {
+      "age": 62,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "collapsed and not breathing",
+      "symptoms": [
+        "unresponsive",
+        "not_breathing"
+      ],
+      "lay_descriptions": [
+        "My husband just dropped on the trail and he's not breathing. What do I do?",
+        "A man in our group collapsed. He won't wake up and he's only gasping every so often.",
+        "She grabbed her chest and fell over. I can't wake her."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "An older man in our hiking group just collapsed. He doesn't respond when I shake him and I don't think he's breathing."
+      },
+      {
+        "question": "Where are you?",
+        "answer": "We're camped high up, above 11,000 feet."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "cpr|compressions|cardiac arrest"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|help|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "give him water",
+        "wait for him to wake"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0008_V09",
+    "title": "Collapse on the trail",
+    "variation_of": "WILD_0008",
+    "tags": [
+      "cardiac",
+      "cpr",
+      "var:denies_problem"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "mild",
+      "connectivity": "none",
+      "distance_to_help": "1 hour on foot"
+    },
+    "patient": {
+      "age": 62,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "collapsed and not breathing",
+      "symptoms": [
+        "unresponsive",
+        "not_breathing"
+      ],
+      "lay_descriptions": [
+        "My husband just dropped on the trail and he's not breathing. What do I do?",
+        "A man in our group collapsed. He won't wake up and he's only gasping every so often.",
+        "She grabbed her chest and fell over. I can't wake her."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "An older man in our hiking group just collapsed. He doesn't respond when I shake him and I don't think he's breathing."
+      },
+      {
+        "question": "How does the person say they feel?",
+        "answer": "They keep saying they're fine and that I should stop fussing."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "cpr|compressions|cardiac arrest"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|help|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "give him water",
+        "wait for him to wake"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0008_V10",
+    "title": "Collapse on the trail",
+    "variation_of": "WILD_0008",
+    "tags": [
+      "cardiac",
+      "cpr",
+      "var:worsening"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "mild",
+      "connectivity": "none",
+      "distance_to_help": "1 hour on foot"
+    },
+    "patient": {
+      "age": 62,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "collapsed and not breathing",
+      "symptoms": [
+        "unresponsive",
+        "not_breathing"
+      ],
+      "lay_descriptions": [
+        "My husband just dropped on the trail and he's not breathing. What do I do?",
+        "A man in our group collapsed. He won't wake up and he's only gasping every so often.",
+        "She grabbed her chest and fell over. I can't wake her."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "An older man in our hiking group just collapsed. He doesn't respond when I shake him and I don't think he's breathing."
+      },
+      {
+        "question": "Has anything changed?",
+        "answer": "It's been getting worse over the last few minutes."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "cpr|compressions|cardiac arrest"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|help|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "give him water",
+        "wait for him to wake"
+      ],
+      "clinical_review": "pending"
+    }
+  }
+]

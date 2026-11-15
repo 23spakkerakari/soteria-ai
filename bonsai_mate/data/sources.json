@@ -1,0 +1,58 @@
+[
+  {
+    "organization": "NOLS Wilderness Medicine",
+    "source_type": "educational_case",
+    "url": "https://www.nols.edu/wilderness-medicine/curriculum-resources/",
+    "use_for": "Wilderness case studies: cold, heat, altitude, head trauma, evacuation decisions",
+    "license_verified": false
+  },
+  {
+    "organization": "PubMed Central",
+    "source_type": "academic_simulation",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7331961/",
+    "use_for": "Multi-condition wilderness simulation: hypothermia, dehydration, ankle injury",
+    "license_verified": false
+  },
+  {
+    "organization": "EM Sim Cases",
+    "source_type": "simulation_case",
+    "url": "https://emsimcases.com/",
+    "use_for": "General emergency recognition: trauma, respiratory, cardiac, neuro, allergic",
+    "license_verified": false
+  },
+  {
+    "organization": "MedEdPORTAL (AAMC)",
+    "source_type": "simulation_case",
+    "url": "https://www.mededportal.org/",
+    "use_for": "Peer-reviewed simulations with documented objectives. License varies per resource.",
+    "license_verified": false
+  },
+  {
+    "organization": "On Scene CPD",
+    "source_type": "simulation_case",
+    "url": "https://www.onscenecpd.com/",
+    "use_for": "Multi-turn prehospital scenarios with decision points",
+    "license_verified": false
+  },
+  {
+    "organization": "American Red Cross",
+    "source_type": "first_aid_training",
+    "url": "https://www.redcrosslearningcenter.org/s/candidate-resources-first-aid-cpr-aed-25?language=en_US",
+    "use_for": "Foundational first-aid scenarios and skills",
+    "license_verified": false
+  },
+  {
+    "organization": "UCSF / WHO Basic Emergency Care",
+    "source_type": "educational_case",
+    "url": "https://emergencycare.ucsf.edu/basic-emergency-care-course-adjuncts",
+    "use_for": "Structured assessment cases, patients who cannot communicate clearly",
+    "license_verified": false
+  },
+  {
+    "organization": "JETem",
+    "source_type": "simulation_case",
+    "url": "https://jetem2.org/",
+    "use_for": "Open-access emergency medicine simulation cases",
+    "license_verified": false
+  }
+]

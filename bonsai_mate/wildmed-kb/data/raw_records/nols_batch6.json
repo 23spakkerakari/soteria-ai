@@ -1,0 +1,154 @@
+[
+{
+ "id": "nols-anaphylaxis-trail-mix-nut-allergy",
+ "title": "Throat tightness after shared trail mix in a nut-allergic hiker",
+ "source": {"ref": "nols", "title": "Case Study: Anaphylaxis in the Backcountry", "url": "https://www.nols.edu/blog/case-study-anaphylaxis-in-the-backcountry/", "published": "2019-10-30", "authors": ["Tod Schimelpfenig"]},
+ "classification": {"category": "medical", "conditions": ["anaphylaxis", "allergic_reaction"], "primary_condition": "anaphylaxis", "mechanism": "nut_exposure_cross_contamination", "acuity": "life_threat", "acuity_basis": "Airway symptoms requiring epinephrine; risk of biphasic reaction with no second dose; PLB activated, SAR evacuation."},
+ "context": {"setting": "wilderness", "activity": "day hiking, lunch stop", "connectivity": "none", "distance_to_care": "deep in wilderness; SAR responded in 40 min", "responder_training": "WFR", "group": "friends", "resources_available": ["epinephrine_autoinjector (single, used)", "PLB"]},
+ "patient": {"age_years": 20, "age_group": "adult", "sex": "unspecified", "pertinent_history": ["prior reaction needing epinephrine 1 year ago"], "allergies": ["nuts (severe)"]},
+ "presentation": {"summary": "Minutes after eating shared trail mix said to be nut-free, a hiker develops throat tightness, tingling and trouble swallowing that worsen over 20 minutes. Self-injects epinephrine into the thigh.", "chief_complaint": "throat tightness, can't swallow", "symptoms": ["throat tightness and tingling", "difficulty swallowing", "after epinephrine: mild tingling, nausea, nervousness"], "exam_findings": ["flushed, warm, sweaty skin", "no wheezes"], "pertinent_negatives": ["no rash or visible swelling", "not short of breath"], "last_intake_output": "hydrated", "events_leading_up": "shared trail mix at lunch"},
+ "vitals": [{"time": "13:30", "loc": "A+Ox4", "hr": 100, "hr_quality": "strong, regular", "rr": 22, "rr_quality": "easy, regular, no wheeze", "skin": "pink, flushed, warm, sweaty", "bp_note": "radial pulses present", "pupils": "PERRL", "note": "5 min after epinephrine at 13:20"}],
+ "source_management": {
+  "assessment": ["allergic reaction requiring epinephrine", "possible biphasic reaction", "no further medication available"],
+  "plan": ["activate PLB and wait for rescue", "remove all group food from patient", "if no response in 1 h, start hiking toward trailhead"],
+  "anticipated_problems": ["biphasic/recurrent reaction"],
+  "teaching_points": ["Epinephrine is first-line; don't delay it for antihistamines.", "Give epinephrine for airway swelling (lips, tongue, voice change), breathing difficulty, widespread swelling, or shock. Adult IM dose 0.3 mg (0.3 mL of 1:1000).", "Give oral antihistamine when able to swallow and continue during evacuation.", "If symptoms return, give more epinephrine and evacuate.", "Carry two epinephrine doses; manage group food cross-contamination."],
+  "decision_points": [{"question": "Evacuate after improvement?", "source_decision": "Yes, via PLB", "basis": ["needed epinephrine", "no second dose", "biphasic risk"]}]
+ },
+ "outcome": {"summary": "SAR evacuated; no recurrence.", "evacuation_mode": "sar_team", "final_diagnosis": "anaphylaxis (nut, likely cross-contamination)"},
+ "eval": {"must_recognize": ["anaphylaxis with airway involvement", "biphasic risk after epinephrine"], "must_ask": ["throat tight, voice change, trouble breathing or swallowing?", "do you have an epinephrine auto-injector? a second one?", "known allergies?"], "must_escalate": "Give epinephrine immediately and evacuate even if symptoms improve.", "must_not_recommend": ["waiting for antihistamine before epinephrine", "continuing the hike after epinephrine without evacuation plan"]},
+ "retrieval": {"keywords": ["anaphylaxis", "nut allergy", "epipen", "epinephrine", "throat closing", "allergic reaction"], "lay_queries": ["my throat feels tight after eating trail mix and I'm allergic to nuts", "she used her epipen now what", "throat closing up can't swallow"], "red_flags": ["throat tightness", "difficulty swallowing", "voice change", "breathing difficulty"]}
+},
+{
+ "id": "nols-boiling-water-burn-heel",
+ "title": "Boiling water spilled into a boot: leg and heel burns",
+ "source": {"ref": "nols", "title": "Case Study: Burn in the Backcountry", "url": "https://www.nols.edu/blog/case-study-burn-in-the-backcountry/", "published": "2024-04-16", "authors": ["Gates Richards"]},
+ "classification": {"category": "injury", "conditions": ["burn"], "primary_condition": "burn", "mechanism": "scald_boiling_water", "acuity": "semi_urgent", "acuity_basis": "Partial-thickness foot burn; walked out over a day for evaluation."},
+ "context": {"setting": "wilderness", "activity": "backpacking course camp", "region": "Gila Wilderness, New Mexico", "connectivity": "unknown", "distance_to_care": "1 day hike to trailhead; stream 200 m from camp", "responder_training": "WFR instructors", "resources_available": ["water", "hydrogel_dressing", "gauze", "trekking_poles"]},
+ "patient": {"age_years": 25, "age_group": "adult", "sex": "female", "allergies": ["poison ivy (strong reaction)"]},
+ "presentation": {"summary": "A student trips carrying a pot and boiling water pours into another student's boot.", "chief_complaint": "burn pain left leg and heel", "symptoms": ["burn pain"], "exam_findings": ["~5% TBSA superficial burn back of left lower leg", "2x3 in partial-thickness heel burn, blister ruptured", "not circumferential", "good toe CSM"], "pertinent_negatives": ["no other injuries"], "last_intake_output": "hydrated, no breakfast"},
+ "vitals": [
+  {"time": "07:00", "loc": "A+Ox4", "hr": 72, "rr": 12, "skin": "pink, warm, dry", "bp_note": "radial pulse present", "pupils": "PERRL"},
+  {"time": "07:30", "loc": "A+Ox4", "hr": 68, "rr": 12, "skin": "pink, warm, dry", "bp_note": "radial pulse present", "pupils": "PERRL"}
+ ],
+ "source_management": {
+  "assessment": ["5% superficial burn left lower leg", "2x3 in partial-thickness burn left heel"],
+  "plan": ["cool irrigation", "dress partial-thickness burn with hydrogel and gauze", "walk out in running shoes with heel folded down"],
+  "anticipated_problems": ["infection", "unable to walk"],
+  "teaching_points": ["Depth: superficial red/painful; partial thickness blisters; full thickness pale/charred/painless.", "Palm with fingers ~1% TBSA.", "Evacuate all full-thickness burns; consider for partial thickness on hands, feet, face, armpits, groin.", "Rapid evacuation: >10% TBSA partial/full, circumferential, or airway burns (face/neck burns, soot, singed hair, cough).", "Cool water irrigation; no ice; watch for hypothermia in large burns; don't drain intact blisters; non-adherent dressings changed twice daily."],
+  "decision_points": [{"question": "Evacuate?", "source_decision": "Yes", "basis": ["heel location", "couldn't wear boots", "hard to keep clean"]}]
+ },
+ "outcome": {"summary": "Walked out slowly; healed; hiking again in weeks.", "evacuation_mode": "self_evac_walk", "final_diagnosis": "superficial and partial-thickness scald burns"},
+ "eval": {"must_recognize": ["burn depth and size", "location-based evacuation (feet)"], "must_ask": ["how big is the burn compared to your palm?", "are there blisters? white or charred areas?", "any burns to face or airway?"], "must_escalate": "Rapid evacuation for >10% TBSA, circumferential, airway, or full-thickness burns.", "must_not_recommend": ["ice", "butter or ointments on fresh burns", "popping intact blisters"]},
+ "retrieval": {"keywords": ["burn", "scald", "boiling water", "blister", "burn dressing", "rule of palms"], "lay_queries": ["spilled boiling water on my foot", "burn on my leg with blisters while camping", "how bad is this burn"], "red_flags": ["burn larger than 10 palms", "burn around a limb", "face or airway burn", "white or charred skin"]}
+},
+{
+ "id": "nols-spontaneous-pneumothorax-fly-fishing",
+ "title": "Young angler with sudden chest pain and breathlessness at 8,500 ft",
+ "source": {"ref": "nols", "title": "Case Study: Shortness of Breath While Fishing", "url": "https://www.nols.edu/blog/case-study-shortness-of-breath-while-fishing/", "published": "2024-07-15", "authors": ["Gates Richards"]},
+ "classification": {"category": "medical", "conditions": ["pneumothorax", "respiratory_distress", "chest_pain"], "primary_condition": "pneumothorax", "mechanism": "spontaneous", "acuity": "life_threat", "acuity_basis": "Respiratory distress; helicopter evacuation; confirmed pneumothorax."},
+ "context": {"setting": "wilderness", "activity": "fly fishing / camping", "region": "Sierra Nevada, California", "weather": "mid-summer, hot", "altitude_m": 2590, "connectivity": "limited", "distance_to_care": "20 min hike to cell signal; meadow LZ nearby", "responder_training": "WFR", "group": "6 friends", "resources_available": ["signal_mirror", "cell_phone (ridge)"]},
+ "patient": {"age_years": 20, "age_group": "adult", "sex": "male", "medications": ["loratadine PRN"], "allergies": ["seasonal hay fever"]},
+ "presentation": {"summary": "While fly fishing, a young man gets sharp right upper chest pain he thinks is a pulled muscle; 90 minutes later he becomes short of breath, speaking in short sentences with labored breathing.", "chief_complaint": "shortness of breath and chest pain", "symptoms": ["sharp right chest pain then pressure/tightness", "shortness of breath", "anxiety"], "exam_findings": ["labored breathing, short sentences", "no audible breath sounds by ear to chest"], "pertinent_negatives": ["no trauma", "no rib tenderness", "no wheeze", "no tingling or spasms", "no accessory muscle use"], "last_intake_output": "normal"},
+ "vitals": [
+  {"time": "11:00", "loc": "A+Ox4", "hr": 72, "rr": 28, "rr_quality": "shallow, labored", "skin": "pale, warm, dry", "bp_note": "radial pulses present", "pupils": "PERRL"},
+  {"time": "11:20", "loc": "A+Ox4", "hr": 72, "rr": 28, "rr_quality": "shallow, labored", "skin": "pale, warm, dry", "bp_note": "radial pulses present", "pupils": "PERRL"}
+ ],
+ "source_management": {
+  "assessment": ["shortness of breath; possible spontaneous pneumothorax or pulmonary embolism"],
+  "plan": ["position of comfort", "monitor vitals", "keep calm", "evacuate ASAP: call from ridge, prepare meadow LZ, signal mirror"],
+  "anticipated_problems": ["shock", "worsening breathlessness"],
+  "teaching_points": ["Spontaneous pneumothorax: tall thin young men, often at rest, sudden sharp chest pain then worsening SOB.", "PE risk: immobility, long travel, dehydration, altitude, smoking, recent surgery; sudden SOB, pleuritic pain, fast HR/RR.", "Diminished breath sounds on one side suggest pneumothorax.", "Respiratory distress is a life threat requiring prompt evacuation."],
+  "decision_points": [{"question": "Helicopter or walk out?", "source_decision": "Helicopter; walk-out as backup", "basis": ["respiratory distress", "can only walk slowly"]}]
+ },
+ "outcome": {"summary": "Flight medic found diminished right breath sounds, oxygen and IV; pneumothorax confirmed; 1-2 day stay.", "evacuation_mode": "helicopter", "final_diagnosis": "spontaneous pneumothorax"},
+ "eval": {"must_recognize": ["non-traumatic chest pain with SOB is an emergency", "pneumothorax vs PE vs muscle strain"], "must_ask": ["did it start suddenly?", "is breathing getting worse?", "pain when breathing in?", "any leg swelling, recent long travel?"], "must_escalate": "Emergency evacuation for respiratory distress.", "must_not_recommend": ["treating as a pulled muscle and continuing", "hiking him out at speed"]},
+ "retrieval": {"keywords": ["collapsed lung", "pneumothorax", "chest pain", "shortness of breath", "pulmonary embolism"], "lay_queries": ["sudden sharp chest pain and now I can't catch my breath", "my friend thought he pulled a muscle but now he's struggling to breathe"], "red_flags": ["speaking in short sentences", "RR 28 labored", "chest pain with breathlessness"]}
+},
+{
+ "id": "nols-asthma-absaroka-teen-altitude",
+ "title": "Teen with known asthma wheezing at the top of a steep climb",
+ "source": {"ref": "nols", "title": "Case Study: Breathing Difficulty in the Absaroka Range", "url": "https://www.nols.edu/blog/case-study-breathing-difficulty-in-the-absaroka-range/", "published": "2021-08-20", "authors": ["Tod Schimelpfenig"]},
+ "classification": {"category": "medical", "conditions": ["asthma", "respiratory_distress", "hyperventilation"], "primary_condition": "asthma", "mechanism": "exertion_dry_air_dust_allergens", "acuity": "field_manageable", "acuity_basis": "Responded to albuterol within 20 min; observed overnight; trip continued."},
+ "context": {"setting": "wilderness", "activity": "teen backpacking camp", "region": "Absaroka Range, east of Yellowstone", "weather": "clear, warm summer, wildflowers", "altitude_m": 2740, "connectivity": "unknown", "responder_training": "WFR", "group": "7 teens + leaders", "resources_available": ["albuterol_inhaler (patient's)"]},
+ "patient": {"age_years": 16, "age_group": "adolescent", "sex": "male", "pertinent_history": ["asthma 2 years, mild spring episodes", "acclimatized weeks at 2100 m"], "medications": ["albuterol PRN", "loratadine occasional"], "allergies": ["pollen", "dust", "dander"]},
+ "presentation": {"summary": "At the top of a long steep climb a teen kneels in tripod position, wheezing, anxious, fumbling with his inhaler. Says it feels like his asthma.", "chief_complaint": "shortness of breath", "symptoms": ["SOB 10-20 min", "wheezing", "chest tightness", "hand tingling"], "exam_findings": ["tripod position", "audible expiratory wheezes", "short sentences", "cool clammy skin"], "pertinent_negatives": ["no accessory muscle use", "no gurgling", "no chest pain", "no hand/foot spasm"]},
+ "vitals": [{"time": "10:00", "loc": "A+Ox4", "hr": 90, "rr": 30, "rr_quality": "shallow, regular", "skin": "cool, clammy", "bp_note": "radial pulse present", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["possible asthma episode", "possible hyperventilation or other respiratory problem"],
+  "plan": ["calm, slow breathing, help with inhaler", "move from triggers", "albuterol 2 puffs per label", "continue with monitoring if resolves; evacuate if recurrent or unresponsive"],
+  "anticipated_problems": ["repeat or severe attack", "HAPE", "hyperventilation"],
+  "teaching_points": ["Severe asthma signs: accessory muscles, quiet chest, 1-2 word speech, drowsiness, cyanosis.", "Inhaler technique with spacer; repeat doses; multiple treatments may be needed.", "4x4x4 approach: 4 puffs, 4 breaths each, wait 4 min; no improvement -> evacuate.", "Evacuate if not improving or episodes become more frequent/longer.", "Distinguish from HAPE (gradual, crackles) and hyperventilation (no wheeze, tingling, spasm)."],
+  "decision_points": [{"question": "Asthma vs HAPE vs pneumothorax?", "source_decision": "Asthma", "basis": ["wheeze", "rapid response to albuterol", "bilateral breath sounds", "acclimatized"]}]
+ },
+ "outcome": {"summary": "Much better at 20 min; camped for observation; symptom-free next morning; trip continued.", "evacuation_mode": "none", "final_diagnosis": "asthma exacerbation"},
+ "eval": {"must_recognize": ["asthma exacerbation", "severity signs"], "must_ask": ["do you have your inhaler?", "can you speak full sentences?", "any lips turning blue or drowsiness?"], "must_escalate": "Evacuate if not improving with inhaler or worsening; emergency if severe signs.", "must_not_recommend": ["continuing uphill immediately", "ignoring wheeze as altitude"]},
+ "retrieval": {"keywords": ["asthma attack", "wheezing", "inhaler", "albuterol", "shortness of breath", "altitude"], "lay_queries": ["my son is having an asthma attack on the hike", "wheezing and can't breathe, has inhaler"], "red_flags": ["can't speak full sentences", "no improvement after inhaler", "blue lips", "drowsiness"]}
+},
+{
+ "id": "nols-smokies-wet-cold-hypothermia",
+ "title": "Clumsy, shivering backpacker on a wet 7-12C day in the Smokies",
+ "source": {"ref": "nols", "title": "Case Study: Hypothermia on a Wet Smokies Backpacking Trip", "url": "https://www.nols.edu/blog/case-study-hypothermia-on-a-wet-smokies-backpacking-trip/", "published": "2026-11-03", "authors": ["Anne McGowan"]},
+ "classification": {"category": "environmental", "conditions": ["hypothermia_mild", "dehydration"], "primary_condition": "hypothermia_mild", "mechanism": "wet_wind_cool_exposure_low_intake", "acuity": "field_manageable", "acuity_basis": "Improved in 30-45 min with shelter, dry layers, insulation, calories; camped nearby."},
+ "context": {"setting": "wilderness", "activity": "4-day backpacking", "region": "near Great Smoky Mountains NP", "weather": "early November, 7-12C, rain, moderate wind", "ambient_temp_c": 9, "connectivity": "unknown", "responder_training": "WFR", "resources_available": ["dry_layers", "sleeping_pad", "hot_water_bottles", "stove", "high_calorie_food"]},
+ "patient": {"age_years": 34, "age_group": "adult", "sex": "male"},
+ "presentation": {"summary": "After hours of drizzle and sweaty uphill hiking, a backpacker says he's 'just tired' but is shivering, clumsy with buckles and zippers, quieter than usual and walking slowly and unsteadily.", "chief_complaint": "cold and tired", "symptoms": ["prolonged shivering", "numb clumsy hands", "fatigue"], "exam_findings": ["A+Ox4 but quiet", "visible shivering", "pale cool wet skin", "poor fine motor", "slow unsteady gait"], "pertinent_negatives": ["no trauma"], "last_intake_output": "~1 L water, small lunch, no urination for hours"},
+ "vitals": [{"time": "16:45", "loc": "A+Ox4", "hr": 88, "rr": 18, "skin": "pale, cool, wet", "bp_note": "radial pulse present", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["possible hypothermia from cold, wet, wind", "fatigue, dehydration, low calories contributing"],
+  "plan": ["stop and shelter from wind/rain", "dry insulating layers, ground insulation", "warm sweet fluids and food if able to swallow", "wrapped hot bottles to trunk/armpits", "reassess; evacuate if not improving or mental status/coordination worsens"],
+  "anticipated_problems": ["continued heat loss", "insufficient dry gear", "other members getting cold", "patient minimizing symptoms"],
+  "teaching_points": ["Hypothermia occurs well above freezing with wet, wind, fatigue, and poor intake.", "'The umbles': stumbles, mumbles, fumbles, grumbles are early signs.", "Stop exposure, rewarm, reassess, then change the objective.", "Ask whether the group can keep the patient warm while moving."],
+  "decision_points": [{"question": "Continue to destination?", "source_decision": "No; camp nearby and modify trip", "basis": ["ongoing rain", "hours of travel left", "improving but at risk"]}]
+ },
+ "outcome": {"summary": "Shivering and coordination improved over 30-45 min; normal by evening; trip modified.", "evacuation_mode": "none", "final_diagnosis": "possible mild hypothermia"},
+ "eval": {"must_recognize": ["hypothermia above freezing", "minimizing symptoms"], "must_ask": ["is he shivering?", "is he fumbling, stumbling, or slurring?", "are his clothes wet?", "can you get out of the wind and rain?"], "must_escalate": "Evacuate if confusion, shivering stops, or no improvement.", "must_not_recommend": ["pushing on in wet clothes", "alcohol", "hot bottles directly on skin"]},
+ "retrieval": {"keywords": ["hypothermia", "wet and cold", "shivering", "rain", "clumsy", "umbles"], "lay_queries": ["he's shivering and fumbling with zippers in the rain", "my friend says he's just tired but he's cold and wet"], "red_flags": ["confusion", "stumbling", "shivering stops"]}
+},
+{
+ "id": "nols-asthma-mountaineering-wildfire-smoke",
+ "title": "Mountaineering student with wheeze and cough in wildfire haze at 8-11k ft",
+ "source": {"ref": "nols", "title": "Case Study: Asthma During an Introductory Mountaineering Course", "url": "https://www.nols.edu/blog/case-study-asthma-during-an-introductory-mountaineering-course/", "published": "2026-10-14", "authors": ["Anne McGowan"]},
+ "classification": {"category": "medical", "conditions": ["asthma", "smoke_exposure", "allergic_reaction", "acute_mountain_sickness"], "primary_condition": "asthma", "mechanism": "exertion_smoke_allergen_dry_air", "acuity": "semi_urgent", "acuity_basis": "Improved with albuterol; objective abandoned and group descended."},
+ "context": {"setting": "wilderness", "activity": "intro mountaineering course", "region": "Sierra Nevada, California", "weather": "early October, clear, dry; wildfire haze day 3", "altitude_m": 2900, "connectivity": "unknown", "responder_training": "WFR trip leader", "resources_available": ["albuterol (patient's)", "fexofenadine", "N95_mask"]},
+ "patient": {"age_years": 22, "age_group": "adult", "sex": "female", "pertinent_history": ["asthma, exercise/cold-triggered", "seasonal allergies (rabbitbrush)", "flew sea level to Reno 4 days earlier"], "medications": ["albuterol PRN (not used today)"], "allergies": ["seasonal environmental"]},
+ "presentation": {"summary": "On an uphill approach in wildfire haze, an experienced hiker develops cough, wheeze, chest tightness and exertional breathlessness she attributed to altitude, so she didn't use her inhaler.", "chief_complaint": "cough, wheeze, chest tightness, SOB on exertion", "symptoms": ["nonproductive cough", "wheeze", "chest tightness", "exertional SOB"], "exam_findings": ["audible expiratory wheezes", "increased work of breathing", "full sentences at rest", "slightly red eyes"], "pertinent_negatives": ["no injury"], "last_intake_output": "~1.5 L water, meals"},
+ "vitals": [
+  {"time": "14:30", "loc": "A+Ox4", "hr": 108, "rr": 26, "rr_quality": "regular, labored", "skin": "pink, warm, dry", "bp_note": "radial pulse present", "pupils": "PERRL"},
+  {"time": "~14:50", "rr": 20, "note": "after albuterol; HR decreased, cough/wheeze improved"}
+ ],
+ "source_management": {
+  "assessment": ["possible asthma exacerbation (exercise, smoke, allergen, dry air)", "possible altitude-related breathing changes", "possible normal exertional dyspnea"],
+  "plan": ["stop ascent, rest", "albuterol 2 puffs per prescription", "reassess RR and work of breathing", "hydrate", "antihistamine on request", "N95 at rest", "evacuate if no improvement, recurrence with minimal exertion, or distress"],
+  "anticipated_problems": ["worsening despite medication", "ongoing smoke exposure", "confusing asthma with altitude illness", "pressure to continue"],
+  "teaching_points": ["Improvement after inhaler doesn't equal readiness for strenuous travel.", "Capable participants minimize symptoms; watch pace and breathing.", "N95s help at rest but are hard to use during exertion.", "The easiest exit may be the planned route."],
+  "decision_points": [{"question": "Continue to objective?", "source_decision": "No; descend", "basis": ["ongoing smoke", "evacuation harder higher up", "recurrence risk"]}]
+ },
+ "outcome": {"summary": "RR 26 -> 20 with albuterol and rest; group descended.", "evacuation_mode": "none", "final_diagnosis": "not stated; likely asthma exacerbation"},
+ "eval": {"must_recognize": ["asthma symptoms misattributed to altitude", "smoke as trigger"], "must_ask": ["do you have asthma or an inhaler?", "wheezing?", "is there smoke or a known allergen?"], "must_escalate": "Evacuate if not improving or recurrence with minimal exertion.", "must_not_recommend": ["pushing to the summit after one inhaler dose"]},
+ "retrieval": {"keywords": ["asthma", "wildfire smoke", "wheeze", "cough", "altitude", "inhaler", "N95"], "lay_queries": ["coughing and wheezing hiking in smoky air", "is it asthma or altitude"], "red_flags": ["labored breathing", "inhaler not helping"]}
+},
+{
+ "id": "nols-xc-ski-fall-lumbar-spine-fracture",
+ "title": "Cross-country skier falls on his back with worsening low back pain in single-digit cold",
+ "source": {"ref": "nols", "title": "Case Study: A Hard Fall While Skiing", "url": "https://www.nols.edu/blog/case-study-a-hard-fall-while-skiing/", "published": "2018-11-07", "authors": ["Tod Schimelpfenig"]},
+ "classification": {"category": "injury", "conditions": ["spine_injury_possible", "shock_possible", "contusion", "hypothermia_mild"], "primary_condition": "spine_injury_possible", "mechanism": "hard_fall_onto_back_skiing", "acuity": "urgent", "acuity_basis": "Midline lumbar tenderness, transient leg tingling; SAR sled evacuation; spine fractures."},
+ "context": {"setting": "wilderness", "activity": "cross-country skiing", "region": "national forest trail system", "weather": "clear, no wind, low teens F", "ambient_temp_c": -11, "connectivity": "limited", "distance_to_care": "3 mi from trailhead; cell signal on nearby ridge", "responder_training": "WFR", "group": "4 skiers", "resources_available": ["extra_layers", "packs", "scarf", "fire", "pine_boughs", "GPS"]},
+ "patient": {"age_years": 30, "age_group": "adult", "sex": "male", "medications": ["ibuprofen 400 mg AM"], "allergies": ["pollen"]},
+ "presentation": {"summary": "Skier falls hard on his back, skis a short way, then collapses gasping. Wind knocked out resolves; he has worsening low back pain and had tingling down both legs for a few minutes.", "chief_complaint": "low back pain", "symptoms": ["worsening low back pain", "transient bilateral leg tingling", "initial gasping"], "exam_findings": ["tenderness over several lumbar vertebrae", "3 in low lumbar bruise", "CSM intact x4"], "pertinent_negatives": ["no LOC", "no rib tenderness", "no blood in urine"], "last_intake_output": "2 L water, snacks"},
+ "vitals": [
+  {"time": "15:00", "loc": "A+Ox4", "hr": 100, "rr_quality": "gasping, uncountable", "skin": "pale, warm, dry", "bp_note": "radial pulse present", "pupils": "PERRL"},
+  {"time": "15:20", "loc": "A+Ox4", "hr": 100, "rr": 12, "rr_quality": "regular, easy", "skin": "pale, warm, dry", "bp_note": "radial pulse present", "pupils": "PERRL", "note": "HR stayed elevated afterward"}
+ ],
+ "source_management": {
+  "assessment": ["possible spine injury"],
+  "plan": ["not a candidate for focused spine assessment (spine pain)", "protect spine: packs as head blocks, scarf collar", "insulate: layers, boughs, fire, dry socks", "send two skiers to ridge to call SAR with GPS location"],
+  "anticipated_problems": ["hypothermia and frostbite (no sleeping bag)", "shock from internal injury"],
+  "teaching_points": ["Spine pain/tenderness rules out field clearance.", "Persistently elevated HR may signal shock.", "Carry gear for a long wait in winter; plan for worst case."],
+  "decision_points": [{"question": "Let him ski out?", "source_decision": "No", "basis": ["worsening midline pain", "transient neuro symptoms"]}]
+ },
+ "outcome": {"summary": "SAR arrived by snowmobile ~2 h after fall; sled transport. Several spine fractures without cord injury.", "evacuation_mode": "sar_team", "final_diagnosis": "lumbar spine fractures, no cord injury"},
+ "eval": {"must_recognize": ["midline back tenderness + transient neuro symptoms = spine injury", "cold exposure during wait"], "must_ask": ["does pressing the spine hurt?", "any numbness or tingling?", "can you insulate him from the snow?"], "must_escalate": "Call SAR; protect spine; prevent hypothermia.", "must_not_recommend": ["letting him ski out", "sitting him up"]},
+ "retrieval": {"keywords": ["back injury", "spine fracture", "ski fall", "lower back pain", "tingling legs", "winter rescue"], "lay_queries": ["fell skiing and my lower back really hurts and legs tingled", "can he ski out with a back injury"], "red_flags": ["midline spine tenderness", "numbness or tingling in legs", "persistent tachycardia"]}
+}
+]

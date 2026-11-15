@@ -1,0 +1,86 @@
+[
+{
+ "id": "mep-pediatric-wilderness-hypothermia-dehydration-ankle",
+ "title": "Teen hiker by a cold stream: hypothermia, dehydration and ankle injury (simulation)",
+ "source": {"ref": "mededportal_pmc", "title": "Wilderness Medicine (Hypothermia, Dehydration, and Ankle Injury): A Pediatric Simulation Case for Medical Trainees", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7331961/", "published": "2020-05-15", "authors": ["Elizabeth Sanseau", "Anita Thomas", "Rosny Daniel", "Julie Augenstein", "Douglas Diekema"]},
+ "classification": {"category": "mixed", "conditions": ["hypothermia_mild", "dehydration", "ankle_injury", "sprain_strain"], "primary_condition": "hypothermia_mild", "mechanism": "wet_cold_exposure_with_ankle_injury", "acuity": "urgent", "acuity_basis": "Learning objectives require EMS activation and transport to higher care."},
+ "context": {"setting": "wilderness", "activity": "hiking (simulation)", "terrain": "remote area beside cold river/stream", "weather": "cold, windy (fan-simulated)", "connectivity": "limited", "distance_to_care": "remote; EMS arrives at end of scenario", "responder_training": "physician_trainee", "group": "ideal 4 learners: lead, survey, runner/EMS caller, helper", "resources_available": ["self-packed cold-weather daypack", "hidden backup bag with 10 essentials"]},
+ "patient": {"age_group": "adolescent", "sex": "male"},
+ "presentation": {"summary": "A teenage hiker lies wet and shivering beside cold water, moaning in pain from an ankle injury. Learners must check scene safety, assess, improvise care from their own packs, call EMS from a remote setting, and transport.", "chief_complaint": "ankle pain, cold", "symptoms": ["shivering", "ankle pain"], "exam_findings": ["wet clothing", "shivering", "stable ankle injury"], "pertinent_negatives": []},
+ "vitals": [],
+ "source_management": {
+  "assessment": ["hypothermia", "dehydration", "stable ankle injury"],
+  "plan": ["scene safety before approach", "pediatric assessment algorithm (PALS) to recognize conditions", "stabilize and improvise with available gear", "activate EMS in remote setting", "safe transport and handoff"],
+  "anticipated_problems": ["actor exaggerates symptoms if learners are slow", "patient may be unable to walk (wilderness variant)", "bystander distraction"],
+  "teaching_points": ["Address hypothermia, dehydration, and injury in parallel.", "Packing appropriate gear is part of preparedness.", "Teamwork and closed-loop communication (TeamSTEPPS)."],
+  "decision_points": [{"question": "Can the patient walk out?", "source_decision": "Variant-dependent: assisted walk (urban) or carry (wilderness)", "basis": ["course type"]}]
+ },
+ "outcome": {"summary": "Scenario ends with EMS arrival and handoff.", "evacuation_mode": "ems_ground"},
+ "eval": {"must_recognize": ["hypothermia", "dehydration", "ankle injury", "scene hazard (water)"], "must_ask": ["is he shivering? confused?", "can he bear weight?", "when did he last drink?"], "must_escalate": "Activate EMS; transport to higher level of care.", "must_not_recommend": ["leaving wet clothes on", "walking on unassessed ankle"], "derived_from": "source_learning_objectives"},
+ "retrieval": {"keywords": ["hypothermia", "teen", "ankle", "dehydration", "cold stream", "simulation"], "lay_queries": ["teenager is wet and shivering by the river and hurt his ankle", "kid fell in a stream and is freezing"], "red_flags": ["shivering with wet clothing", "unable to walk"]},
+ "provenance": {"notes": "Article body only; vitals and detailed flow are in appendices not parsed. CC BY-NC 4.0: noncommercial reuse."}
+},
+{
+ "id": "emsc-exertional-heat-stroke-runner",
+ "title": "58-year-old runner found confused and hyperthermic (exertional heat stroke, ED sim)",
+ "source": {"ref": "emsimcases", "title": "Heat related illness", "url": "https://emsimcases.com/2023/11/03/heat-related-illness/", "published": "2023-11-03", "authors": ["Jared Baylis", "Kelly Huang"]},
+ "classification": {"category": "environmental", "conditions": ["heat_stroke", "altered_mental_status"], "primary_condition": "heat_stroke", "mechanism": "running_in_heat_after_alcohol", "acuity": "life_threat", "acuity_basis": "Hyperthermia with altered mental status = heat stroke; requires active cooling and admission."},
+ "context": {"setting": "hospital_ed", "activity": "running on a hot summer day", "weather": "hot summer day", "connectivity": "available", "responder_training": "EMS/ED team"},
+ "patient": {"age_years": 58, "age_group": "adult", "sex": "male", "pertinent_history": ["alcohol before run"]},
+ "presentation": {"summary": "Bystanders find a runner acting strangely on a hot day; wife reports he drank alcohol before going for a run. Arrives hyperthermic and confused with sinus tachycardia.", "chief_complaint": "confusion and hyperthermia", "symptoms": ["confusion"], "exam_findings": ["hyperthermia", "altered mental status", "sinus tachycardia"], "pertinent_negatives": []},
+ "vitals": [],
+ "source_management": {
+  "assessment": ["exertional heat stroke", "consider other causes of altered mental status"],
+  "plan": ["identify hyperthermia", "active cooling", "search for other causes of confusion", "admit"],
+  "anticipated_problems": [],
+  "teaching_points": ["Exertional and classic heat stroke differ in population and course.", "Active cooling is the core intervention."],
+  "decision_points": []
+ },
+ "outcome": {"summary": "Admission for ongoing treatment.", "evacuation_mode": "ems_ground", "final_diagnosis": "exertional heat stroke"},
+ "eval": {"must_recognize": ["heat stroke: high temperature + altered mental status"], "must_ask": ["is he confused or acting strangely?", "is his skin very hot?", "has he been exercising in heat? alcohol?"], "must_escalate": "Call EMS immediately and begin aggressive cooling on scene (cold water immersion or wet + fanning).", "must_not_recommend": ["waiting for him to recover in the shade without cooling", "giving fluids by mouth to a confused patient"], "derived_from": "editor"},
+ "retrieval": {"keywords": ["heat stroke", "exertional heat stroke", "confused runner", "hyperthermia", "cooling"], "lay_queries": ["runner collapsed in the heat and is confused", "he's burning hot and not making sense"], "red_flags": ["confusion in heat", "very hot skin", "collapse during exercise"]},
+ "provenance": {"notes": "Stem-only record from case web page; full case (vitals, flow, critical actions) is in a .docx that automated fetch could not parse. Drop the docx into data/inbox/ for full extraction. CC BY-SA 4.0."}
+},
+{
+ "id": "emsc-classic-heat-stroke-elderly",
+ "title": "83-year-old found down at home, hot and confused (classic heat stroke, ED sim)",
+ "source": {"ref": "emsimcases", "title": "Classic heat stroke", "url": "https://emsimcases.com/2023/11/20/classic-heat-stroke/", "published": "2023-11-20", "authors": ["Aneesha Thouli", "Brad Stebner"]},
+ "classification": {"category": "environmental", "conditions": ["heat_stroke", "altered_mental_status"], "primary_condition": "heat_stroke", "mechanism": "environmental_heat_vulnerable_elder", "acuity": "life_threat", "acuity_basis": "Heat stroke in a vulnerable older adult."},
+ "context": {"setting": "hospital_ed", "activity": "living independently in apartment", "connectivity": "available", "responder_training": "EMS/ED team"},
+ "patient": {"age_years": 83, "age_group": "older_adult", "sex": "female"},
+ "presentation": {"summary": "Health aide finds an older woman down in her apartment, very warm to touch and confused.", "chief_complaint": "found down, confused, hot", "symptoms": ["confusion"], "exam_findings": ["very warm to touch", "altered mental status"], "pertinent_negatives": []},
+ "vitals": [],
+ "source_management": {
+  "assessment": ["classic heat stroke"],
+  "plan": ["diagnose heat-related illness", "cooling techniques"],
+  "anticipated_problems": [],
+  "teaching_points": ["Comorbidities and medications are risk factors and can mask typical signs like tachycardia.", "Cooling approach differs between classic and exertional heat stroke."],
+  "decision_points": []
+ },
+ "outcome": {"evacuation_mode": "ems_ground", "final_diagnosis": "classic heat stroke"},
+ "eval": {"must_recognize": ["heat stroke can occur without exertion in older adults"], "must_ask": ["is she confused?", "is she hot to touch?", "any heart or blood pressure medicines?"], "must_escalate": "Call EMS; start cooling.", "must_not_recommend": ["assuming normal heart rate excludes heat illness"], "derived_from": "editor"},
+ "retrieval": {"keywords": ["heat stroke", "elderly", "heat wave", "confused and hot", "classic heat stroke"], "lay_queries": ["grandma is really hot and confused during the heat wave", "older person found down in hot apartment"], "red_flags": ["confusion", "hot skin", "older age with medications"]},
+ "provenance": {"notes": "Stem-only record; full case in .docx not parsed. CC BY-SA 4.0. Urban setting; included for heat stroke coverage."}
+},
+{
+ "id": "emsc-boating-propeller-trauma",
+ "title": "Waterskier struck by boat: propeller leg wound, unstable pelvis (ED trauma sim)",
+ "source": {"ref": "emsimcases", "title": "Boating Trauma", "url": "https://emsimcases.com/2024/09/19/boating-trauma/", "published": "2024-09-19", "authors": ["JoAnne Slinn"]},
+ "classification": {"category": "injury", "conditions": ["severe_hemorrhage", "hypovolemic_shock", "multisystem_trauma", "spine_injury_possible", "altered_mental_status", "drowning"], "primary_condition": "severe_hemorrhage", "mechanism": "struck_by_boat_propeller_while_waterskiing", "acuity": "life_threat", "acuity_basis": "Massive extremity hemorrhage, unstable pelvis, needs blood and OR."},
+ "context": {"setting": "prehospital_ems", "activity": "waterskiing", "terrain": "lake", "connectivity": "available", "responder_training": "bystanders then EMS", "resources_available": ["life_jacket", "tourniquet (EMS)", "pelvic_binder (EMS)"]},
+ "patient": {"age_years": 25, "age_group": "adult", "sex": "male", "pertinent_history": ["possible alcohol intoxication"]},
+ "presentation": {"summary": "Waterskier hit at speed by another boat. Friends pull him from the water with heavy bleeding from a propeller wound to the right leg; abdomen bruised, pelvis unstable; altered, possibly from alcohol. Wearing a life jacket with minimal submersion.", "chief_complaint": "leg wound with heavy bleeding", "symptoms": ["altered mental status"], "exam_findings": ["propeller laceration right leg with major blood loss", "unstable pelvis", "abdominal bruising"], "pertinent_negatives": ["no reported LOC", "minimal submersion"]},
+ "vitals": [],
+ "source_management": {
+  "assessment": ["hemorrhagic shock from extremity and pelvic/abdominal trauma"],
+  "plan": ["tourniquet control of leg hemorrhage", "pelvic binder", "spinal stabilization", "trauma team, rapid blood products, airway management, analgesia, OR"],
+  "anticipated_problems": ["airway deterioration", "ongoing hemorrhage"],
+  "teaching_points": ["Prehospital tourniquet, pelvic binder and TXA bridge to definitive hemorrhage control."],
+  "decision_points": []
+ },
+ "outcome": {"evacuation_mode": "ems_ground", "final_diagnosis": "propeller injury with hemorrhagic shock, pelvic and abdominal trauma"},
+ "eval": {"must_recognize": ["life-threatening limb bleeding", "pelvic injury"], "must_ask": ["is the bleeding controlled?", "is he breathing and awake?", "has someone called emergency services?"], "must_escalate": "Call EMS; apply tourniquet high and tight; keep still.", "must_not_recommend": ["removing the tourniquet", "rocking or springing the pelvis"], "derived_from": "editor"},
+ "retrieval": {"keywords": ["boat propeller", "waterskiing accident", "severe bleeding", "tourniquet", "pelvis", "lake"], "lay_queries": ["boat hit my friend and his leg is bleeding a lot", "propeller cut his leg"], "red_flags": ["spurting or pooling blood", "altered mental status", "pelvic pain or instability"]},
+ "provenance": {"notes": "Stem-only record from case web page; full case in .docx (boating-accident-scenario.docx) not parsed. CC BY-SA 4.0."}
+}
+]

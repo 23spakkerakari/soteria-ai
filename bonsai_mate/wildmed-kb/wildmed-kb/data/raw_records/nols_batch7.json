@@ -1,0 +1,65 @@
+[
+{
+ "id": "nols-knee-injury-wind-rivers",
+ "title": "Backpacker twists knee in a standing fall on technical terrain",
+ "source": {"ref": "nols", "title": "Case Study: Injured Knee in the Wind River Mountains", "url": "https://www.nols.edu/blog/case-study-injured-knee-in-the-wind-river-mountains/", "published": "2023-09-22", "authors": ["Robin Larson"]},
+ "classification": {"category": "injury", "conditions": ["knee_injury", "sprain_strain", "contusion", "abrasion"], "primary_condition": "knee_injury", "mechanism": "fall_from_standing_onto_side", "acuity": "field_manageable", "acuity_basis": "Usable knee; braced and assisted walk-out same day."},
+ "context": {"setting": "wilderness", "activity": "4-day backpacking loop, day 2", "region": "Wind River Mountains, Wyoming", "weather": "autumn, sunny days, cool nights", "connectivity": "unknown", "distance_to_care": "~5 mi back to car", "responder_training": "WFR", "group": "2", "resources_available": ["brace_materials", "coban", "gauze", "antibiotic_ointment"]},
+ "patient": {"age_years": 27, "age_group": "adult", "sex": "male", "medications": ["ibuprofen 400 mg AM"], "allergies": ["shellfish"]},
+ "presentation": {"summary": "Five miles into a loop, a hiker falls from standing onto his side on technical terrain and injures his right knee.", "chief_complaint": "right knee pain", "symptoms": ["throbbing knee pain"], "exam_findings": ["2x2 in bruise lateral right knee", "knee swollen and tender", "right palm abrasions", "CSM intact x4"], "pertinent_negatives": ["no head strike", "no LOC", "no neck/back pain"], "last_intake_output": "oatmeal, coffee, 1 L water"},
+ "vitals": [
+  {"time": "10:15", "loc": "A+Ox4", "hr": 88, "rr": 24, "skin": "pink, warm, dry", "bp_note": "strong radial", "pupils": "PERRL"},
+  {"time": "11:00", "loc": "A+Ox4", "hr": 64, "rr": 12, "skin": "pink, warm, dry", "bp_note": "strong radial", "pupils": "PERRL"}
+ ],
+ "source_management": {
+  "assessment": ["right knee injury", "hand abrasions", "spine injury unlikely by mechanism"],
+  "plan": ["usability test: can bear weight", "improvised knee brace, walk out with assistance and shared pack weight", "clean, irrigate and dress hand abrasions"],
+  "anticipated_problems": ["knee becomes unusable", "wound infection"],
+  "teaching_points": ["Usability, not diagnosis: usable -> pain control and brace/tape; unusable -> immobilize and evacuate.", "Check CSM before and after splinting.", "RICE: ice 20-40 min every 2-4 h, compression, elevation."],
+  "decision_points": [{"question": "Usable?", "source_decision": "Yes", "basis": ["bears weight"]}]
+ },
+ "outcome": {"summary": "Turned back, reached car at dusk with assistance.", "evacuation_mode": "assisted_walk"},
+ "eval": {"must_recognize": ["usable vs unusable joint injury"], "must_ask": ["can you put weight on it?", "does the knee lock or give way?", "can you feel your foot?"], "must_escalate": "Immobilize and evacuate if unable to bear weight.", "must_not_recommend": ["continuing deeper into the loop on an injured knee"]},
+ "retrieval": {"keywords": ["knee injury", "twisted knee", "knee brace", "sprain", "usability test"], "lay_queries": ["I fell and hurt my knee and it's swelling", "can I hike out on a hurt knee"], "red_flags": ["cannot bear weight", "deformity", "numb foot"]}
+},
+{
+ "id": "nols-climbing-fall-kalymnos-ankle",
+ "title": "Handhold breaks: climber swings into wall with deformed ankle, abroad",
+ "source": {"ref": "nols", "title": "Case Study: A Climbing Fall in Greece", "url": "https://www.nols.edu/blog/case-study-a-climbing-fall-in-greece/", "published": "2024-11-18"},
+ "classification": {"category": "injury", "conditions": ["ankle_injury", "fracture_closed", "dislocation"], "primary_condition": "ankle_injury", "mechanism": "lead_fall_swing_feet_first_into_wall", "acuity": "urgent", "acuity_basis": "Deformed, unusable ankle; carry-out to EMS."},
+ "context": {"setting": "wilderness", "activity": "sport climbing", "region": "Kalymnos, Greece", "terrain": "crowded limestone crag, steep trail", "connectivity": "available", "distance_to_care": "0.5 km carry + 1.2 km 4WD to parking lot EMS; EU emergency number 112", "responder_training": "WFR + WEMT", "group": "climbers and bystanders", "resources_available": ["first_aid_kit", "climbing_pack_items", "4-wheeler"]},
+ "patient": {"age_years": 37, "age_group": "adult", "sex": "female", "medications": ["antidepressant"], "allergies": ["penicillin"]},
+ "presentation": {"summary": "A handhold breaks and a climber swings feet first into the wall, screaming in pain. Bystanders crowd in; 112 caller struggles to give the island name.", "chief_complaint": "left ankle pain", "symptoms": ["ankle pain"], "exam_findings": ["deformed left ankle", "decreased foot motion; toes move", "circulation and sensation intact"], "pertinent_negatives": ["no head/neck/back pain", "no LOC", "no other injuries"]},
+ "vitals": [{"time": "15:30", "loc": "A+Ox4", "hr": 78, "rr": 14, "skin": "pink, warm, dry", "bp_note": "radial pulse present", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["unusable left ankle injury; cannot walk"],
+  "plan": ["call local EMS (112), meet at parking lot", "padded rigid splint of foot and lower leg", "carry 0.5 km then 4-wheeler to lot"],
+  "anticipated_problems": ["language barrier", "carrying over rough terrain"],
+  "teaching_points": ["Slow the scene down and complete a full assessment.", "Include and support the patient; manage bystanders.", "Splint: padded, adjustable, rigid; immobilize bones above and below the joint; check CSM.", "Know the local emergency number and precise location when traveling."],
+  "decision_points": [{"question": "Usable?", "source_decision": "No; splint and carry", "basis": ["deformity", "cannot walk"]}]
+ },
+ "outcome": {"summary": "Not reported.", "evacuation_mode": "litter_carry"},
+ "eval": {"must_recognize": ["deformed ankle = immobilize, no walking", "location reporting abroad"], "must_ask": ["can she feel and move her toes?", "is the foot warm and pink?", "do you know your exact location / local emergency number?"], "must_escalate": "Call local EMS (112 in EU) and evacuate.", "must_not_recommend": ["walking on a deformed ankle"]},
+ "retrieval": {"keywords": ["ankle fracture", "broken ankle", "climbing fall", "splint", "112", "travel abroad"], "lay_queries": ["climber fell and her ankle is bent the wrong way", "what's the emergency number in Greece", "how to splint an ankle"], "red_flags": ["deformity", "cold or numb foot"]}
+},
+{
+ "id": "nols-embedded-tick-appalachian-trail",
+ "title": "Engorged tick found on day 6 of an Appalachian Trail hike",
+ "source": {"ref": "nols", "title": "Case Study: Embedded Tick while Backpacking", "url": "https://www.nols.edu/blog/case-study-embedded-tick-while-backpacking/", "published": "2025-07-09", "authors": ["Robin Larson"]},
+ "classification": {"category": "medical", "conditions": ["tick_borne_illness"], "primary_condition": "tick_borne_illness", "mechanism": "tick_bite", "acuity": "semi_urgent", "acuity_basis": "Engorged tick in Lyme-endemic area: clinic within 72 h for prophylaxis."},
+ "context": {"setting": "wilderness", "activity": "backpacking", "region": "Appalachian Trail, New York", "connectivity": "unknown", "distance_to_care": "exiting next day", "responder_training": "WFR", "resources_available": ["tweezers", "soap", "phone_camera"]},
+ "patient": {"age_years": 22, "age_group": "adult", "sex": "male", "pertinent_history": ["asthma"], "medications": ["albuterol"], "allergies": ["penicillin"]},
+ "presentation": {"summary": "During a break a hiker finds a small engorged tick embedded in his leg.", "chief_complaint": "there is a tick on me", "symptoms": [], "exam_findings": ["small engorged embedded tick on leg"], "pertinent_negatives": ["no rash", "no fever", "no other injuries"]},
+ "vitals": [{"time": "14:00", "loc": "A+Ox4", "hr": 94, "rr": 16, "skin": "warm, dry", "bp_note": "strong radial", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["embedded, engorged tick"],
+  "plan": ["remove with tweezers close to skin, steady pull", "wash with soap and water", "photograph tick", "see clinician within 72 h for prophylaxis"],
+  "anticipated_problems": ["becoming ill in the backcountry"],
+  "teaching_points": ["Lyme disease is the most common US tick-borne illness.", "No ointments, chemicals, or heat to remove ticks.", "Watch for rash/ulcer, aches, joint pain, fever.", "Engorged tick in endemic area: see a provider within 72 h for prophylaxis; anyone with rash, aches or fever should be evacuated.", "Prevention: long sleeves/pants, DEET/picaridin/IR3535, permethrin on clothing, tick checks twice daily."],
+  "decision_points": [{"question": "Evacuate now?", "source_decision": "No; clinic on exit next day", "basis": ["no symptoms", "within 72 h window"]}]
+ },
+ "outcome": {"summary": "Finished trip; clinic prescribed prophylactic antibiotic.", "evacuation_mode": "none", "final_diagnosis": "tick bite (Lyme-endemic area)"},
+ "eval": {"must_recognize": ["engorged tick in endemic area warrants prophylaxis consideration"], "must_ask": ["how long was it attached / is it engorged?", "where are you (Lyme area)?", "any rash, fever, aches?"], "must_escalate": "See a clinician within 72 h; sooner if rash or fever.", "must_not_recommend": ["burning, smothering, or twisting off the tick"]},
+ "retrieval": {"keywords": ["tick", "tick removal", "Lyme disease", "tick bite", "engorged tick"], "lay_queries": ["found a tick stuck in my leg", "how do I get a tick out", "do I need antibiotics after a tick bite"], "red_flags": ["bullseye rash", "fever", "joint pain"]}
+}
+]

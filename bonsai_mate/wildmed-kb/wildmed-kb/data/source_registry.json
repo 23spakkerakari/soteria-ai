@@ -1,0 +1,72 @@
+{
+  "nols": {
+    "organization": "NOLS Wilderness Medicine",
+    "source_type": "educational_case_study",
+    "license": "All rights reserved (NOLS)",
+    "reuse_status": "internal_reference_only",
+    "index_url": "https://www.nols.edu/wilderness-medicine/curriculum-resources/",
+    "access": "open web, answer keys at ?answer=view",
+    "ingested": true,
+    "notes": "Facts paraphrased into structured fields; no verbatim narrative stored. Get written permission before shipping derived content in a commercial product."
+  },
+  "mededportal_pmc": {
+    "organization": "MedEdPORTAL (AAMC) via PubMed Central",
+    "source_type": "peer_reviewed_simulation",
+    "license": "CC BY-NC 4.0",
+    "reuse_status": "noncommercial_only",
+    "index_url": "https://www.mededportal.org/",
+    "access": "open access article; full case script lives in appendices",
+    "ingested": true,
+    "notes": "Article body has objectives and flow but no vitals; appendices not parsed."
+  },
+  "emsimcases": {
+    "organization": "EM Sim Cases",
+    "source_type": "simulation_case",
+    "license": "CC BY-SA 4.0",
+    "reuse_status": "redistributable_attribution",
+    "index_url": "https://emsimcases.com/cases-by-category/",
+    "access": "open web",
+    "ingested": true,
+    "notes": "ShareAlike: derived dataset must carry CC BY-SA if redistributed."
+  },
+  "jetem": {
+    "organization": "JETem (Journal of Education and Teaching in Emergency Medicine)",
+    "source_type": "peer_reviewed_simulation",
+    "license": "CC BY 4.0 (verify per article)",
+    "reuse_status": "redistributable_attribution",
+    "index_url": "https://jetem2.org/",
+    "access": "open access",
+    "ingested": false,
+    "notes": "See ingestion_status in README."
+  },
+  "ucsf_bec": {
+    "organization": "UCSF / WHO Basic Emergency Care",
+    "source_type": "simulation_case",
+    "license": "unverified",
+    "reuse_status": "internal_reference_only",
+    "index_url": "https://emergencycare.ucsf.edu/basic-emergency-care-course-adjuncts",
+    "access": "site refused automated fetch",
+    "ingested": false,
+    "notes": "Download case PDFs manually and drop into data/inbox/."
+  },
+  "redcross": {
+    "organization": "American Red Cross Learning Center",
+    "source_type": "first_aid_course_material",
+    "license": "All rights reserved",
+    "reuse_status": "internal_reference_only",
+    "index_url": "https://www.redcrosslearningcenter.org/s/candidate-resources-first-aid-cpr-aed-25",
+    "access": "candidate resources behind course portal",
+    "ingested": false,
+    "notes": "Better used as clinical-authority layer than as scenario source."
+  },
+  "onscene": {
+    "organization": "On Scene CPD",
+    "source_type": "simulation_case",
+    "license": "Proprietary",
+    "reuse_status": "internal_reference_only",
+    "index_url": "https://www.onscenecpd.com/",
+    "access": "interactive app behind account",
+    "ingested": false,
+    "notes": "Not scrapeable; use for design reference (multi-step decision trees)."
+  }
+}

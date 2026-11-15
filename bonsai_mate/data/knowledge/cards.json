@@ -1,0 +1,279 @@
+[
+  {
+    "card_id": "KB_BLEEDING_SEVERE",
+    "title": "Severe bleeding",
+    "keywords": ["bleeding", "blood", "bleed", "cut", "gash", "wound", "laceration", "stabbed", "knife", "axe", "spurting", "gushing", "soaked", "tourniquet", "sliced", "deep"],
+    "recognize": [
+      "Blood that is spurting, pouring, or pooling",
+      "Blood soaking through clothing or bandages",
+      "A deep or gaping wound"
+    ],
+    "do_first": [
+      "Press hard directly on the wound with a clean cloth, clothing, or a bare hand. Keep pressing without lifting to look.",
+      "If blood soaks through, add more cloth on top and press harder. Do not remove the first layer.",
+      "If life-threatening bleeding from an arm or leg does not stop with direct pressure, apply a tourniquet 2 to 3 inches (5 to 8 cm) above the wound, not over a joint. Tighten until the bleeding stops and note the time.",
+      "Once bleeding is controlled, bandage firmly, keep the person lying down and keep them warm."
+    ],
+    "do_not": [
+      "Do not remove an object that is stuck in the wound; pad around it",
+      "Do not keep lifting the dressing to check",
+      "Do not loosen or remove a tourniquet once it is on"
+    ],
+    "escalate_when": [
+      "Bleeding does not stop after 10 minutes of firm pressure",
+      "A tourniquet was needed",
+      "The person is pale, cold, sweaty, confused, or faint",
+      "The wound is to the chest, belly, neck, or groin"
+    ],
+    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_HYPOTHERMIA",
+    "title": "Hypothermia (dangerously cold)",
+    "keywords": ["cold", "freezing", "hypothermia", "shivering", "shiver", "shaking", "shake", "wet", "soaked", "snow", "snowstorm", "stumbling", "stumble", "mumbling", "clumsy", "numb", "chilled", "frozen", "blizzard", "river", "fell in"],
+    "recognize": [
+      "Shivering that will not stop",
+      "Stumbling, fumbling hands, slurred or mumbled speech",
+      "Confusion, unusual behaviour, or wanting to lie down and sleep",
+      "Severe: shivering has stopped, very drowsy, or unresponsive"
+    ],
+    "do_first": [
+      "Get out of wind, rain, and snow. Use any shelter: tent, tarp, trees, a vehicle.",
+      "Gently replace wet clothing with dry layers. Cover the head and neck.",
+      "Insulate from the ground with a pad, pack, or branches, then wrap in a sleeping bag, blankets, or a tarp.",
+      "If fully alert and able to swallow, give warm sweet drinks and high-energy food.",
+      "Put warm (not hot) water bottles or heat packs, wrapped in cloth, on the chest, armpits, and groin.",
+      "Handle gently and keep the person lying flat if they are drowsy or confused."
+    ],
+    "do_not": [
+      "Do not give alcohol",
+      "Do not rub or massage the arms and legs",
+      "Do not give food or drink to someone who is drowsy or confused",
+      "Do not put the person in a hot bath or right next to a fire",
+      "Do not let a confused or stumbling person keep walking"
+    ],
+    "escalate_when": [
+      "Confusion, slurred speech, or stumbling",
+      "Shivering has stopped but the person is still cold",
+      "Drowsy, hard to wake, or unresponsive",
+      "No improvement after an hour of rewarming"
+    ],
+    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_HEAT_ILLNESS",
+    "title": "Heat exhaustion and heat stroke",
+    "keywords": ["heat", "hot", "overheated", "overheating", "sun", "sunstroke", "heatstroke", "desert", "dizzy", "faint", "cramps", "sweating", "sweat", "headache", "nausea", "thirsty", "dehydrated", "dehydration", "flushed", "burning up"],
+    "recognize": [
+      "Heat exhaustion: heavy sweating, headache, dizziness, nausea, cramps, weakness",
+      "Heat stroke (emergency): confusion, odd behaviour, collapse, seizure, or very hot skin"
+    ],
+    "do_first": [
+      "Stop all activity and move into shade.",
+      "Loosen or remove extra clothing.",
+      "Cool the person: wet the skin and clothing and fan them. Put cool wet cloths on the neck, armpits, and groin.",
+      "If fully alert, have them sip water, with electrolytes or a salty snack if available.",
+      "If they are confused, collapsed, or seizing, treat it as heat stroke: cool them as fast as you can, with cool-water immersion if there is safe water nearby, and keep cooling."
+    ],
+    "do_not": [
+      "Do not let the person keep hiking",
+      "Do not give fluids to someone who is confused, drowsy, or vomiting",
+      "Do not leave the person alone"
+    ],
+    "escalate_when": [
+      "Confusion, slurred speech, or unusual behaviour",
+      "Collapse, fainting, or seizure",
+      "Vomiting that keeps them from drinking",
+      "No improvement after 30 minutes of rest and cooling"
+    ],
+    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_HEAD_INJURY",
+    "title": "Head injury",
+    "keywords": ["head", "skull", "concussion", "knocked", "blow", "hit", "bumped", "rock", "fell", "fall", "dazed", "vomiting", "headache", "helmet", "blacked out", "memory", "pupils"],
+    "recognize": [
+      "A blow to the head followed by headache, dizziness, nausea, or feeling dazed",
+      "Memory gaps or repeating the same questions",
+      "Any loss of consciousness, even brief"
+    ],
+    "do_first": [
+      "Stop activity and have the person rest.",
+      "If the hit was hard or they fell from a height, assume the neck may be injured: keep the head and neck still.",
+      "Control any scalp bleeding with gentle, firm pressure.",
+      "Stay with them and check them often: are they alert, making sense, moving normally? Wake them every few hours overnight.",
+      "If they become unresponsive but are breathing, roll them onto their side while supporting the head and neck."
+    ],
+    "do_not": [
+      "Do not leave the person alone",
+      "Do not let them continue climbing, riding, or hiking difficult terrain that day",
+      "Do not give alcohol or sedating medication",
+      "Do not press on a skull that feels soft or dented"
+    ],
+    "escalate_when": [
+      "Loss of consciousness, or growing drowsiness",
+      "Headache that keeps getting worse",
+      "Repeated vomiting",
+      "Confusion, slurred speech, or unusual behaviour",
+      "Seizure, weakness, numbness, or unequal pupils",
+      "Clear fluid or blood from the nose or ears"
+    ],
+    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_LIMB_INJURY",
+    "title": "Sprain, fracture, or injured limb",
+    "keywords": ["ankle", "leg", "arm", "wrist", "knee", "foot", "shoulder", "broken", "break", "fracture", "sprain", "sprained", "twisted", "rolled", "swollen", "swelling", "splint", "bone", "limp", "walk", "weight", "dislocated", "snap", "crack"],
+    "recognize": [
+      "Pain, swelling, or bruising after a fall or twist",
+      "Cannot use the limb or put weight on it",
+      "Limb looks bent or out of shape, or you heard a snap"
+    ],
+    "do_first": [
+      "Stop and take weight off the limb.",
+      "Check beyond the injury: can they feel your touch, wiggle fingers or toes, and is the skin warm and pink?",
+      "Splint it in a comfortable position with padding and something rigid (trekking poles, sticks, a sleeping pad), holding the joints above and below the injury still.",
+      "Cover any open wound with a clean dressing before splinting.",
+      "Raise the limb and cool it with cold water or snow wrapped in cloth, 20 minutes at a time.",
+      "Recheck feeling, movement, and colour after splinting and every so often after."
+    ],
+    "do_not": [
+      "Do not force a bent limb straight",
+      "Do not push a bone end back into a wound",
+      "Do not tie the splint so tight that fingers or toes go numb, cold, or blue",
+      "Do not let them walk on a leg that cannot take weight"
+    ],
+    "escalate_when": [
+      "Bone showing through the skin",
+      "Fingers or toes beyond the injury are numb, cold, pale, or blue",
+      "The limb is clearly out of shape",
+      "The injury is to the thigh, hip, pelvis, back, or neck",
+      "They cannot bear any weight and you are far from the trailhead"
+    ],
+    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_ANAPHYLAXIS",
+    "title": "Severe allergic reaction (anaphylaxis)",
+    "keywords": ["allergic", "allergy", "reaction", "anaphylaxis", "sting", "stung", "bee", "wasp", "hornet", "hives", "swelling", "swollen", "throat", "tongue", "lips", "wheezing", "wheeze", "epipen", "epinephrine", "nuts", "peanut", "itchy", "rash"],
+    "recognize": [
+      "After a sting, food, or medication: swelling of the lips, tongue, face, or throat",
+      "Trouble breathing, wheezing, or a tight throat",
+      "Hives over large areas, vomiting, dizziness, or collapse"
+    ],
+    "do_first": [
+      "If they have an epinephrine auto-injector (EpiPen), use it now in the outer mid-thigh. It can go through clothing.",
+      "Lay them down with legs raised. If breathing is hard, let them sit up instead.",
+      "If there is no improvement after 5 to 15 minutes and a second auto-injector is available, give the second dose.",
+      "If it was a sting, scrape the stinger off.",
+      "Stay with them and watch their breathing. Symptoms can come back hours later."
+    ],
+    "do_not": [
+      "Do not wait to see if it gets better before using epinephrine",
+      "Do not rely on antihistamine tablets alone for a severe reaction",
+      "Do not let them stand up or walk"
+    ],
+    "escalate_when": [
+      "Any trouble breathing or swelling of the throat or tongue",
+      "Epinephrine was used, even if they now feel better",
+      "Dizziness, fainting, or collapse",
+      "No epinephrine is available"
+    ],
+    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_UNRESPONSIVE_CPR",
+    "title": "Unresponsive person and CPR",
+    "keywords": ["unresponsive", "unconscious", "collapsed", "collapse", "breathing", "pulse", "cpr", "heart", "cardiac", "arrest", "wake", "passed out", "fainted", "gasping", "lifeless", "aed", "drowned", "drowning", "responding"],
+    "recognize": [
+      "Does not respond when you shout and tap their shoulders",
+      "Not breathing, or only gasping now and then"
+    ],
+    "do_first": [
+      "Make sure it is safe to approach, then shout and tap their shoulders.",
+      "Send someone for help and for an AED if one could be nearby.",
+      "Tilt the head back and check breathing for no more than 10 seconds.",
+      "Not breathing normally: start CPR. Push hard and fast on the centre of the chest, about 2 inches (5 cm) deep, 100 to 120 pushes a minute.",
+      "After every 30 pushes give 2 rescue breaths if you are able to. If not, keep pushing without stopping.",
+      "Use an AED as soon as one arrives and follow its voice prompts.",
+      "Breathing normally but unresponsive: roll them onto their side and keep watching their breathing."
+    ],
+    "do_not": [
+      "Do not stop CPR to recheck for longer than 10 seconds",
+      "Do not give food or drink",
+      "Do not leave an unresponsive person lying on their back unattended"
+    ],
+    "escalate_when": [
+      "Always: an unresponsive person needs emergency help by any means available"
+    ],
+    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_BURNS",
+    "title": "Burns",
+    "keywords": ["burn", "burned", "burnt", "scald", "scalded", "fire", "campfire", "stove", "boiling", "blister", "blisters", "flame", "hot water", "steam", "fuel"],
+    "recognize": [
+      "Red, painful skin, or blisters after contact with heat",
+      "Deep burns may look white, leathery, or charred and hurt less"
+    ],
+    "do_first": [
+      "Stop the burning: move away from the heat, and smother flames on clothing.",
+      "Cool the burn with cool running water for 20 minutes. Clean stream or bottle water is fine.",
+      "Remove rings, watches, and tight clothing near the burn before it swells.",
+      "Cover loosely with a clean non-stick dressing or clean plastic wrap.",
+      "Keep the rest of the person warm while you cool the burn."
+    ],
+    "do_not": [
+      "Do not use ice or ice water",
+      "Do not put butter, oil, toothpaste, or ointment on a fresh burn",
+      "Do not pop blisters",
+      "Do not pull off clothing that is stuck to the burn"
+    ],
+    "escalate_when": [
+      "The burn is larger than the person's palm and blistered or deep",
+      "Burns to the face, hands, feet, genitals, or over a joint",
+      "Burns that go all the way around a limb",
+      "Burns from electricity, lightning, or chemicals",
+      "Breathing trouble, a hoarse voice, or soot around the mouth and nose"
+    ],
+    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "clinical_review": "pending"
+  },
+  {
+    "card_id": "KB_SNAKEBITE",
+    "title": "Snakebite",
+    "keywords": ["snake", "snakebite", "bite", "bitten", "bit", "rattlesnake", "viper", "venom", "venomous", "fang", "fangs", "copperhead", "adder", "cobra"],
+    "recognize": [
+      "A bite from a snake, with or without visible fang marks",
+      "Pain, swelling, or bruising that spreads from the bite",
+      "Nausea, weakness, tingling, or trouble breathing"
+    ],
+    "do_first": [
+      "Move away from the snake. Do not try to catch or kill it.",
+      "Keep the person calm and as still as possible.",
+      "Remove rings, watches, and tight clothing from the bitten limb before it swells.",
+      "Keep the bitten limb still, in a comfortable position.",
+      "Mark the edge of the swelling on the skin and write the time next to it.",
+      "Start getting the person to medical care. Antivenom is the treatment, and it is only available at a hospital."
+    ],
+    "do_not": [
+      "Do not cut the bite",
+      "Do not try to suck out the venom",
+      "Do not apply a tourniquet",
+      "Do not apply ice",
+      "Do not give alcohol"
+    ],
+    "escalate_when": [
+      "Always: any suspected venomous snakebite needs evacuation to a hospital"
+    ],
+    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "clinical_review": "pending"
+  }
+]

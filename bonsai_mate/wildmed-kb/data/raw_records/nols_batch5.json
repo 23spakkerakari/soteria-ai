@@ -1,0 +1,257 @@
+[
+{
+ "id": "nols-chest-injury-bouldering-fall",
+ "title": "Bouldering fall onto ribs with worsening breathing",
+ "source": {"ref": "nols", "title": "Case Study: Chest Injury with Fall", "url": "https://www.nols.edu/blog/case-study-chest-injury-with-fall/", "published": "2026-09-09", "authors": ["Anne McGowan"]},
+ "classification": {"category": "injury", "conditions": ["chest_trauma", "rib_fracture", "pneumothorax", "spine_injury_possible", "abrasion", "shock_possible"], "primary_condition": "chest_trauma", "mechanism": "10ft_bouldering_fall_onto_right_side", "acuity": "urgent", "acuity_basis": "Shortness of breath with worsening HR/RR and pale clammy skin; 911 and assisted walk-out to EMS."},
+ "context": {"setting": "wilderness", "activity": "bouldering", "region": "Red Rocks, Nevada", "connectivity": "limited", "distance_to_care": "cell service at parking area; EMS met group on walk-out", "responder_training": "WFR", "group": "other climbers"},
+ "patient": {"age_years": 20, "age_group": "adult", "sex": "female", "medications": ["multivitamin", "cetirizine PRN"], "allergies": ["pineapple", "seasonal"]},
+ "presentation": {"summary": "Climber's hand slips and she falls about 10 ft onto her right side. Bystander WFR finds her on her side with right rib pain and shortness of breath.", "chief_complaint": "right rib pain", "symptoms": ["right rib pain", "shortness of breath"], "exam_findings": ["bruising and tenderness right rib cage", "labored breathing", "small right arm/hand abrasions"], "pertinent_negatives": ["CSM intact x4"], "last_intake_output": "normal"},
+ "vitals": [
+  {"time": "16:45", "loc": "A+Ox4", "hr": 88, "hr_quality": "strong, regular", "rr": 24, "rr_quality": "regular, labored", "skin": "pink, warm, dry", "bp_note": "radial pulse present", "pupils": "PERRL"},
+  {"time": "17:05", "loc": "A+Ox4", "hr": 110, "hr_quality": "strong, regular", "rr": 28, "rr_quality": "regular, labored", "skin": "pale, cool, clammy", "bp_note": "radial pulse present", "pupils": "PERRL"}
+ ],
+ "source_management": {
+  "assessment": ["possible right chest-wall injury", "possible lung injury (pneumothorax) given SOB", "abrasions", "possible spine injury"],
+  "plan": ["full assessment then focused spine assessment", "position of comfort, monitor breathing, encourage deep breaths", "clean and dress abrasions", "evacuate if breathing worsens"],
+  "anticipated_problems": ["worsening respiratory status complicating evacuation"],
+  "teaching_points": ["Rib fracture signs: point tenderness, splinting, pain on inspiration, shallow breathing.", "Lung injury signs: SOB at rest, chest wall instability, rising HR/RR, pale cool clammy skin.", "Worsening: respiratory distress, crackling under skin, diminished breath sounds one side, cyanosis, distended neck veins, tracheal shift.", "Care: stabilize, position of comfort, seal open wounds, consider sling and swathe, deep breaths; evacuate if SOB increases."],
+  "decision_points": [{"question": "Evacuate?", "source_decision": "Yes, call 911 and move toward road", "basis": ["HR 88->110", "RR 24->28", "skin became pale, cool, clammy"]}]
+ },
+ "outcome": {"summary": "Friend called 911 from parking area; EMS met the group en route.", "evacuation_mode": "ems_ground"},
+ "eval": {"must_recognize": ["possible pneumothorax", "worsening vital trend"], "must_ask": ["is breathing getting harder?", "is the pain worse when breathing in?", "lips blue?"], "must_escalate": "Call EMS for chest injury with shortness of breath, especially if worsening.", "must_not_recommend": ["tight chest wrapping", "continuing to climb"]},
+ "retrieval": {"keywords": ["rib injury", "chest injury", "broken ribs", "pneumothorax", "short of breath after fall", "bouldering"], "lay_queries": ["fell on my side and it hurts to breathe", "my friend fell climbing and is breathing fast and getting pale"], "red_flags": ["shortness of breath after chest trauma", "rising HR and RR", "pale clammy skin"]}
+},
+{
+ "id": "nols-bear-spray-face-exposure",
+ "title": "Accidental bear spray discharge into the face",
+ "source": {"ref": "nols", "title": "Case Study: Bear Spray in the Face", "url": "https://www.nols.edu/blog/case-study-bear-spray-in-the-face/", "published": "2026-08-05", "authors": ["Anne McGowan"]},
+ "classification": {"category": "injury", "conditions": ["chemical_exposure", "eye_injury"], "primary_condition": "chemical_exposure", "mechanism": "accidental_capsaicin_spray_discharge", "acuity": "field_manageable", "acuity_basis": "Symptoms resolved with irrigation; walked out 1 mile."},
+ "context": {"setting": "wilderness", "activity": "backpacking", "region": "Wind River Range, Wyoming", "terrain": "trail along large creek", "connectivity": "unknown", "distance_to_care": "~1 mi to trailhead", "responder_training": "WFR", "group": "3", "resources_available": ["creek_water", "dish_soap"]},
+ "patient": {"age_years": 28, "age_group": "adult", "sex": "male", "medications": ["ibuprofen 400 mg AM"]},
+ "presentation": {"summary": "While taking off a pack, a bear spray canister catches on the hip belt, the safety pops and it discharges into the hiker's face.", "chief_complaint": "bear spray in my face", "symptoms": ["burning face pain", "eye irritation"], "exam_findings": ["facial redness and swelling", "red irritated eyes, hard to examine, PERRL"], "pertinent_negatives": ["no other injuries", "no breathing difficulty"], "last_intake_output": "normal"},
+ "vitals": [{"time": "14:25", "loc": "A+Ox4", "hr": 96, "hr_quality": "strong, regular", "rr": 18, "rr_quality": "regular, easy", "skin": "pink, warm, dry", "bp_note": "radial pulse present", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["eye and face exposure to bear spray"],
+  "plan": ["move upwind out of contaminated area", "remove contact lenses", "irrigate copiously with cool clean water", "do not rub", "monitor for airway or systemic signs", "clean contaminated gear"],
+  "anticipated_problems": ["allergic reaction", "temporary vision problems limiting walk-out"],
+  "teaching_points": ["Capsaicin binds skin and mucous membranes causing intense burning.", "Use cool water; warm water worsens it.", "Usually resolves within hours; seek care if persistent or allergic signs.", "Prevention: keep safety on, careful pack handling."],
+  "decision_points": [{"question": "Walk out?", "source_decision": "Yes once able to see and stand, following creek for more irrigation", "basis": ["symptoms easing after ~45 min irrigation"]}]
+ },
+ "outcome": {"summary": "Partial eye opening after 45 min irrigation, walking after 20 more min; hiked 1 mi out.", "evacuation_mode": "self_evac_walk", "final_diagnosis": "capsaicin exposure"},
+ "eval": {"must_recognize": ["chemical eye exposure needs prolonged irrigation"], "must_ask": ["contact lenses?", "any trouble breathing or throat swelling?", "can you see?"], "must_escalate": "Seek care if breathing problems, vision doesn't recover, or symptoms persist.", "must_not_recommend": ["warm water", "rubbing eyes", "milk as primary irrigant over water"]},
+ "retrieval": {"keywords": ["bear spray", "pepper spray", "capsaicin", "eyes burning", "chemical in eyes"], "lay_queries": ["I sprayed bear spray in my face", "pepper spray in eyes what do I do"], "red_flags": ["breathing difficulty", "persistent vision loss"]}
+},
+{
+ "id": "nols-wildland-fire-heat-exhaustion",
+ "title": "Unacclimatized wildland firefighter with dizziness and nausea",
+ "source": {"ref": "nols", "title": "Case Study: Heat Illness on an Early-Season Wildland Fire Assignment", "url": "https://www.nols.edu/blog/heat-illness-on-an-early-season-wildland-fire-assignment/", "published": "2026-05-26", "authors": ["Anne McGowan"]},
+ "classification": {"category": "environmental", "conditions": ["heat_exhaustion", "dehydration", "smoke_exposure", "eye_injury"], "primary_condition": "heat_exhaustion", "mechanism": "exertion_heat_no_acclimatization_stimulant", "acuity": "field_manageable", "acuity_basis": "Normal mental status; improved in 30-45 min with cooling and fluids."},
+ "context": {"setting": "wilderness", "activity": "wildland fire line digging", "region": "Deschutes National Forest, Oregon", "terrain": "south-facing slope", "weather": "mid-80s F, full sun, intermittent smoke", "ambient_temp_c": 29, "connectivity": "available", "responder_training": "crew", "group": "handcrew"},
+ "patient": {"age_years": 26, "age_group": "adult", "sex": "female", "pertinent_history": ["not heat acclimatized", "contact lens wearer"], "medications": ["prescription stimulant for ADHD"]},
+ "presentation": {"summary": "Mid-afternoon on an early-season fire assignment, a crew member gradually becomes dizzy, nauseated and fatigued after hours of line digging on a sunny slope. Drank only ~1 L.", "chief_complaint": "dizziness, nausea, fatigue", "symptoms": ["overheated", "lightheaded", "mild nausea", "eye irritation"], "exam_findings": ["flushed, warm, sweaty", "slightly unsteady from fatigue", "red irritated eyes"], "pertinent_negatives": ["no chest pain", "no SOB", "normal mental status", "no ataxia"], "last_intake_output": "~1 L water over several hours; one dark yellow urination"},
+ "vitals": [{"time": "15:30", "loc": "A+Ox4", "hr": 96, "hr_quality": "strong, regular", "rr": 22, "rr_quality": "regular, easy", "skin": "red, warm, sweaty", "bp_note": "radial pulse present", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["heat exhaustion (exertion, heat, no acclimatization)", "dehydration contributing", "stimulant may impair thermoregulation", "smoke eye irritation"],
+  "plan": ["stop work, shade, remove pack, loosen clothing", "active cooling with airflow and water on skin", "oral water and electrolytes", "monitor mental status and vitals", "remove contacts, flush eyes", "reduce workload rest of shift"],
+  "anticipated_problems": ["progression to heat stroke", "ongoing dehydration", "smoke irritation"],
+  "teaching_points": ["Early-season heat illness is common before acclimatization.", "Stimulant medications raise heat risk.", "Dizziness, nausea, fatigue and rising HR call for immediate rest and cooling.", "Watch for confusion and loss of sweating."],
+  "decision_points": [{"question": "Return to work?", "source_decision": "Light duty after recovery", "basis": ["symptoms resolved", "HR decreased"]}]
+ },
+ "outcome": {"summary": "Improved after 30-45 min; rejoined crew on lighter duty; no recurrence.", "evacuation_mode": "none", "final_diagnosis": "heat exhaustion"},
+ "eval": {"must_recognize": ["heat exhaustion", "medication and acclimatization risk factors"], "must_ask": ["any confusion?", "how much have you drunk and what color is your urine?", "any medications?"], "must_escalate": "Rapid cooling and evacuation if confusion or collapse.", "must_not_recommend": ["continuing heavy work"]},
+ "retrieval": {"keywords": ["heat exhaustion", "firefighter", "wildland fire", "stimulant", "dehydration", "smoke eyes"], "lay_queries": ["working on a fire line and feel dizzy and sick", "overheated and nauseous digging in the sun"], "red_flags": ["confusion", "stopped sweating", "rising HR despite rest"]}
+},
+{
+ "id": "nols-nfci-canoe-boundary-waters",
+ "title": "Early non-freezing cold injury of the feet on a canoe trip",
+ "source": {"ref": "nols", "title": "Case Study: Non-Freezing Cold Injury on a Canoe Trip", "url": "https://www.nols.edu/blog/non-freezing-cold-injury-on-a-canoe-trip/", "published": "2026-04-24", "authors": ["Anne McGowan"]},
+ "classification": {"category": "environmental", "conditions": ["nonfreezing_cold_injury"], "primary_condition": "nonfreezing_cold_injury", "mechanism": "repeated_wading_cold_water", "acuity": "field_manageable", "acuity_basis": "Early NFCI improved over 24-48 h with drying and modified travel."},
+ "context": {"setting": "backcountry_water", "activity": "canoe tripping with portages", "region": "Boundary Waters, Minnesota", "weather": "mid-May, mild air, very cold water", "connectivity": "unknown", "responder_training": "trip leader", "resources_available": ["dry_socks"]},
+ "patient": {"age_years": 19, "age_group": "adult", "sex": "male"},
+ "presentation": {"summary": "After a day of wading in and out of cold water at portages, a paddler has gradually numb, tingling, uncomfortable feet. In camp feet are pale, cool, mildly swollen and wrinkled.", "chief_complaint": "numb tingling feet", "symptoms": ["numbness", "tingling", "discomfort increasing with rewarming"], "exam_findings": ["feet pale, cool, mildly swollen, macerated", "slightly delayed capillary refill", "decreased but present sensation"], "pertinent_negatives": ["no blisters, wounds, or frostbite"], "last_intake_output": "eating and drinking normally"},
+ "vitals": [{"time": "18:30", "loc": "A+Ox4", "hr": 72, "rr": 16, "skin": "pink, warm, dry (core)", "bp_note": "radial pulse present", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["likely early non-freezing cold injury"],
+  "plan": ["remove wet footwear, dry feet gently", "gradual rewarming with dry socks and body heat (not aggressive)", "elevate feet", "food and fluids", "dry sock rotation, limit standing in water", "monitor pain, swelling, color, sensation"],
+  "anticipated_problems": ["progression with continued exposure", "rewarming pain", "skin breakdown and infection"],
+  "teaching_points": ["NFCI happens above freezing with prolonged cold wet exposure.", "Early signs: numbness, tingling, pale or swollen skin.", "Gentle rewarming; avoid rapid heat.", "Prevention: dry feet, sock changes, limit immersion."],
+  "decision_points": [{"question": "Continue trip?", "source_decision": "Yes with modified travel", "basis": ["early stage", "improving"]}]
+ },
+ "outcome": {"summary": "Improved over 24-48 h; trip completed.", "evacuation_mode": "none", "final_diagnosis": "likely NFCI"},
+ "eval": {"must_recognize": ["non-freezing cold injury"], "must_ask": ["how long have your feet been wet?", "numbness or tingling?", "any blisters or color change?"], "must_escalate": "Evacuate if pain, swelling, color change or inability to walk progresses.", "must_not_recommend": ["rapid hot-water rewarming for NFCI", "continuing in wet socks"]},
+ "retrieval": {"keywords": ["trench foot", "wet feet", "canoe", "numb feet", "immersion foot"], "lay_queries": ["feet numb and wrinkly after wading all day", "my feet tingle after being wet all day canoeing"], "red_flags": ["blisters", "color change", "can't walk"]}
+},
+{
+ "id": "nols-motion-sickness-dive-boat",
+ "title": "Persistent vomiting from motion sickness on a dive boat",
+ "source": {"ref": "nols", "title": "Case Study: Motion Sickness on a Surf and Dive Trip in Oahu, Hawaii", "url": "https://www.nols.edu/blog/case-study-motion-sickness-on-a-surf-and-dive-trip-in-o%ca%bbahu-hawai%ca%bbi/", "published": "2026-03-31", "authors": ["Anne McGowan"]},
+ "classification": {"category": "medical", "conditions": ["motion_sickness", "dehydration"], "primary_condition": "motion_sickness", "mechanism": "vehicle_and_boat_motion", "acuity": "field_manageable", "acuity_basis": "Resolved on land; activity modified."},
+ "context": {"setting": "backcountry_water", "activity": "boat dive trip", "region": "Oahu, Hawaii", "weather": "moderate swell", "connectivity": "available", "responder_training": "trip leader"},
+ "patient": {"age_years": 27, "age_group": "adult", "sex": "female", "pertinent_history": ["mild childhood motion sickness"]},
+ "presentation": {"summary": "Nausea starts on a curvy coastal drive, eases on land, then returns worse on a dive boat with repeated vomiting.", "chief_complaint": "nausea and vomiting with motion", "symptoms": ["nausea", "dizziness", "vomiting x2", "fatigue"], "exam_findings": ["pale, cool, sweaty", "abdomen soft non-tender"], "pertinent_negatives": ["no abdominal pain", "no headache", "no fever", "no diarrhea", "no focal neuro deficits"], "last_intake_output": "light breakfast, coffee, little water"},
+ "vitals": [{"time": "09:10", "loc": "A+Ox4", "hr": 80, "rr": 18, "skin": "pale, cool, sweaty", "bp_note": "radial pulse present", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["likely motion sickness", "dehydration risk", "consider GI illness or pregnancy if persists off motion"],
+  "plan": ["stable spot with horizon view, fresh air", "stop phone/reading", "ginger, P6 acupressure", "small sips", "end dive, return to shore", "modify next day"],
+  "anticipated_problems": ["dehydration", "unsafe to dive", "underlying illness if persists on land"],
+  "teaching_points": ["Motion sickness can become a safety issue in water activities.", "Simple measures help but not always; adjust objectives.", "Persisting symptoms off motion suggest another cause."],
+  "decision_points": [{"question": "Continue diving?", "source_decision": "No", "basis": ["persistent vomiting", "rising fatigue"]}]
+ },
+ "outcome": {"summary": "Better on land; stayed ashore next day; resolved.", "evacuation_mode": "none", "final_diagnosis": "motion sickness"},
+ "eval": {"must_recognize": ["motion sickness vs other causes of vomiting"], "must_ask": ["does it stop when you're on land?", "abdominal pain, fever, headache?", "could you be pregnant?"], "must_escalate": "Seek care if vomiting persists on land or signs of dehydration.", "must_not_recommend": ["diving while vomiting"]},
+ "retrieval": {"keywords": ["seasick", "motion sickness", "vomiting on boat", "car sick", "nausea"], "lay_queries": ["I'm seasick and keep throwing up", "nauseous on the boat what helps"], "red_flags": ["vomiting persists on land", "unable to keep fluids down"]}
+},
+{
+ "id": "nols-dental-avulsion-rafting",
+ "title": "Tooth knocked out by paddle T-grip on a river trip",
+ "source": {"ref": "nols", "title": "Case Study: Dental Emergency while Rafting", "url": "https://www.nols.edu/blog/case-study-dental-emergency-while-rafting/", "published": "2025-09-08", "authors": ["Anne McGowan"]},
+ "classification": {"category": "injury", "conditions": ["dental_injury"], "primary_condition": "dental_injury", "mechanism": "paddle_tgrip_strike_to_mouth", "acuity": "semi_urgent", "acuity_basis": "Avulsed tooth; dental care next day."},
+ "context": {"setting": "backcountry_water", "activity": "multi-day rafting", "region": "Rogue River, Oregon", "connectivity": "unknown", "distance_to_care": "next day to car, dentist by early afternoon", "responder_training": "trip member", "resources_available": ["treated_water", "powdered_milk"]},
+ "patient": {"age_years": 30, "age_group": "adult", "sex": "male", "allergies": ["shellfish"]},
+ "presentation": {"summary": "Rafter hits his mouth with his own paddle's T-grip in a rapid and loses a front tooth.", "chief_complaint": "I think I lost a tooth", "symptoms": ["mouth pain"], "exam_findings": ["missing front tooth"], "pertinent_negatives": ["no other injuries"], "last_intake_output": "normal"},
+ "vitals": [{"time": "15:30", "loc": "A+Ox4", "hr": 78, "rr": 14, "skin": "pink, warm, dry", "bp_note": "radial pulse present", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["avulsed tooth"],
+  "plan": ["find the tooth", "attempt reimplantation", "if not, store and evacuate to dentist"],
+  "anticipated_problems": ["tooth not found"],
+  "teaching_points": ["Reimplantation becomes hard after ~30 min.", "Rinse with drinkable water; don't scrub the root.", "Storage: balanced salt solution > milk > saliva.", "Analgesics for pain; evacuate for dental care."],
+  "decision_points": [{"question": "Reimplant?", "source_decision": "Attempted, failed; stored in milk", "basis": ["tooth found and rinsed"]}]
+ },
+ "outcome": {"summary": "Tooth stored in milk; planned exit next morning to dentist.", "evacuation_mode": "vehicle_private", "final_diagnosis": "tooth avulsion"},
+ "eval": {"must_recognize": ["time-sensitive tooth reimplantation"], "must_ask": ["do you have the tooth?", "how long ago?", "any other head or face injury?"], "must_escalate": "Dental care as soon as possible.", "must_not_recommend": ["scrubbing the tooth root", "storing tooth dry or in plain water long term"]},
+ "retrieval": {"keywords": ["knocked out tooth", "dental", "avulsion", "tooth", "mouth injury"], "lay_queries": ["I knocked my tooth out what do I do", "tooth fell out after getting hit with a paddle"], "red_flags": ["head injury signs", "uncontrolled mouth bleeding"]}
+},
+{
+ "id": "nols-sea-kayak-slip-wrist-fracture",
+ "title": "Tumbling fall onto rocks on a kayak break: deformed wrist",
+ "source": {"ref": "nols", "title": "Case Study: Sea Kayaking Slip", "url": "https://www.nols.edu/blog/case-study-sea-kayaking-slip/", "published": "2025-08-11", "authors": ["Anne McGowan"]},
+ "classification": {"category": "injury", "conditions": ["wrist_injury", "fracture_closed", "spine_injury_possible", "abrasion"], "primary_condition": "wrist_injury", "mechanism": "12ft_tumbling_fall_onto_rocks", "acuity": "semi_urgent", "acuity_basis": "Unusable deformed wrist; spine cleared; paddled out in double kayak to clinic."},
+ "context": {"setting": "backcountry_water", "activity": "day sea kayaking", "region": "Prince William Sound, Alaska", "connectivity": "unknown", "distance_to_care": "several hours paddling then drive to clinic", "responder_training": "WFR", "group": "several paddlers", "resources_available": ["foam_sit_pad", "ACE_wrap", "cravats", "double_kayak", "epinephrine (patient's)"]},
+ "patient": {"age_years": 28, "age_group": "adult", "sex": "female", "pertinent_history": ["tree nut anaphylaxis"], "medications": ["carries epinephrine auto-injector"], "allergies": ["tree nuts (anaphylaxis)"]},
+ "presentation": {"summary": "During a beach break a paddler slips descending a small hill and tumbles about 12 ft onto rocks. Found on her back with right wrist pain.", "chief_complaint": "right wrist pain", "symptoms": ["wrist pain"], "exam_findings": ["right wrist deformity, redness, reduced motion, weak grip", "abrasions face, hands, arms"], "pertinent_negatives": ["no spine pain or tenderness", "CSM intact in legs and left hand"], "last_intake_output": "normal"},
+ "vitals": [{"time": "13:00", "loc": "A+Ox4", "hr": 86, "rr": 18, "skin": "pink, warm, dry", "bp_note": "radial pulse present", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["possible unusable right wrist injury", "possible spine injury"],
+  "plan": ["focused spine assessment", "splint unusable wrist (padded, rigid, immobilize joints above and below)", "clean abrasions"],
+  "anticipated_problems": ["unusable wrist or spine injury needs more help to exit"],
+  "teaching_points": ["Complete the full assessment before focused spine exam.", "Splint: padded, rigid, adjustable, allows CSM checks, immobilizes joints above and below.", "Carry a kit and field guide even on day trips."],
+  "decision_points": [{"question": "Spine protection?", "source_decision": "Released", "basis": ["alert, sober", "no spine pain/tenderness", "normal CSM"]}, {"question": "Can she paddle?", "source_decision": "Ride as passenger in double kayak", "basis": ["unusable wrist"]}]
+ },
+ "outcome": {"summary": "Splinted with sit pad; paddled out as passenger; clinic visit.", "evacuation_mode": "vehicle_private"},
+ "eval": {"must_recognize": ["deformed wrist = likely fracture, immobilize", "tumbling fall = consider spine"], "must_ask": ["can you move fingers and feel them?", "neck or back pain?", "can you grip?"], "must_escalate": "Medical evaluation for deformity; evacuate.", "must_not_recommend": ["having her paddle with the injured wrist"]},
+ "retrieval": {"keywords": ["broken wrist", "wrist fracture", "splint", "fall on rocks", "kayaking"], "lay_queries": ["I fell and my wrist looks bent", "how do I splint a broken wrist with what I have"], "red_flags": ["deformity", "loss of sensation in fingers"]}
+},
+{
+ "id": "nols-jellyfish-sting-surfer",
+ "title": "Surfer stung on the arm by a jellyfish",
+ "source": {"ref": "nols", "title": "Case Study: Jellyfish Sting in Paradise", "url": "https://www.nols.edu/blog/case-study-jellyfish-sting-in-paradise/", "published": "2025-06-16"},
+ "classification": {"category": "environmental", "conditions": ["envenomation_marine"], "primary_condition": "envenomation_marine", "mechanism": "jellyfish_contact_while_surfing", "acuity": "field_manageable", "acuity_basis": "Local symptoms only; eased with hot water soak."},
+ "context": {"setting": "backcountry_water", "activity": "surfing", "region": "Pacific coast", "weather": "sunny morning", "connectivity": "unknown", "responder_training": "friend", "resources_available": ["thermos_hot_water", "plastic_bag", "tweezers"]},
+ "patient": {"age_years": 20, "age_group": "adult", "sex": "female", "medications": ["multivitamin"]},
+ "presentation": {"summary": "While paddling out a surfer feels stinging pain on her right arm after suspected jellyfish contact.", "chief_complaint": "right arm pain and stinging", "symptoms": ["pain", "stinging"], "exam_findings": ["red-brown spots and swelling right arm"], "pertinent_negatives": ["no systemic symptoms", "CSM intact"], "last_intake_output": "normal"},
+ "vitals": [{"loc": "A+Ox4", "hr": 88, "rr": 18, "skin": "pink, warm, dry", "bp_note": "strong radial pulse", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["possible jellyfish sting"],
+  "plan": ["protect yourself from stings", "remove visible tentacles with tweezers", "hot water soak ~41C for 30-90 min", "consider pain medication"],
+  "anticipated_problems": ["increased pain", "infection"],
+  "teaching_points": ["Don't scrape, rub, or rinse with fresh water (can fire more stingers).", "Heat inactivates venom: ~41C for 30-90 min.", "Vinegar helps box jellyfish but may worsen other species.", "Evacuate if pain persists, rash spreads, systemic illness, or infection signs."],
+  "decision_points": []
+ },
+ "outcome": {"summary": "Pain eased after 30 min soak; monitor, clinic if persistent.", "evacuation_mode": "none", "final_diagnosis": "possible jellyfish sting"},
+ "eval": {"must_recognize": ["marine envenomation; watch for systemic reaction"], "must_ask": ["any trouble breathing, chest pain, or widespread rash?", "what kind of jellyfish / where are you?"], "must_escalate": "Emergency care for breathing difficulty, collapse, or box jellyfish regions.", "must_not_recommend": ["rinsing with fresh water", "rubbing with sand", "urine"]},
+ "retrieval": {"keywords": ["jellyfish sting", "man o war", "marine sting", "hot water soak", "vinegar"], "lay_queries": ["got stung by a jellyfish surfing", "jellyfish sting hurts what do I put on it"], "red_flags": ["difficulty breathing", "chest pain", "widespread reaction"]}
+},
+{
+ "id": "nols-es06-rattlesnake-bite-climber",
+ "title": "Climber bitten on the forearm by a snake after a short fall",
+ "source": {"ref": "nols", "title": "Caso de Estudio 06: Mordedura de Serpiente (Spanish)", "url": "https://www.nols.edu/wp-content/uploads/2025/08/Caso-de-Estudio-06-Mordedura-de-Serpiente-2010_Revisado-2018.pdf", "published": "2018"},
+ "classification": {"category": "environmental", "conditions": ["envenomation_snake", "head_injury_mild"], "primary_condition": "envenomation_snake", "mechanism": "pit_viper_bite_forearm", "acuity": "urgent", "acuity_basis": "All snakebites evacuated; progressive swelling and pain en route; antivenom given."},
+ "context": {"setting": "wilderness", "activity": "rock climbing approach", "region": "Wild Iris, Wyoming", "terrain": "limestone cliffs, slope", "connectivity": "available", "distance_to_care": "5 min walk to road, drive to town hospital", "responder_training": "WFR", "group": "two climbers", "resources_available": ["gauze", "sling", "splint_material", "car"]},
+ "patient": {"age_years": 25, "age_group": "adult", "sex": "male", "pertinent_history": ["2 weeks right elbow overuse pain"], "medications": ["ibuprofen 400 mg daily x2 days"], "allergies": ["penicillin", "seasonal"]},
+ "presentation": {"summary": "Climber falls, hits helmeted head and rolls once, and is bitten on the right forearm. Two punctures 2 cm apart, one oozing blood-tinged fluid.", "chief_complaint": "possible snakebite right forearm", "symptoms": ["nausea", "anxiety"], "exam_findings": ["two puncture wounds 2 cm apart", "no initial swelling or bruising"], "pertinent_negatives": ["no numbness/tingling initially", "no head/neck/back pain", "no LOC", "CSM intact x4"], "last_intake_output": "energy bar, 2 L water"},
+ "vitals": [
+  {"time": "15:40", "loc": "A+Ox4, anxious", "hr": 100, "rr": 22, "rr_quality": "regular, shallow", "skin": "pale, cold, sweaty", "bp_note": "strong radial", "pupils": "PERRL"},
+  {"time": "16:00", "loc": "A+Ox4, anxious", "hr": 80, "rr": 16, "skin": "pink, warm, dry", "bp_note": "strong radial", "pupils": "PERRL"}
+ ],
+ "source_management": {
+  "assessment": ["possible snakebite right forearm"],
+  "plan": ["reassure", "clean wound", "splint and immobilize arm at heart level", "monitor for envenomation", "evacuate"],
+  "anticipated_problems": ["envenomation: increasing pain, bruising, swelling, loss of CSM"],
+  "teaching_points": ["Most North American envenomations are pit vipers; antivenom is the treatment.", "Pit viper signs: pain and swelling within ~30 min, later bruising/blisters, nausea, numbness, sweating.", "30-50% of bites are dry, but evacuate all bites; rapidly if signs of envenomation.", "Don't catch or kill the snake.", "No tourniquet, ice, electricity, incision, or suction; avoid constriction; avoid aspirin.", "Pressure immobilization is for elapids (e.g. coral snake, Australian snakes), not pit vipers."],
+  "decision_points": [{"question": "Use suction/incision offered by bystanders?", "source_decision": "No", "basis": ["unproven or harmful"]}]
+ },
+ "outcome": {"summary": "Swelling and pain increased en route; at ED tingling throughout arm and bruising around punctures; antivenom given.", "evacuation_mode": "vehicle_private", "final_diagnosis": "pit viper envenomation"},
+ "eval": {"must_recognize": ["possible envenomation", "time-sensitive need for antivenom"], "must_ask": ["is swelling or pain spreading?", "when was the bite?", "any numbness, metallic taste, bleeding?", "rings or watches on that arm?"], "must_escalate": "Evacuate every snakebite to a hospital; urgently if swelling spreads.", "must_not_recommend": ["tourniquet", "cut and suck", "suction device", "ice", "electric shock", "chasing the snake"]},
+ "retrieval": {"keywords": ["snakebite", "rattlesnake", "pit viper", "antivenom", "fang marks"], "lay_queries": ["I just got bitten by a rattlesnake", "snake bit my arm there are two holes", "should I suck out snake venom"], "red_flags": ["spreading swelling", "numbness or tingling", "bruising around bite"]}
+},
+{
+ "id": "nols-es02-ice-breakthrough-hypothermia",
+ "title": "Skier breaks through lake ice: cold water immersion and mild hypothermia",
+ "source": {"ref": "nols", "title": "Caso de Estudio 02: Hipotermia (Spanish)", "url": "https://www.nols.edu/wp-content/uploads/2025/08/Caso-de-Estudio-02-Hipotermia-WUMP-2010_Revisado-2018.pdf", "published": "2018"},
+ "classification": {"category": "environmental", "conditions": ["cold_water_immersion", "hypothermia_mild"], "primary_condition": "hypothermia_mild", "mechanism": "fell_through_lake_ice_5_10_min_immersion", "acuity": "field_manageable", "acuity_basis": "Alert and shivering; rewarmed in <1 h with hypothermia wrap; trip continued."},
+ "context": {"setting": "wilderness", "activity": "ski touring", "terrain": "frozen lake, ~20 m from shore", "weather": "-9.4C, fading light", "ambient_temp_c": -9.4, "connectivity": "unknown", "responder_training": "WFR", "group": "4 friends", "resources_available": ["dry_clothing", "sleeping_bags", "foam_pads", "tent_fly", "stove", "fire", "water_bottles"]},
+ "patient": {"age_years": 26, "age_group": "adult", "sex": "male"},
+ "presentation": {"summary": "Crossing a lake despite agreeing not to, a skier breaks through the ice about 20 m from shore and self-rescues after 5-10 minutes. Clothing freezes quickly; shivering violently.", "chief_complaint": "very cold, can't stop shivering", "symptoms": ["violent shivering"], "exam_findings": ["no injuries", "fingers and toes cold, not frozen"], "pertinent_negatives": ["no frostbite"], "last_intake_output": "breakfast, lunch, 2 L water"},
+ "vitals": [{"time": "16:30", "loc": "A+Ox4", "hr": 110, "hr_quality": "regular, strong", "rr": 28, "rr_quality": "regular, shallow", "skin": "pale, cold, dry", "bp_note": "strong radial pulse"}],
+ "source_management": {
+  "assessment": ["mild hypothermia; at risk of severe hypothermia and frostbite"],
+  "plan": ["replace wet with dry clothing including hat, gloves, socks", "hypothermia wrap (pad, bags, vapor barrier)", "camp, stove, fire", "food and drink", "dry wet clothes"],
+  "anticipated_problems": ["progression to moderate/severe hypothermia"],
+  "teaching_points": ["Cold water: control the gasp in the first minute, ~10 min of useful movement, ~1 h before severe hypothermia.", "Hypothermia wrap: dry insulation inside a vapor barrier; if wet clothes can't come off, put barrier between wet clothes and insulation.", "Warm sweet drinks fuel shivering but barely warm the core.", "A second person in the bag adds little heat; better to make hot bottles and food.", "Fed, hydrated patients rewarm better."],
+  "decision_points": [{"question": "Evacuate?", "source_decision": "No", "basis": ["alert", "vigorous shivering", "rewarmed under 1 h"]}]
+ },
+ "outcome": {"summary": "Shivering eased, felt warm in under an hour; continued trip next day.", "evacuation_mode": "none", "final_diagnosis": "mild hypothermia after cold water immersion"},
+ "eval": {"must_recognize": ["immersion hypothermia", "urgency of getting dry"], "must_ask": ["is he shivering and talking normally?", "do you have dry clothes and a sleeping bag?", "how long was he in the water?"], "must_escalate": "Evacuate if shivering stops with confusion or drowsiness.", "must_not_recommend": ["leaving wet clothes on", "alcohol", "vigorous exercise to warm if impaired"]},
+ "retrieval": {"keywords": ["fell through ice", "cold water", "hypothermia", "hypothermia wrap", "shivering", "wet clothes"], "lay_queries": ["my friend fell through the ice and is soaked and shaking", "what to do after falling in freezing water"], "red_flags": ["shivering stops", "confusion", "drowsiness"]},
+ "provenance": {"notes": "Translated from Spanish source; paraphrased facts only. Source notes inconsistency about submersion depth."}
+},
+{
+ "id": "nols-es25-fatigue-at-altitude-80s-mystery",
+ "title": "Lethargic 42-year-old on day 1 of a high trek: altitude, exhaustion or diabetes?",
+ "source": {"ref": "nols", "title": "Caso de Estudio 25: MAM Fatiga (Spanish)", "url": "https://www.nols.edu/wp-content/uploads/2025/08/Caso-de-Estudio-25-MAM-Fatiga-Nov-2012_Revisado-Feb-2019.pdf", "published": "2019-02", "based_on_real_event": true},
+ "classification": {"category": "mixed", "conditions": ["acute_mountain_sickness", "dehydration", "hypothermia_mild", "diabetic_emergency"], "primary_condition": "acute_mountain_sickness", "mechanism": "rapid_ascent_from_sea_level_wet_cold_exertion", "acuity": "urgent", "acuity_basis": "Lethargic, unable to continue; descended and horse-evacuated."},
+ "context": {"setting": "wilderness", "activity": "trekking, day 1 of 10", "region": "Rocky Mountains", "terrain": "forest camp", "weather": "late August, icy, wet, low clouds, snow patches", "altitude_m": 3000, "connectivity": "none", "distance_to_care": "6.5 km to trailhead then drive to phone", "responder_training": "WFR", "group": "3-4 friends"},
+ "patient": {"age_years": 42, "age_group": "adult", "sex": "unspecified", "pertinent_history": ["hypertension", "reported high blood sugar"], "medications": ["diuretic for BP", "unknown blood-sugar medication (not found)"]},
+ "presentation": {"summary": "Found lethargic in a tent in wet clothes and a wet sleeping bag after flying from sea level two days earlier and crossing a 3,400 m pass in wet snow. Slow to respond but oriented.", "chief_complaint": "weakness and lethargy", "symptoms": ["weakness", "lethargy", "malaise", "anorexia", "later dizziness"], "exam_findings": ["A+Ox4 but slow to respond", "pale, ill appearing", "wet clothing and bag"], "pertinent_negatives": ["no headache", "no SOB", "no chest pain", "no injury"], "last_intake_output": "~3 L yesterday, a cup or two today, no dinner, yellow urine", "events_leading_up": "sea level -> 1500 m -> 2400 m same day; next day 10 km over >3400 m pass, camp 3000 m"},
+ "vitals": [
+  {"time": "11:00", "loc": "A+Ox4 (slow)", "hr": 100, "hr_quality": "regular, weak", "rr": 18, "skin": "pale, warm, moist", "bp_note": "radial present", "pupils": "PERRL"},
+  {"time": "11:30", "loc": "A+Ox4", "hr": 100, "hr_quality": "regular, weak", "rr": 18, "skin": "pale, warm, moist", "bp_note": "radial present", "pupils": "PERRL"}
+ ],
+ "source_management": {
+  "assessment": ["fatigue", "altitude illness"],
+  "plan": ["warm dry clothing, food and fluids", "descend to lower camp", "clarify medical history", "if no improvement send two for help"],
+  "anticipated_problems": ["unable to walk", "worsening altitude illness"],
+  "teaching_points": ["Differential: exhaustion, dehydration, AMS, diabetic complication, inability to cope.", "Descent is a key intervention if altitude illness is possible.", "Simple care (dry, warm, fed) plus leadership matters."],
+  "decision_points": [{"question": "Descend?", "source_decision": "Yes", "basis": ["rapid ascent", "lethargy", "not improving"]}]
+ },
+ "outcome": {"summary": "Descended ~500 m over 3 h, then exhausted; horses carried patient to trailhead where he looked much better.", "evacuation_mode": "litter_carry", "final_diagnosis": "unknown"},
+ "eval": {"must_recognize": ["altitude illness after rapid ascent", "unknown metabolic history"], "must_ask": ["how fast did you go up?", "diabetes or other conditions? medications?", "confusion or stumbling?"], "must_escalate": "Descend; evacuate if no improvement or mental status worsens.", "must_not_recommend": ["continuing up", "leaving in wet clothes"]},
+ "retrieval": {"keywords": ["altitude sickness", "AMS", "lethargic", "fatigue", "rapid ascent", "descend"], "lay_queries": ["friend is super tired and slow after flying in and hiking high", "really weak first day at altitude"], "red_flags": ["lethargy", "slow responses", "unknown diabetes medication"]},
+ "provenance": {"notes": "Translated from Spanish source (event early 1980s); paraphrased facts only."}
+},
+{
+ "id": "nols-es11-heat-cramps-rio-grande",
+ "title": "Canoeist with leg cramps mistaken for a seizure on the Rio Grande",
+ "source": {"ref": "nols", "title": "Caso de Estudio 11: Calambre por Calor (Spanish); English version 'Heat Cramps on the Rio Grande'", "url": "https://www.nols.edu/wp-content/uploads/2025/08/Caso-de-Estudio-11-Calambre-por-Calor-2007_Revisado-2018.pdf", "published": "2018"},
+ "classification": {"category": "environmental", "conditions": ["heat_cramps", "heat_exhaustion", "hyperventilation", "dehydration"], "primary_condition": "heat_cramps", "mechanism": "heat_exertion_no_food", "acuity": "field_manageable", "acuity_basis": "Normal mental status, 37.2C; cramps resolved with stretching, cooling, electrolytes."},
+ "context": {"setting": "backcountry_water", "activity": "canoe trip", "region": "Rio Grande, Big Bend NP, Texas", "weather": "hot, >32C for days, windy", "ambient_temp_c": 32, "connectivity": "unknown", "responder_training": "trip leader"},
+ "patient": {"age_years": 43, "age_group": "adult", "sex": "male", "pertinent_history": ["mild hypertension", "recent cold"], "medications": ["metoprolol"]},
+ "presentation": {"summary": "Kneeling in a canoe after a long hot hike, a participant develops painful leg spasms; bystanders think it's a seizure. He is awake, oriented, crying in pain.", "chief_complaint": "painful leg spasms", "symptoms": ["leg cramps", "dizziness", "nausea", "later hand cramps and rapid breathing"], "exam_findings": ["visible leg spasms", "A+Ox4", "pink, warm, sweaty"], "pertinent_negatives": ["no loss of consciousness", "no submersion", "no injury"], "last_intake_output": "3 L water today and yesterday; no food today"},
+ "vitals": [
+  {"time": "16:25", "loc": "A+Ox4", "hr": 100, "rr": 28, "rr_quality": "shallow", "skin": "pink, warm, sweaty", "bp_note": "radial present", "pupils": "PERRL"},
+  {"time": "16:55", "loc": "A+Ox4", "hr": 90, "rr": 24, "skin": "pink, warm, sweaty", "bp_note": "radial present", "pupils": "PERRL", "temp_c": 37.2}
+ ],
+ "source_management": {
+  "assessment": ["possible heat cramps", "possible heat exhaustion", "possible hyperventilation"],
+  "plan": ["shade and cool wet compresses", "gentle stretching", "calm and coach breathing", "fluids with electrolytes and food", "camp overnight"],
+  "anticipated_problems": ["heat stroke", "hyponatremia", "unrelieved cramps"],
+  "teaching_points": ["Rule out seizure: patient stays awake and responsive with cramp-like movements.", "Check temperature and mental status to rule out heat stroke.", "Cramps relate to salt/electrolyte loss with low food intake.", "Gentle stretching relieves cramps."],
+  "decision_points": [{"question": "Seizure?", "source_decision": "No", "basis": ["remained alert and oriented throughout"]}]
+ },
+ "outcome": {"summary": "Cramps eased over 30 min; walking and fine by dusk; no evacuation.", "evacuation_mode": "none", "final_diagnosis": "heat cramps with heat exhaustion/dehydration"},
+ "eval": {"must_recognize": ["heat cramps vs seizure"], "must_ask": ["is he awake and talking during the spasms?", "has he eaten today?", "temperature or confusion?"], "must_escalate": "Rapid cooling and evacuation if confusion or temp >40C.", "must_not_recommend": ["plain water only in large amounts with no food"]},
+ "retrieval": {"keywords": ["heat cramps", "leg cramps", "muscle spasms", "heat", "electrolytes", "canoe"], "lay_queries": ["his legs are cramping badly in the heat", "muscle spasms is it a seizure"], "red_flags": ["loss of consciousness", "confusion", "very high temperature"]},
+ "provenance": {"notes": "Translated from Spanish source; paraphrased. English version published 2024-05-14 at nols.edu/blog/case-study-heat-cramps-on-the-rio-grande/. Salt quantity for oral solution omitted pending verification."}
+}
+]

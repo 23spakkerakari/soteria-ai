@@ -1,0 +1,11 @@
+fastapi>=0.110
+uvicorn>=0.29
+websockets>=12
+httpx>=0.27
+pydantic>=2.6
+beautifulsoup4>=4.12
+pymupdf>=1.24
+pytest>=8.0
+
+# Voice is installed separately by the start scripts, from your copy of the
+# Argmax Windows shim:  pip install -e "<path>/argmax-windows-shim[whisper,tts-kokoro]"

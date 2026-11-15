@@ -1,0 +1,130 @@
+[
+{
+ "id": "nols-cs15-desert-hike-heat-exhaustion",
+ "title": "Backpacker feels lousy and weak on a hot desert ridge",
+ "source": {"ref": "nols", "title": "Case Study 15: A Desert Hike", "url": "https://www.nols.edu/case-studies/case-study-15/", "published": "2010-05"},
+ "classification": {"category": "environmental", "conditions": ["heat_exhaustion", "viral_illness", "dehydration"], "primary_condition": "heat_exhaustion", "mechanism": "multi_day_exertion_in_heat", "acuity": "field_manageable", "acuity_basis": "Normal mental status, improving vitals over 2 h with rest, shade, fluids; resumed hiking next day."},
+ "context": {"setting": "wilderness", "activity": "backpacking 18-20 mi/day for 3 days", "region": "desert Southwest USA", "terrain": "sandstone ridge to cottonwood glade", "weather": "hot, dry, low 90s F", "ambient_temp_c": 33, "connectivity": "unknown", "responder_training": "WFR", "group": "4 backpackers", "resources_available": ["water", "salty_snacks", "shade", "gloves"]},
+ "patient": {"age_years": 24, "age_group": "adult", "sex": "male", "medications": ["occasional ibuprofen, none today"]},
+ "presentation": {"summary": "On day 3 of long desert mileage, a hiker becomes too weak to continue and sits by the trail. Pale and sweaty but skin not hot; mental status normal.", "chief_complaint": "feels lousy, too weak to hike", "symptoms": ["dizziness", "nausea", "generalized weakness", "fatigue"], "exam_findings": ["pale, sweating", "skin not hot", "normal mental status", "no injuries"], "pertinent_negatives": ["no headache", "no diarrhea or vomiting", "no falls"], "last_intake_output": "3 L before event; 5-6 L/day for 3 days; urinated light yellow twice"},
+ "vitals": [
+  {"time": "13:00", "loc": "A+Ox4", "hr": 100, "hr_quality": "strong, regular", "rr": 18, "rr_quality": "easy, regular", "skin": "pale, warm, moist", "bp_note": "strong radial and pedal pulses", "pupils": "PERRL"},
+  {"time": "13:30", "loc": "A+Ox4", "hr": 100, "hr_quality": "strong, regular", "rr": 16, "skin": "pale, warm, moist", "bp_note": "strong radial pulse", "pupils": "PERRL"},
+  {"time": "14:00", "loc": "A+Ox4", "hr": 84, "hr_quality": "strong, regular", "rr": 14, "skin": "pale, warm, dry", "bp_note": "strong radial pulse", "pupils": "PERRL"},
+  {"time": "15:00", "loc": "A+Ox4", "hr": 76, "hr_quality": "strong", "rr": 14, "skin": "pale, warm", "bp_note": "strong radial pulse", "pupils": "PERRL"}
+ ],
+ "source_management": {
+  "assessment": ["possible heat exhaustion; heat stroke unlikely (normal mental status)", "possible flu-like illness"],
+  "plan": ["rest in shade, stop for the night", "fluids and salty snacks, monitor urine output", "decide in morning whether to continue or evacuate"],
+  "anticipated_problems": ["no improvement, requiring evacuation"],
+  "teaching_points": ["Consider worst case first: heat stroke ruled unlikely by normal mental status and non-hot skin.", "Verify hydration with intake/output history; dehydration can accumulate over days.", "Reassuring trend: falling HR and RR, skin drying. Warning: persistently high or rising HR, weakening pulse, altered mental status = possible shock.", "Shade, rest, and fluids treat several possible causes at once; evacuate if no response.", "Backcountry recovery takes hours, not minutes."],
+  "decision_points": [{"question": "Continue or stop?", "source_decision": "Stop for the night, reassess in morning", "basis": ["improving trend", "still fatigued"]}]
+ },
+ "outcome": {"summary": "Much better in a few hours; camped nearby; resumed hike next morning.", "evacuation_mode": "none", "final_diagnosis": "not stated; possible heat exhaustion vs viral illness"},
+ "eval": {"must_recognize": ["heat exhaustion vs heat stroke (mental status, skin temp)"], "must_ask": ["is he confused or acting strangely?", "is his skin hot to touch?", "how much has he drunk and peed?"], "must_escalate": "Evacuate/cool aggressively if confusion or hot skin develop, or no improvement.", "must_not_recommend": ["pushing on in the heat"]},
+ "retrieval": {"keywords": ["heat exhaustion", "weak", "dizzy", "nausea", "desert", "hot weather", "pale sweaty"], "lay_queries": ["I feel really weak and dizzy hiking in the heat", "my friend is pale and sweaty and can't keep going"], "red_flags": ["confusion", "hot dry skin", "HR not improving with rest"]}
+},
+{
+ "id": "nols-cs13-nonfreezing-cold-injury-feet",
+ "title": "Teen with painful feet after days of wet river crossings (trench foot)",
+ "source": {"ref": "nols", "title": "Case Study 13: Soggy Socks", "url": "https://www.nols.edu/case-studies/case-study-13/", "published": "2015-12"},
+ "classification": {"category": "environmental", "conditions": ["nonfreezing_cold_injury"], "primary_condition": "nonfreezing_cold_injury", "mechanism": "prolonged_wet_cold_feet", "acuity": "semi_urgent", "acuity_basis": "Unable to walk on day 2; carried out by horse packers; physician confirmed."},
+ "context": {"setting": "wilderness", "activity": "9-day backpacking with teens", "region": "Bitterroot Mountains, Montana", "weather": "June, late snowstorm, cool, wet, high rivers", "connectivity": "unknown", "responder_training": "trip leader/WFR", "group": "teen group", "resources_available": ["ibuprofen"]},
+ "patient": {"age_years": 18, "age_group": "adult", "sex": "male", "medications": ["ibuprofen 400 mg q6h"]},
+ "presentation": {"summary": "After days of wet crossings and snow, no one has dry socks. A participant whose feet got very cold yesterday and stayed cool overnight now has aching, throbbing feet.", "chief_complaint": "feet hurt 6/10", "symptoms": ["aching, throbbing feet"], "exam_findings": ["feet pink and cool, cap refill OK", "soft white patch under right big toe", "sensation and movement intact"], "pertinent_negatives": ["no swelling, cyanosis, blisters", "no numbness, itching, tingling"], "last_intake_output": "well hydrated, ate lunch"},
+ "vitals": [{"time": "Day 1 12:30", "loc": "A+Ox4", "hr": 72, "hr_quality": "strong, regular", "rr": 14, "rr_quality": "regular, easy", "skin": "pink, warm, dry", "bp_note": "strong radial pulse", "pupils": "PERRL"}],
+ "source_management": {
+  "assessment": ["possible non-freezing cold injury"],
+  "plan": ["warm and dry the feet", "rest and elevate rest of day", "walk out next day to see physician", "ibuprofen q4-6h", "keep warm and hydrated", "check everyone's feet, socks, boots"],
+  "anticipated_problems": ["blistering", "too painful to walk"],
+  "teaching_points": ["Cold + wet constricts vessels and injures nerves without freezing.", "Field signs: cool pale feet, numbness, tingling, itching, mild swelling; textbook signs include swollen mottled cyanotic skin.", "After rewarming feet may become red, swollen and very painful (hyperemic phase).", "Treatment: recognize, keep warm and dry, get medical care; can cause weeks-to-years of pain.", "Prevention: wool/synthetic socks, dry socks daily, dry feet at night, loose footwear, act on early numbness/tingling."],
+  "decision_points": [{"question": "Walk out or carry?", "source_decision": "Day 2: carry out (could only hobble on heels, no shoes)", "basis": ["worse pain", "red swollen feet", "unable to walk"]}]
+ },
+ "outcome": {"summary": "Horse packers carried him out; physician confirmed NFCI; pain and numbness resolved over a month.", "evacuation_mode": "litter_carry", "final_diagnosis": "non-freezing cold injury (trench foot)"},
+ "eval": {"must_recognize": ["trench foot can occur above freezing"], "must_ask": ["how long have your feet been wet and cold?", "numbness, tingling, swelling?", "can you walk?"], "must_escalate": "Evacuate if unable to walk or worsening; see physician.", "must_not_recommend": ["rubbing/massaging injured feet vigorously after injury", "continuing in wet boots"]},
+ "retrieval": {"keywords": ["trench foot", "immersion foot", "wet feet", "cold feet", "non-freezing cold injury", "river crossing"], "lay_queries": ["my feet have been wet for days and now they really hurt", "feet swollen and red after being cold and wet"], "red_flags": ["inability to walk", "swelling and redness after rewarming"]}
+},
+{
+ "id": "nols-cs05-trail-crew-heat-exhaustion",
+ "title": "Trail crew member with weakness and headache on a hot humid day",
+ "source": {"ref": "nols", "title": "Case Study 5: Succumbing to the Heat", "url": "https://www.nols.edu/case-studies/case-study-5/", "published": "2008-10"},
+ "classification": {"category": "environmental", "conditions": ["heat_exhaustion", "dehydration"], "primary_condition": "heat_exhaustion", "mechanism": "multi_day_exertion_heat_humidity_poor_hydration", "acuity": "field_manageable", "acuity_basis": "Normal mental status; managed with shade, cooling, fluids, rest day."},
+ "context": {"setting": "wilderness", "activity": "volunteer trail maintenance", "region": "national forest", "weather": "unusually hot and humid, 30s C", "ambient_temp_c": 33, "connectivity": "unknown", "responder_training": "crew supervisor", "group": "several trail crews"},
+ "patient": {"age_years": 19, "age_group": "adult", "sex": "male", "medications": ["ibuprofen 200-400 mg daily"]},
+ "presentation": {"summary": "At lunch on a hot humid workday, a crew member lies supine with feet up and a wet bandanna, complaining of weakness, dizziness and headache. Crew has been under-drinking brackish water, sleeping poorly, sunburned.", "chief_complaint": "weakness, dizziness, headache", "symptoms": ["weakness", "dizziness", "headache"], "exam_findings": ["warm, pale, sweaty skin", "no injury"], "pertinent_negatives": ["no fall"], "last_intake_output": "breakfast, 1.5 L water with some sports drink", "events_leading_up": "several days of 10-hour workdays in heat"},
+ "vitals": [{"time": "12:15", "loc": "A+Ox4", "hr": 80, "hr_quality": "strong, regular", "rr": 20, "rr_quality": "shallow, unlabored", "skin": "warm, pale, sweaty", "bp_note": "radial pulses present", "pupils": "PERRL", "temp_c": 37.2}],
+ "source_management": {
+  "assessment": ["possible heat exhaustion"],
+  "plan": ["shade and cool wet compresses", "small frequent sips of water/electrolytes (~1 L/h) and food", "rest in camp rest of day"],
+  "anticipated_problems": ["heat stroke", "heat cramps", "hyponatremia"],
+  "teaching_points": ["Early vague symptoms (fatigue, headache, irritability) can signal heat stress.", "Risk factors: heat, humidity, exertion, dehydration, no acclimatization, overdressing, fatigue, prior heat illness, stimulant/antihistamine/alcohol use.", "Air temp >32C with humidity >70% impairs heat loss.", "Acclimatization takes ~10-14 days.", "Prevention: watch urine, snack (avoid hyponatremia), work early/late, rest in shade, loose clothing and hats."],
+  "decision_points": [{"question": "Group-level change?", "source_decision": "Rest day, shift schedule to mornings/evenings, require hats and long sleeves, promote drinking", "basis": ["whole crew under-hydrated, sunburned, sleeping poorly"]}]
+ },
+ "outcome": {"summary": "Not stated for the individual; crew schedule and practices changed.", "evacuation_mode": "none"},
+ "eval": {"must_recognize": ["heat exhaustion", "group-wide heat risk"], "must_ask": ["is he confused?", "is his skin hot and dry or sweaty?", "how much has he drunk?"], "must_escalate": "Cool rapidly and evacuate if altered mental status (heat stroke).", "must_not_recommend": ["returning to work same afternoon"]},
+ "retrieval": {"keywords": ["heat exhaustion", "trail crew", "humidity", "headache", "dizzy", "electrolytes"], "lay_queries": ["working outside in the heat and feel dizzy and weak with a headache", "crew member lying down feeling faint in the heat"], "red_flags": ["confusion", "stops sweating", "temperature over 40C"]}
+},
+{
+ "id": "nols-cs36-cardiac-arrest-on-trail",
+ "title": "60-year-old collapses on approach trail: witnessed cardiac arrest",
+ "source": {"ref": "nols", "title": "Case Study 36: Cardiac Arrest on the Trail", "url": "https://www.nols.edu/case-studies/case-study-36/", "published": "2015-08", "based_on_real_event": true},
+ "classification": {"category": "medical", "conditions": ["cardiac_arrest", "acute_coronary_syndrome"], "primary_condition": "cardiac_arrest", "mechanism": "sudden_collapse_while_walking", "acuity": "life_threat", "acuity_basis": "Pulseless, apneic; CPR within 30 s; helicopter."},
+ "context": {"setting": "wilderness", "activity": "walking to climbing crag", "weather": "cool, cold ground", "connectivity": "available", "distance_to_care": "paramedics ~1 h; helicopter at 1.5 h", "responder_training": "physician bystander + WFRs", "resources_available": ["sleeping_pad", "spare_clothing", "phone"]},
+ "patient": {"age_years": 60, "age_group": "older_adult", "sex": "male"},
+ "presentation": {"summary": "A man walking just ahead collapses from standing. Unresponsive, no breathing, no pulse, gray skin, blue lips. A bystander physician starts deep fast compressions within ~30 seconds; companions call 911.", "chief_complaint": "collapse", "symptoms": [], "exam_findings": ["unresponsive", "apneic", "pulseless", "gray skin, cyanotic lips"], "pertinent_negatives": ["no injury, no spine mechanism"]},
+ "vitals": [{"time": "11:00", "loc": "unresponsive", "note": "HR absent, RR absent, BP unobtainable, gray skin, blue lips"}],
+ "source_management": {
+  "assessment": ["cardiac arrest", "no injury or spine mechanism"],
+  "plan": ["continue CPR", "access AED, ALS and evacuation", "after ROSC: move onto pad, insulate with clothing, recheck vitals"],
+  "anticipated_problems": ["CPR during litter carry is very hard", "needs warmth if he wakes", "rescue breaths may be needed"],
+  "teaching_points": ["Recognize arrest early: unresponsive, not breathing normally, no signs of circulation.", "Compressions: hard and fast, at least 2 in deep, >=100/min, full recoil, minimal interruptions.", "Compression-only CPR is fine for witnessed cardiac collapse; for asphyxial arrests (drowning, avalanche) use 30:2 with breaths.", "Effective CPR looks and sounds rough; don't be deterred.", "Wilderness cardiac arrest survival is low; early CPR and AED matter most."],
+  "decision_points": [{"question": "Add rescue breaths?", "source_decision": "Compression-only initially (witnessed cardiac collapse)", "basis": ["witnessed", "presumed cardiac cause"]}]
+ },
+ "outcome": {"summary": "Gasped, opened eyes and spoke after 2-3 cycles; paramedics at 1 h, helicopter at 1.5 h; surgery for multiple blocked coronary arteries; recovered well.", "evacuation_mode": "helicopter", "final_diagnosis": "cardiac arrest from coronary artery disease"},
+ "eval": {"must_recognize": ["cardiac arrest: unresponsive and not breathing normally"], "must_ask": ["is he breathing normally?", "is anyone calling emergency services?", "is there an AED?"], "must_escalate": "Call EMS immediately; start CPR immediately; get AED.", "must_not_recommend": ["spending time checking for a pulse before starting CPR in a lay rescuer", "waiting to see if he wakes up"]},
+ "retrieval": {"keywords": ["cardiac arrest", "CPR", "collapse", "not breathing", "AED", "heart attack"], "lay_queries": ["a man just collapsed on the trail and isn't breathing", "my dad fell down and his lips are blue", "how do I do CPR"], "red_flags": ["unresponsive", "not breathing or gasping", "blue lips"]}
+},
+{
+ "id": "nols-cs32-spreading-itchy-rash-allergy",
+ "title": "Spreading itchy hives on a Grand Canyon backpack with past anaphylaxis history",
+ "source": {"ref": "nols", "title": "Case Study 32: An Itchy Rash", "url": "https://www.nols.edu/case-studies/case-study-32/", "published": "2014-08"},
+ "classification": {"category": "medical", "conditions": ["allergic_reaction", "rash"], "primary_condition": "allergic_reaction", "mechanism": "unknown_allergen", "acuity": "semi_urgent", "acuity_basis": "No airway or breathing involvement; progressive rash over 40% BSA; walked out for steroid treatment."},
+ "context": {"setting": "wilderness", "activity": "college spring-break backpacking", "region": "remote Grand Canyon", "weather": "March; water scarce", "connectivity": "limited", "distance_to_care": "walk to trailhead then drive to hospital", "responder_training": "WFR instructors", "resources_available": ["diphenhydramine", "epinephrine_autoinjector (instructor)", "cell_phone"]},
+ "patient": {"age_years": 19, "age_group": "adult", "sex": "male", "pertinent_history": ["seasonal hay fever", "prior bee sting with throat swelling and SOB; prescribed EpiPen, not carried"], "medications": ["loratadine (not current)", "diphenhydramine 50 mg q6h started"], "allergies": ["bee stings (severe)", "seasonal"]},
+ "presentation": {"summary": "Red raised itchy bumps start on the abdomen and spread over a day to back, thighs, neck, face and arms (~40% body surface). Vague chest tightness but no breathing trouble.", "chief_complaint": "itchy spreading rash", "symptoms": ["constant itch", "vague chest tightness", "insomnia from itch"], "exam_findings": ["raised red rash ~40% BSA incl face", "scratch abrasions"], "pertinent_negatives": ["no shortness of breath", "no throat swelling", "no new meds or foods noted"], "last_intake_output": "normal"},
+ "vitals": [
+  {"time": "Day 1 16:15", "loc": "A+Ox4", "hr": 72, "rr": 16, "skin": "pink, warm, dry", "bp_note": "radial pulses present", "pupils": "PERRL", "temp_c": 37.2},
+  {"time": "Day 2 08:00", "loc": "A+Ox4", "hr": 72, "rr": 16, "skin": "pink, warm, dry", "bp_note": "radial pulses present", "pupils": "PERRL", "temp_c": 36.7}
+ ],
+ "source_management": {
+  "assessment": ["allergic reaction, unknown cause", "possible non-allergic rash"],
+  "plan": ["diphenhydramine 50 mg q6h", "keep epinephrine-carrying instructor close", "monitor rash", "avoid soap with scarce rinse water", "walk out with phone; drive to hospital"],
+  "anticipated_problems": ["airway involvement / anaphylaxis"],
+  "teaching_points": ["Allergic reactions range from local hives to anaphylaxis.", "Anaphylaxis signs: airway/tongue/face swelling, respiratory distress, widespread hives, fast pulse, low BP/shock -> epinephrine.", "Antihistamines treat histamine symptoms; move away from the trigger if known.", "Reactions can last days and may need steroids."],
+  "decision_points": [{"question": "Epinephrine now?", "source_decision": "No, keep it at hand", "basis": ["no airway or breathing compromise", "normal vitals"]}]
+ },
+ "outcome": {"summary": "Walked out, physician gave steroid; rash faded ~24 h later; cause never identified.", "evacuation_mode": "self_evac_walk", "final_diagnosis": "urticarial allergic reaction, unknown trigger"},
+ "eval": {"must_recognize": ["prior anaphylaxis history raises stakes", "watch for airway/breathing involvement"], "must_ask": ["any throat tightness, trouble swallowing, wheezing, or lip/tongue swelling?", "has this happened before?", "do you have an epinephrine auto-injector?"], "must_escalate": "Give epinephrine and evacuate urgently if breathing/airway symptoms or shock develop.", "must_not_recommend": ["withholding epinephrine if airway symptoms appear"]},
+ "retrieval": {"keywords": ["hives", "allergic reaction", "rash", "itching", "antihistamine", "epinephrine", "anaphylaxis"], "lay_queries": ["itchy red bumps spreading all over my body", "I have hives and my chest feels a bit tight", "rash spreading after hiking"], "red_flags": ["chest tightness", "face involvement", "prior anaphylaxis"]}
+},
+{
+ "id": "nols-abandoned-patient-alpine-hyperglycemia",
+ "title": "Confused diabetic hiker left alone at 11,300 ft",
+ "source": {"ref": "nols", "title": "Case Study: An Abandoned Patient High in the Alpine", "url": "https://www.nols.edu/case-study-an-abandoned-patient-high-in-the-alpine/", "published": "2019-04"},
+ "classification": {"category": "medical", "conditions": ["diabetic_emergency", "altered_mental_status", "acute_mountain_sickness", "dehydration", "gastroenteritis"], "primary_condition": "diabetic_emergency", "mechanism": "hyperglycemia_with_vomiting_at_altitude", "acuity": "urgent", "acuity_basis": "Altered mental status with glucometer 'HIGH'; helicopter evacuation."},
+ "context": {"setting": "wilderness", "activity": "backpacking", "region": "Wind River Range, Wyoming", "terrain": "near tree line", "altitude_m": 3440, "connectivity": "limited", "distance_to_care": "8 mi uphill from trailhead; LZ a few hundred yards", "responder_training": "SAR (WFR)", "resources_available": ["glucometer", "litter", "radio"]},
+ "patient": {"age_years": 52, "age_group": "adult", "sex": "female", "pertinent_history": ["diabetes on insulin", "hypertension", "high cholesterol", "recent UTI"], "medications": ["insulin (last dose unknown)", "captopril", "simvastatin"]},
+ "presentation": {"summary": "SAR finds a hiker alone in a poorly pitched tent after companions went on. She is pale, weak, nauseated, vomiting, intermittently disoriented, unsteady on her feet, with empty water bottles.", "chief_complaint": "weakness, lethargy, nausea", "symptoms": ["weakness", "lethargy", "nausea", "vomiting several times", "confusion"], "exam_findings": ["A+Ox2", "pale", "unsteady wobbly gait", "lungs clear", "minor leg scrapes", "glucometer HIGH"], "pertinent_negatives": ["no headache", "no shortness of breath", "no chest or abdominal pain"], "last_intake_output": "empty bottles; vomited several times; dark smelly urine once"},
+ "vitals": [{"time": "05:00", "loc": "A+Ox2", "hr": 90, "hr_quality": "strong, regular", "rr": 22, "rr_quality": "regular, easy", "skin": "pale, warm, dry", "bp_systolic": 150, "bp_diastolic": 94, "pupils": "PERRL", "temp_c": 37.2, "note": "blood glucose 'HIGH' on meter"}],
+ "source_management": {
+  "assessment": ["hyperglycemia", "altitude illness", "dehydration", "GI illness with vomiting"],
+  "plan": ["request helicopter", "second team carries to LZ", "monitor; allow oral water"],
+  "anticipated_problems": ["worsening condition", "no helicopter: litter carry and ALS request"],
+  "teaching_points": ["Hyperglycemia with altered mental status needs prompt evacuation.", "Unsteady gait can't distinguish HACE from metabolic illness.", "Lay responders shouldn't direct insulin dosing in a confused patient."],
+  "decision_points": [{"question": "HACE or metabolic?", "source_decision": "Cannot distinguish in field; evacuate", "basis": ["ataxia", "confusion", "high glucose", "vomiting"]}]
+ },
+ "outcome": {"summary": "Litter to LZ; helicopter; hospitalized several days.", "evacuation_mode": "helicopter", "final_diagnosis": "hyperglycemia (diabetic), cardiovascular history"},
+ "eval": {"must_recognize": ["diabetic emergency with altered mental status", "altitude illness as co-factor"], "must_ask": ["is she diabetic? when was her last insulin?", "has she been vomiting?", "can she walk a straight line?"], "must_escalate": "Urgent evacuation; descend if possible.", "must_not_recommend": ["giving insulin based on guesswork", "leaving a confused patient alone"]},
+ "retrieval": {"keywords": ["diabetes", "high blood sugar", "hyperglycemia", "confused", "vomiting", "altitude", "insulin"], "lay_queries": ["my diabetic friend is confused and throwing up in the mountains", "blood sugar meter says HIGH and she's not making sense"], "red_flags": ["confusion", "glucometer HIGH", "repeated vomiting", "ataxia"]}
+}
+]

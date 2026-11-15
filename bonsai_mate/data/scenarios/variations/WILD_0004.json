@@ -1,0 +1,660 @@
+[
+  {
+    "scenario_id": "WILD_0004_V01",
+    "title": "Rolled ankle with the cold setting in",
+    "variation_of": "WILD_0004",
+    "tags": [
+      "trauma",
+      "limb_injury",
+      "cold",
+      "multi_condition",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold, getting dark",
+      "connectivity": "none",
+      "distance_to_help": "5 miles from trailhead"
+    },
+    "patient": {
+      "age": 16,
+      "sex": "unknown",
+      "medical_history": "none"
+    },
+    "presentation": {
+      "chief_complaint": "ankle injury, cannot walk",
+      "symptoms": [
+        "ankle_pain",
+        "swelling",
+        "cannot_bear_weight",
+        "shivering"
+      ],
+      "lay_descriptions": [
+        "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver.",
+        "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car.",
+        "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "sprain|fracture|broken"
+      ],
+      "must_ask": [
+        "feel|wiggle|toes|numb|colour|color"
+      ],
+      "must_escalate": [],
+      "must_not_recommend": [
+        "walk it off",
+        "force"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0004_V02",
+    "title": "Rolled ankle with the cold setting in",
+    "variation_of": "WILD_0004",
+    "tags": [
+      "trauma",
+      "limb_injury",
+      "cold",
+      "multi_condition",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold, getting dark",
+      "connectivity": "none",
+      "distance_to_help": "5 miles from trailhead"
+    },
+    "patient": {
+      "age": 16,
+      "sex": "unknown",
+      "medical_history": "none"
+    },
+    "presentation": {
+      "chief_complaint": "ankle injury, cannot walk",
+      "symptoms": [
+        "ankle_pain",
+        "swelling",
+        "cannot_bear_weight",
+        "shivering"
+      ],
+      "lay_descriptions": [
+        "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver.",
+        "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car.",
+        "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "sprain|fracture|broken"
+      ],
+      "must_ask": [
+        "feel|wiggle|toes|numb|colour|color"
+      ],
+      "must_escalate": [],
+      "must_not_recommend": [
+        "walk it off",
+        "force"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0004_V03",
+    "title": "Rolled ankle with the cold setting in",
+    "variation_of": "WILD_0004",
+    "tags": [
+      "trauma",
+      "limb_injury",
+      "cold",
+      "multi_condition",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold, getting dark",
+      "connectivity": "none",
+      "distance_to_help": "5 miles from trailhead"
+    },
+    "patient": {
+      "age": 16,
+      "sex": "unknown",
+      "medical_history": "none"
+    },
+    "presentation": {
+      "chief_complaint": "ankle injury, cannot walk",
+      "symptoms": [
+        "ankle_pain",
+        "swelling",
+        "cannot_bear_weight",
+        "shivering"
+      ],
+      "lay_descriptions": [
+        "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver.",
+        "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car.",
+        "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "sprain|fracture|broken"
+      ],
+      "must_ask": [
+        "feel|wiggle|toes|numb|colour|color"
+      ],
+      "must_escalate": [],
+      "must_not_recommend": [
+        "walk it off",
+        "force"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0004_V04",
+    "title": "Rolled ankle with the cold setting in",
+    "variation_of": "WILD_0004",
+    "tags": [
+      "trauma",
+      "limb_injury",
+      "cold",
+      "multi_condition",
+      "var:alone"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold, getting dark",
+      "connectivity": "none",
+      "distance_to_help": "5 miles from trailhead"
+    },
+    "patient": {
+      "age": 16,
+      "sex": "unknown",
+      "medical_history": "none"
+    },
+    "presentation": {
+      "chief_complaint": "ankle injury, cannot walk",
+      "symptoms": [
+        "ankle_pain",
+        "swelling",
+        "cannot_bear_weight",
+        "shivering"
+      ],
+      "lay_descriptions": [
+        "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver.",
+        "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car.",
+        "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My son twisted his ankle on a rocky section. It's swollen and he can't put weight on it. It's getting cold and dark and he's started shivering."
+      },
+      {
+        "question": "Is anyone else with you?",
+        "answer": "No. It's just the two of us and nobody knows exactly where we are."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "sprain|fracture|broken"
+      ],
+      "must_ask": [
+        "feel|wiggle|toes|numb|colour|color"
+      ],
+      "must_escalate": [],
+      "must_not_recommend": [
+        "walk it off",
+        "force"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0004_V05",
+    "title": "Rolled ankle with the cold setting in",
+    "variation_of": "WILD_0004",
+    "tags": [
+      "trauma",
+      "limb_injury",
+      "cold",
+      "multi_condition",
+      "var:no_supplies"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold, getting dark",
+      "connectivity": "none",
+      "distance_to_help": "5 miles from trailhead"
+    },
+    "patient": {
+      "age": 16,
+      "sex": "unknown",
+      "medical_history": "none"
+    },
+    "presentation": {
+      "chief_complaint": "ankle injury, cannot walk",
+      "symptoms": [
+        "ankle_pain",
+        "swelling",
+        "cannot_bear_weight",
+        "shivering"
+      ],
+      "lay_descriptions": [
+        "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver.",
+        "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car.",
+        "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My son twisted his ankle on a rocky section. It's swollen and he can't put weight on it. It's getting cold and dark and he's started shivering."
+      },
+      {
+        "question": "What supplies do you have?",
+        "answer": "We don't have a first-aid kit. Just our day packs, water and a couple of jackets."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "sprain|fracture|broken"
+      ],
+      "must_ask": [
+        "feel|wiggle|toes|numb|colour|color"
+      ],
+      "must_escalate": [],
+      "must_not_recommend": [
+        "walk it off",
+        "force"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0004_V06",
+    "title": "Rolled ankle with the cold setting in",
+    "variation_of": "WILD_0004",
+    "tags": [
+      "trauma",
+      "limb_injury",
+      "cold",
+      "multi_condition",
+      "var:has_supplies"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold, getting dark",
+      "connectivity": "none",
+      "distance_to_help": "5 miles from trailhead"
+    },
+    "patient": {
+      "age": 16,
+      "sex": "unknown",
+      "medical_history": "none"
+    },
+    "presentation": {
+      "chief_complaint": "ankle injury, cannot walk",
+      "symptoms": [
+        "ankle_pain",
+        "swelling",
+        "cannot_bear_weight",
+        "shivering"
+      ],
+      "lay_descriptions": [
+        "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver.",
+        "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car.",
+        "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My son twisted his ankle on a rocky section. It's swollen and he can't put weight on it. It's getting cold and dark and he's started shivering."
+      },
+      {
+        "question": "What supplies do you have?",
+        "answer": "We have a full first-aid kit, a tarp, sleeping bags and a stove."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "sprain|fracture|broken"
+      ],
+      "must_ask": [
+        "feel|wiggle|toes|numb|colour|color"
+      ],
+      "must_escalate": [],
+      "must_not_recommend": [
+        "walk it off",
+        "force"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0004_V07",
+    "title": "Rolled ankle with the cold setting in",
+    "variation_of": "WILD_0004",
+    "tags": [
+      "trauma",
+      "limb_injury",
+      "cold",
+      "multi_condition",
+      "var:bad_weather"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "rain and wind",
+      "connectivity": "none",
+      "distance_to_help": "5 miles from trailhead"
+    },
+    "patient": {
+      "age": 16,
+      "sex": "unknown",
+      "medical_history": "none"
+    },
+    "presentation": {
+      "chief_complaint": "ankle injury, cannot walk",
+      "symptoms": [
+        "ankle_pain",
+        "swelling",
+        "cannot_bear_weight",
+        "shivering"
+      ],
+      "lay_descriptions": [
+        "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver.",
+        "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car.",
+        "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My son twisted his ankle on a rocky section. It's swollen and he can't put weight on it. It's getting cold and dark and he's started shivering."
+      },
+      {
+        "question": "What is the weather doing?",
+        "answer": "It's raining hard and the wind is picking up."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "sprain|fracture|broken"
+      ],
+      "must_ask": [
+        "feel|wiggle|toes|numb|colour|color"
+      ],
+      "must_escalate": [],
+      "must_not_recommend": [
+        "walk it off",
+        "force"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0004_V08",
+    "title": "Rolled ankle with the cold setting in",
+    "variation_of": "WILD_0004",
+    "tags": [
+      "trauma",
+      "limb_injury",
+      "cold",
+      "multi_condition",
+      "var:high_altitude"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "high altitude",
+      "weather": "cold, getting dark",
+      "connectivity": "none",
+      "distance_to_help": "5 miles from trailhead"
+    },
+    "patient": {
+      "age": 16,
+      "sex": "unknown",
+      "medical_history": "none"
+    },
+    "presentation": {
+      "chief_complaint": "ankle injury, cannot walk",
+      "symptoms": [
+        "ankle_pain",
+        "swelling",
+        "cannot_bear_weight",
+        "shivering"
+      ],
+      "lay_descriptions": [
+        "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver.",
+        "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car.",
+        "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My son twisted his ankle on a rocky section. It's swollen and he can't put weight on it. It's getting cold and dark and he's started shivering."
+      },
+      {
+        "question": "Where are you?",
+        "answer": "We're camped high up, above 11,000 feet."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "sprain|fracture|broken"
+      ],
+      "must_ask": [
+        "feel|wiggle|toes|numb|colour|color"
+      ],
+      "must_escalate": [],
+      "must_not_recommend": [
+        "walk it off",
+        "force"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0004_V09",
+    "title": "Rolled ankle with the cold setting in",
+    "variation_of": "WILD_0004",
+    "tags": [
+      "trauma",
+      "limb_injury",
+      "cold",
+      "multi_condition",
+      "var:denies_problem"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold, getting dark",
+      "connectivity": "none",
+      "distance_to_help": "5 miles from trailhead"
+    },
+    "patient": {
+      "age": 16,
+      "sex": "unknown",
+      "medical_history": "none"
+    },
+    "presentation": {
+      "chief_complaint": "ankle injury, cannot walk",
+      "symptoms": [
+        "ankle_pain",
+        "swelling",
+        "cannot_bear_weight",
+        "shivering"
+      ],
+      "lay_descriptions": [
+        "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver.",
+        "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car.",
+        "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My son twisted his ankle on a rocky section. It's swollen and he can't put weight on it. It's getting cold and dark and he's started shivering."
+      },
+      {
+        "question": "How does the person say they feel?",
+        "answer": "They keep saying they're fine and that I should stop fussing."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "sprain|fracture|broken"
+      ],
+      "must_ask": [
+        "feel|wiggle|toes|numb|colour|color"
+      ],
+      "must_escalate": [],
+      "must_not_recommend": [
+        "walk it off",
+        "force"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0004_V10",
+    "title": "Rolled ankle with the cold setting in",
+    "variation_of": "WILD_0004",
+    "tags": [
+      "trauma",
+      "limb_injury",
+      "cold",
+      "multi_condition",
+      "var:worsening"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold, getting dark",
+      "connectivity": "none",
+      "distance_to_help": "5 miles from trailhead"
+    },
+    "patient": {
+      "age": 16,
+      "sex": "unknown",
+      "medical_history": "none"
+    },
+    "presentation": {
+      "chief_complaint": "ankle injury, cannot walk",
+      "symptoms": [
+        "ankle_pain",
+        "swelling",
+        "cannot_bear_weight",
+        "shivering"
+      ],
+      "lay_descriptions": [
+        "My son rolled his ankle and can't put any weight on it. It's getting dark and he's starting to shiver.",
+        "I twisted my ankle badly and heard a pop. It's swelling up fast and I'm five miles from the car.",
+        "Her ankle is huge and purple and she can't walk. We don't have much warm gear and it's getting cold."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My son twisted his ankle on a rocky section. It's swollen and he can't put weight on it. It's getting cold and dark and he's started shivering."
+      },
+      {
+        "question": "Has anything changed?",
+        "answer": "It's been getting worse over the last few minutes."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "sprain|fracture|broken"
+      ],
+      "must_ask": [
+        "feel|wiggle|toes|numb|colour|color"
+      ],
+      "must_escalate": [],
+      "must_not_recommend": [
+        "walk it off",
+        "force"
+      ],
+      "clinical_review": "pending"
+    }
+  }
+]

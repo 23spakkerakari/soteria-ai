@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "records": 56,
+  "chunks": 382,
+  "errors": [],
+  "by_source": {
+    "NOLS Wilderness Medicine": 52,
+    "MedEdPORTAL (AAMC) via PubMed Central": 1,
+    "EM Sim Cases": 3
+  },
+  "by_category": {
+    "injury": 17,
+    "medical": 17,
+    "mixed": 3,
+    "environmental": 19
+  },
+  "by_acuity": {
+    "semi_urgent": 15,
+    "urgent": 15,
+    "field_manageable": 17,
+    "life_threat": 9
+  },
+  "by_setting": {
+    "wilderness": 42,
+    "campground": 1,
+    "frontcountry": 3,
+    "backcountry_water": 7,
+    "hospital_ed": 2,
+    "prehospital_ems": 1
+  },
+  "by_primary_condition": {
+    "spine_injury_possible": 5,
+    "soft_tissue_infection": 1,
+    "head_injury_mild": 1,
+    "ankle_injury": 2,
+    "severe_hemorrhage": 2,
+    "concussion": 1,
+    "hypothermia_mild": 4,
+    "exercise_associated_hyponatremia": 2,
+    "frostbite": 2,
+    "hypothermia_moderate_severe": 1,
+    "lightning_injury": 1,
+    "hape": 1,
+    "heat_exhaustion": 3,
+    "nonfreezing_cold_injury": 2,
+    "cardiac_arrest": 1,
+    "allergic_reaction": 1,
+    "diabetic_emergency": 1,
+    "viral_illness": 1,
+    "appendicitis_possible": 1,
+    "tick_borne_illness": 2,
+    "seizure": 1,
+    "hyperventilation": 1,
+    "abdominal_pain": 1,
+    "anxiety_panic": 1,
+    "chest_trauma": 1,
+    "chemical_exposure": 1,
+    "motion_sickness": 1,
+    "dental_injury": 1,
+    "wrist_injury": 1,
+    "envenomation_marine": 1,
+    "envenomation_snake": 1,
+    "acute_mountain_sickness": 1,
+    "heat_cramps": 1,
+    "anaphylaxis": 1,
+    "burn": 1,
+    "pneumothorax": 1,
+    "asthma": 2,
+    "knee_injury": 1,
+    "heat_stroke": 2
+  }
+}

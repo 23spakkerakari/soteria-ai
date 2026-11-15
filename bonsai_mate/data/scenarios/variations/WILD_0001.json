@@ -1,0 +1,650 @@
+[
+  {
+    "scenario_id": "WILD_0001_V01",
+    "title": "Cold, wet hiker who cannot stop shaking",
+    "variation_of": "WILD_0001",
+    "tags": [
+      "cold",
+      "hypothermia",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold rain",
+      "connectivity": "none",
+      "distance_to_help": "6 hours on foot"
+    },
+    "patient": {
+      "age": 24,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "feeling unusually cold",
+      "symptoms": [
+        "shivering",
+        "difficulty_walking",
+        "slurred_speech"
+      ],
+      "lay_descriptions": [
+        "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing.",
+        "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink.",
+        "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "hypothermia|dangerously cold|too cold"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "alcohol",
+        "rub",
+        "massage",
+        "hot bath"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0001_V02",
+    "title": "Cold, wet hiker who cannot stop shaking",
+    "variation_of": "WILD_0001",
+    "tags": [
+      "cold",
+      "hypothermia",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold rain",
+      "connectivity": "none",
+      "distance_to_help": "6 hours on foot"
+    },
+    "patient": {
+      "age": 24,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "feeling unusually cold",
+      "symptoms": [
+        "shivering",
+        "difficulty_walking",
+        "slurred_speech"
+      ],
+      "lay_descriptions": [
+        "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing.",
+        "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink.",
+        "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "hypothermia|dangerously cold|too cold"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "alcohol",
+        "rub",
+        "massage",
+        "hot bath"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0001_V03",
+    "title": "Cold, wet hiker who cannot stop shaking",
+    "variation_of": "WILD_0001",
+    "tags": [
+      "cold",
+      "hypothermia",
+      "var:phrasing"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold rain",
+      "connectivity": "none",
+      "distance_to_help": "6 hours on foot"
+    },
+    "patient": {
+      "age": 24,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "feeling unusually cold",
+      "symptoms": [
+        "shivering",
+        "difficulty_walking",
+        "slurred_speech"
+      ],
+      "lay_descriptions": [
+        "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing.",
+        "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink.",
+        "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "hypothermia|dangerously cold|too cold"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "alcohol",
+        "rub",
+        "massage",
+        "hot bath"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0001_V04",
+    "title": "Cold, wet hiker who cannot stop shaking",
+    "variation_of": "WILD_0001",
+    "tags": [
+      "cold",
+      "hypothermia",
+      "var:alone"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold rain",
+      "connectivity": "none",
+      "distance_to_help": "6 hours on foot"
+    },
+    "patient": {
+      "age": 24,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "feeling unusually cold",
+      "symptoms": [
+        "shivering",
+        "difficulty_walking",
+        "slurred_speech"
+      ],
+      "lay_descriptions": [
+        "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing.",
+        "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink.",
+        "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "We've been hiking in cold rain for several hours. My friend is soaked, can't stop shaking, and keeps stumbling."
+      },
+      {
+        "question": "Is anyone else with you?",
+        "answer": "No. It's just the two of us and nobody knows exactly where we are."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "hypothermia|dangerously cold|too cold"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "alcohol",
+        "rub",
+        "massage",
+        "hot bath"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0001_V05",
+    "title": "Cold, wet hiker who cannot stop shaking",
+    "variation_of": "WILD_0001",
+    "tags": [
+      "cold",
+      "hypothermia",
+      "var:no_supplies"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold rain",
+      "connectivity": "none",
+      "distance_to_help": "6 hours on foot"
+    },
+    "patient": {
+      "age": 24,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "feeling unusually cold",
+      "symptoms": [
+        "shivering",
+        "difficulty_walking",
+        "slurred_speech"
+      ],
+      "lay_descriptions": [
+        "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing.",
+        "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink.",
+        "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "We've been hiking in cold rain for several hours. My friend is soaked, can't stop shaking, and keeps stumbling."
+      },
+      {
+        "question": "What supplies do you have?",
+        "answer": "We don't have a first-aid kit. Just our day packs, water and a couple of jackets."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "hypothermia|dangerously cold|too cold"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "alcohol",
+        "rub",
+        "massage",
+        "hot bath"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0001_V06",
+    "title": "Cold, wet hiker who cannot stop shaking",
+    "variation_of": "WILD_0001",
+    "tags": [
+      "cold",
+      "hypothermia",
+      "var:has_supplies"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold rain",
+      "connectivity": "none",
+      "distance_to_help": "6 hours on foot"
+    },
+    "patient": {
+      "age": 24,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "feeling unusually cold",
+      "symptoms": [
+        "shivering",
+        "difficulty_walking",
+        "slurred_speech"
+      ],
+      "lay_descriptions": [
+        "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing.",
+        "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink.",
+        "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "We've been hiking in cold rain for several hours. My friend is soaked, can't stop shaking, and keeps stumbling."
+      },
+      {
+        "question": "What supplies do you have?",
+        "answer": "We have a full first-aid kit, a tarp, sleeping bags and a stove."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "hypothermia|dangerously cold|too cold"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "alcohol",
+        "rub",
+        "massage",
+        "hot bath"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0001_V07",
+    "title": "Cold, wet hiker who cannot stop shaking",
+    "variation_of": "WILD_0001",
+    "tags": [
+      "cold",
+      "hypothermia",
+      "var:bad_weather"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "rain and wind",
+      "connectivity": "none",
+      "distance_to_help": "6 hours on foot"
+    },
+    "patient": {
+      "age": 24,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "feeling unusually cold",
+      "symptoms": [
+        "shivering",
+        "difficulty_walking",
+        "slurred_speech"
+      ],
+      "lay_descriptions": [
+        "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing.",
+        "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink.",
+        "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "We've been hiking in cold rain for several hours. My friend is soaked, can't stop shaking, and keeps stumbling."
+      },
+      {
+        "question": "What is the weather doing?",
+        "answer": "It's raining hard and the wind is picking up."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "hypothermia|dangerously cold|too cold"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "alcohol",
+        "rub",
+        "massage",
+        "hot bath"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0001_V08",
+    "title": "Cold, wet hiker who cannot stop shaking",
+    "variation_of": "WILD_0001",
+    "tags": [
+      "cold",
+      "hypothermia",
+      "var:high_altitude"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "high altitude",
+      "weather": "cold rain",
+      "connectivity": "none",
+      "distance_to_help": "6 hours on foot"
+    },
+    "patient": {
+      "age": 24,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "feeling unusually cold",
+      "symptoms": [
+        "shivering",
+        "difficulty_walking",
+        "slurred_speech"
+      ],
+      "lay_descriptions": [
+        "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing.",
+        "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink.",
+        "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "We've been hiking in cold rain for several hours. My friend is soaked, can't stop shaking, and keeps stumbling."
+      },
+      {
+        "question": "Where are you?",
+        "answer": "We're camped high up, above 11,000 feet."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "hypothermia|dangerously cold|too cold"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "alcohol",
+        "rub",
+        "massage",
+        "hot bath"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0001_V09",
+    "title": "Cold, wet hiker who cannot stop shaking",
+    "variation_of": "WILD_0001",
+    "tags": [
+      "cold",
+      "hypothermia",
+      "var:denies_problem"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold rain",
+      "connectivity": "none",
+      "distance_to_help": "6 hours on foot"
+    },
+    "patient": {
+      "age": 24,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "feeling unusually cold",
+      "symptoms": [
+        "shivering",
+        "difficulty_walking",
+        "slurred_speech"
+      ],
+      "lay_descriptions": [
+        "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing.",
+        "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink.",
+        "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "We've been hiking in cold rain for several hours. My friend is soaked, can't stop shaking, and keeps stumbling."
+      },
+      {
+        "question": "How does the person say they feel?",
+        "answer": "They keep saying they're fine and that I should stop fussing."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "hypothermia|dangerously cold|too cold"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "alcohol",
+        "rub",
+        "massage",
+        "hot bath"
+      ],
+      "clinical_review": "pending"
+    }
+  },
+  {
+    "scenario_id": "WILD_0001_V10",
+    "title": "Cold, wet hiker who cannot stop shaking",
+    "variation_of": "WILD_0001",
+    "tags": [
+      "cold",
+      "hypothermia",
+      "var:worsening"
+    ],
+    "source": {
+      "organization": "Bonsai Mate",
+      "source_type": "synthetic",
+      "source_url": null,
+      "license_verified": true
+    },
+    "environment": {
+      "type": "wilderness",
+      "weather": "cold rain",
+      "connectivity": "none",
+      "distance_to_help": "6 hours on foot"
+    },
+    "patient": {
+      "age": 24,
+      "sex": "unknown",
+      "medical_history": "unknown"
+    },
+    "presentation": {
+      "chief_complaint": "feeling unusually cold",
+      "symptoms": [
+        "shivering",
+        "difficulty_walking",
+        "slurred_speech"
+      ],
+      "lay_descriptions": [
+        "My friend is soaked from the rain and can't stop shaking. She keeps tripping over nothing.",
+        "He's freezing and mumbling, and he's acting kind of drunk but we haven't had anything to drink.",
+        "We got caught in cold rain for hours. My hiking partner is shaking really badly and seems out of it."
+      ]
+    },
+    "conversation": [
+      {
+        "question": "What happened?",
+        "answer": "We've been hiking in cold rain for several hours. My friend is soaked, can't stop shaking, and keeps stumbling."
+      },
+      {
+        "question": "Has anything changed?",
+        "answer": "It's been getting worse over the last few minutes."
+      }
+    ],
+    "evaluation": {
+      "must_recognize": [
+        "hypothermia|dangerously cold|too cold"
+      ],
+      "must_ask": [],
+      "must_escalate": [
+        "emergency|evacuat|rescue|beacon|satellite"
+      ],
+      "must_not_recommend": [
+        "alcohol",
+        "rub",
+        "massage",
+        "hot bath"
+      ],
+      "clinical_review": "pending"
+    }
+  }
+]
