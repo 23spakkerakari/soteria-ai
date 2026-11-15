@@ -49,12 +49,70 @@ def get(conn: sqlite3.Connection, card_id: str) -> dict | None:
     return json.loads(row["json"]) if row else None
 
 
+_CLAUSE = re.compile(r"[.,;!?]+|\b(?:but|and)\b", re.I)
+_NEGATION = re.compile(
+    r"\b(no|not|none|never|without|isn'?t|aren'?t|wasn'?t|doesn'?t|don'?t|didn'?t|hasn'?t|haven'?t)\b", re.I
+)
+
+
+_NEGATION_WINDOW = 5  # words; a negation further back than this does not reach the match (as in NegEx)
+
+
+def said(pattern: str, text: str) -> bool:
+    """Did the user say this, rather than deny it? Checked clause by clause: "not a
+    grizzly" and "it doesn't have a hump" do not count as saying "grizzly" or "hump",
+    while "no hump" does count for a pattern that itself starts with "no". A negation
+    reaches five words, as in NegEx: far enough for "I don't think it has a hump", and
+    the price is that unpunctuated speech such as "we were not in a tent it followed
+    us" does not count as "followed". That error is in the safe direction: no route."""
+    for clause in _CLAUSE.split(text):
+        m = re.search(pattern, clause, re.I)
+        if m and not _NEGATION.search(" ".join(clause[: m.start()].split()[-_NEGATION_WINDOW:])):
+            return True
+    return False
+
+
+def resolve(conn: sqlite3.Connection, card: dict, text: str, _seen: set[str] | None = None) -> dict:
+    """The card in this card's family that fits what the user has said.
+
+    Word search picks a card by shared words, and the bear cards share nearly all
+    of theirs: "a bear is attacking" scores the same for a grizzly, a black bear
+    and a bear in a tent. Two rules in the card data settle it, and they are
+    deterministic, like the red flags:
+
+      applies_when.requires   the card needs a fact ("grizz|hump"); if the user has
+                              not said it, use applies_when.fallback instead
+      routes                  the user has said enough ("tent") for a more specific card
+
+    `text` is everything the user has said; negated clauses do not count (see said()).
+    Followed until a card stays put. A cycle stops at the first repeat."""
+    seen = _seen if _seen is not None else {card["card_id"]}
+    applies = card.get("applies_when") or {}
+    target = None
+    if applies.get("requires") and applies.get("fallback") and not said(applies["requires"], text):
+        target = applies["fallback"]
+    else:
+        target = next((r["card"] for r in card.get("routes", []) if said(r["when"], text)), None)
+    if target is None or target in seen:
+        return card
+    nxt = get(conn, target)
+    if nxt is None:
+        return card
+    seen.add(target)
+    return resolve(conn, nxt, text, seen)
+
+
 def format_card(card: dict) -> str:
     def block(label: str, items: list[str]) -> str:
         return f"{label}:\n" + "\n".join(f"- {i}" for i in items) if items else ""
 
+    applies = card.get("applies_when") or {}
+    scope = ", ".join(applies.get("species") or [])
+    if applies.get("situation"):
+        scope = f"{scope}; {applies['situation'].replace('_', ' ')}" if scope else applies["situation"].replace("_", " ")
     parts = [
         f"### {card['title']}",
+        f"Applies to: {scope}" if scope else "",
         block("Signs", card["recognize"]),
         block("Do first", card["do_first"]),
         block("Do not", card["do_not"]),

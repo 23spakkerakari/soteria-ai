@@ -1,3 +1,5 @@
+import json
+
 import pytest
 
 from backend import assistant, config, db, knowledge, triage, wildmed
@@ -59,6 +61,82 @@ def test_prompt_contains_cards_and_flags(conn):
     assert "life-threatening" in turn.prompt[-1]["content"]  # urgent first reply: all the steps now
     if config.WILDMED_CASES.exists():
         assert turn.cases and "Questions worth asking" in system
+
+
+@pytest.mark.parametrize(
+    "text, card_id, flagged",
+    [
+        # The bear cards share nearly all their words: the user's own words, not the word
+        # search, must decide which one applies (knowledge.resolve).
+        ("a grizzly is attacking my friend", "KB_BEAR_ATTACK_GRIZZLY", True),
+        ("a black bear is on top of my brother and biting him", "KB_BEAR_ATTACK_BLACK", True),
+        ("a bear came into our tent and is biting my friend", "KB_BEAR_ATTACK_PREDATORY", True),
+        ("a black bear got into our tent and is attacking", "KB_BEAR_ATTACK_PREDATORY", True),  # tent beats species
+        ("a bear is attacking us", "KB_BEAR_ATTACK", True),
+        ("bears are attacking us", "KB_BEAR_ATTACK", True),
+        ("a bear is attacking us, it's not a grizzly", "KB_BEAR_ATTACK", True),  # a denial routes nowhere
+        ("there is a bear near our camp and it won't leave", "KB_BEAR_ENCOUNTER", False),
+        ("a grizzly with cubs is standing up and huffing at us", "KB_BEAR_ENCOUNTER", False),  # no contact yet
+        ("a bear is biting into our food bag at camp", "KB_BEAR_ENCOUNTER", False),  # contact with food, not a person
+    ],
+)
+def test_bear_cards_are_chosen_by_what_the_user_said(conn, text, card_id, flagged):
+    turn = assistant.prepare(conn, say(text))
+    assert [c["card_id"] for c in turn.cards] == [card_id]  # the family collapses to one card
+    assert bool(turn.flags) == flagged
+    card = turn.cards[0]
+    assert card["source"]["license"] == "public_domain" and card["source"]["license_verified"]
+    assert "Applies to:" in turn.prompt[0]["content"]
+
+
+def test_unknown_bear_is_asked_about_first_and_the_answer_routes(conn):
+    incident_id = "test-bear-route"
+    first = "a bear is attacking us"
+    turn = assistant.prepare(conn, say(first), incident_id)
+    assert turn.cards[0]["card_id"] == "KB_BEAR_ATTACK"
+    assert turn.asking[0].startswith("What kind of bear")  # before the life-threat questions
+    assert "in its own words" in turn.prompt[-1]["content"]  # verbatim_allowed: the model keeps the NPS wording
+    second = assistant.prepare(conn, say(first, "It has a big hump on its shoulders"), incident_id)
+    assert second.cards[0]["card_id"] == "KB_BEAR_ATTACK_GRIZZLY"
+    asked = [q for round_ in second.known["rounds"] for q in round_["questions"]]  # includes this turn's
+    assert len(asked) == len(set(asked))  # the tent question is not asked twice across the family
+    assert second.asking and all(not q.startswith(("What kind of bear", "Did the bear")) for q in second.asking)
+
+
+@pytest.mark.parametrize(
+    "answer, card_id",
+    [
+        ("It's black with no hump, we were hiking", "KB_BEAR_ATTACK_BLACK"),  # "no hump" is an answer, not a negation
+        ("It's not a grizzly, it's a black bear", "KB_BEAR_ATTACK_BLACK"),
+        ("I don't think it has a hump", "KB_BEAR_ATTACK"),  # a denial routes nowhere
+        ("No idea what kind, it isn't in a tent", "KB_BEAR_ATTACK"),
+    ],
+)
+def test_answers_route_with_negation_understood(conn, answer, card_id):
+    first = "a bear is attacking us"
+    turn = assistant.prepare(conn, say(first, answer))
+    assert turn.cards[0]["card_id"] == card_id
+    assert knowledge.said("grizz", "not a grizzly, a black bear") is False
+    assert knowledge.said("no hump", "it's black with no hump") is True
+    # Known limit: a negation reaches five words, so in unpunctuated speech "we were not in a
+    # tent it followed us" does not count as "followed". Wrong in the safe direction (no route).
+    assert knowledge.said("follow", "we were not in a tent, it followed us")  # with the clause break it does
+
+
+def test_a_denial_does_not_count_as_an_answer(conn):
+    turn = assistant.prepare(conn, say("a bear is attacking us, it's not a grizzly"))
+    assert turn.cards[0]["card_id"] == "KB_BEAR_ATTACK"
+    assert "Kind of bear" not in turn.known["already_told"]
+    assert turn.asking[0].startswith("What kind of bear")  # still asked: the routes and the record agree
+
+
+def test_card_references_must_exist(tmp_path, monkeypatch):
+    card = db.load_cards()[0].model_dump(mode="json")
+    card["routes"] = [{"when": "x", "card": "KB_NOT_A_CARD"}]
+    (tmp_path / "cards.json").write_text(json.dumps([card]), encoding="utf-8")
+    monkeypatch.setattr(config, "CARDS_DIR", tmp_path)
+    with pytest.raises(ValueError, match="KB_NOT_A_CARD"):
+        db.load_cards()
 
 
 def test_nothing_matching_falls_back_to_general_knowledge(conn):

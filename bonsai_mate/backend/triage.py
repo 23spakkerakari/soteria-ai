@@ -44,6 +44,14 @@ RED_FLAGS: list[tuple[str, str, str | None]] = [
         "Possible serious fracture or spinal injury: keep them still.",
         "KB_LIMB_INJURY",
     ),
+    (
+        # Contact with a person. "Biting into our food bag" is an encounter, not an attack.
+        r"(bears?|grizzl(y|ies)) .{0,30}(attacking|mauling|(biting|clawing|on top of) "
+        r"(him|her|me|us|them|my|his|their|someone|the (man|woman|guy|girl|kid|child|boy|person|hiker|climber)))"
+        r"|(being|getting) (attacked|mauled|bitten) by a (bear|grizzly)",
+        "Bear attack: keep your pack on and protect your head and neck. What to do next depends on the kind of bear.",
+        "KB_BEAR_ATTACK",
+    ),
 ]
 
 REACH_HELP = (

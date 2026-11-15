@@ -11,6 +11,11 @@ The app chooses and asks the questions (questions.py) and records every question
 and answer (incident.py). The record is fed back to the model on every turn. The
 model only decides what to say about the answers; the cards and the red-flag rules
 decide what is safe to recommend.
+
+Cards that come in families (grizzly / black bear / bear in a tent) are resolved
+by rules in the card data (knowledge.resolve), not by the word search, and a card
+can ask its own question first ("what kind of bear?") when the answer changes the
+first step.
 """
 import asyncio
 import re
@@ -135,11 +140,22 @@ def prepare(conn: sqlite3.Connection, messages: list[dict], incident_id: str | N
     # Red flags are checked on every word the user has said (a false alarm is the safer mistake).
     flags = triage.red_flags(user_text)
     matching = search_text(said)
-    flagged = [c for c in (knowledge.get(conn, card_id) for card_id in triage.flagged_cards(user_text)) if c]
-    cards = list(flagged)  # cards tied to a red flag always come first
+    # Every card goes through knowledge.resolve: within a family (the bear cards) the
+    # user's own words, not the word search, decide which card applies. It reads every
+    # word, not `matching`: "no hump" is an answer, and resolve() handles negation itself.
+    cards: list[dict] = []
+
+    def add(card: dict | None) -> None:
+        if card is not None:
+            card = knowledge.resolve(conn, card, user_text)
+            if card["card_id"] not in [c["card_id"] for c in cards]:
+                cards.append(card)
+
+    for card_id in triage.flagged_cards(user_text):
+        add(knowledge.get(conn, card_id))  # cards tied to a red flag always come first
+    flagged = list(cards)
     for card in knowledge.search(conn, matching, k=2, runner_up_ratio=CARD_RUNNER_UP, min_score=CARD_MIN_SCORE):
-        if card["card_id"] not in [c["card_id"] for c in cards]:
-            cards.append(card)
+        add(card)
     cards = cards[:2]
     cases = wildmed.search(conn, matching, k=1)
     grounding = "card" if cards else "case" if cases else "general"
@@ -149,7 +165,7 @@ def prepare(conn: sqlite3.Connection, messages: list[dict], incident_id: str | N
     seen = {r["question_id"] for r in incident.rows(conn, incident_id)}
     case_budget = questions.MAX_CASE_QUESTIONS - sum(q.startswith("case:") for q in seen)
     open_questions: list[questions.Question] = []
-    for q in questions.build_pool(cases, to_self):
+    for q in questions.build_pool(cards, cases, to_self):
         if q.id in seen:
             continue
         if q.group == questions.CASE:
@@ -196,6 +212,11 @@ def prepare(conn: sqlite3.Connection, messages: list[dict], incident_id: str | N
     instruction = INSTRUCTIONS[phase]
     if phase == "triage" and flagged:
         instruction = INSTRUCTIONS["triage_urgent"].format(card=flagged[0]["title"])
+    if phase in ("triage", "plan") and cards and cards[0]["source"].get("verbatim_allowed"):
+        instruction += (
+            f' The "{cards[0]["title"]}" card comes from an authoritative source: give its steps in its own words, '
+            "changing only who they are addressed to."
+        )
     if asking:
         instruction += " The app will ask next, so do not ask it yourself: " + " ".join(q.text(to_self) for q in asking)
     final = f"{latest}\n\n---\nWHAT WE KNOW SO FAR\n{incident.for_model(known)}\n\nTHIS REPLY\n{instruction}"
