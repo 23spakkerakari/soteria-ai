@@ -5,6 +5,10 @@
 //
 //     {"text": "My friend twisted their ankle while hiking."}
 //
+// The model is downloaded once into a persistent folder (ARGMAX_MODEL_DIR, or
+// ~/Library/Caches/soteria-argmax-models) and reused from there, so transcription
+// works fully offline after the first download.
+//
 // Exit codes: 0 success, 1 transcription/run failure, 2 usage/environment error.
 // Progress and error detail go to stderr so stdout stays clean for parsing.
 //
@@ -37,8 +41,14 @@ struct SoteriaTranscribe {
             // first use, so later runs work offline.
             await ArgmaxSDK.with(ArgmaxConfig(apiKey: key))
 
-            // Explicitly use the tiny Whisper model.
-            let config = WhisperKitProConfig(model: "tiny")
+            // Explicitly use the tiny Whisper model, stored in a persistent
+            // folder so it is downloaded once and reused offline.
+            let cacheBase = ProcessInfo.processInfo.environment["ARGMAX_MODEL_DIR"]
+                ?? FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+                    .appendingPathComponent("soteria-argmax-models", isDirectory: true).path
+            let modelFolder = try await tinyModelFolder(cacheBase: cacheBase)
+
+            let config = WhisperKitProConfig(modelFolder: modelFolder, download: false)
             let whisperKitPro = try await WhisperKitPro(config)
 
             let audioArray = try AudioProcessor.loadAudioAsFloatArray(fromPath: audioPath)
@@ -52,6 +62,46 @@ struct SoteriaTranscribe {
         } catch {
             fail("transcription error: \(error)", 1)
         }
+    }
+
+    /// Returns the local folder that holds the tiny model, downloading it into
+    /// `cacheBase` on first use and reusing it afterwards (offline-safe).
+    static func tinyModelFolder(cacheBase: String) async throws -> String {
+        let base = URL(fileURLWithPath: cacheBase)
+        try FileManager.default.createDirectory(at: base, withIntermediateDirectories: true)
+
+        // Reuse an already-downloaded tiny model if it is present (the download
+        // nests it under models/<repo>/<variant>, so search recursively).
+        if let existing = findModelFolder(from: base) {
+            return existing.path
+        }
+
+        // First run: download from the open-source WhisperKit repo.
+        let folder = try await WhisperKit.download(
+            variant: "tiny",
+            downloadBase: base,
+            from: "argmaxinc/whisperkit-coreml"
+        )
+        return folder.path
+    }
+
+    /// Recursively locate a folder that holds the Whisper Core ML bundles.
+    static func findModelFolder(from root: URL) -> URL? {
+        let fm = FileManager.default
+        guard let enumerator = fm.enumerator(
+            at: root,
+            includingPropertiesForKeys: [.isDirectoryKey],
+            options: [.skipsHiddenFiles]
+        ) else { return nil }
+        for case let url as URL in enumerator {
+            let isDir = (try? url.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory ?? false
+            guard isDir else { continue }
+            if fm.fileExists(atPath: url.appendingPathComponent("MelSpectrogram.mlmodelc").path),
+               fm.fileExists(atPath: url.appendingPathComponent("TextDecoder.mlmodelc").path) {
+                return url
+            }
+        }
+        return nil
     }
 
     static func printJSON(_ object: [String: String]) {

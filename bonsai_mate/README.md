@@ -34,7 +34,7 @@ swift package-registry login https://api.argmaxinc.com/v1/sdk/login --token "$AR
 swift build -c release --product soteria-transcribe
 ```
 
-`ARGMAX_API_KEY` must stay exported in the shell that runs `./start.sh`. The Argmax license is cached in the Keychain after first use, so transcription keeps working with Wi-Fi off once the `tiny` model is cached. Without the binary or the key, the app runs with typing only; `start.sh` prints a note when the binary is missing.
+`ARGMAX_API_KEY` must stay exported in the shell that runs `./start.sh`. The Argmax license is cached in the Keychain after first use. The `tiny` model is downloaded once on the first transcription (with Wi-Fi on) into `~/Library/Caches/soteria-argmax-models/` and reused from there, so transcription keeps working with Wi-Fi off afterwards. Without the binary or the key, the app runs with typing only; `start.sh` prints a note when the binary is missing.
 
 #### Stop the "login password" Keychain prompt
 
@@ -51,6 +51,7 @@ macOS may ask for your login password on every transcription. Argmax stores its 
 | `MATE_ASSESSMENT_ROUNDS` | `3` | Rounds of questions between the first reply and the plan |
 | `MATE_TRANSCRIBE_BIN` | `../argmax-pro-sdk/native/.build/release/soteria-transcribe` | Compiled Argmax transcription binary |
 | `ARGMAX_API_KEY` | *(required)* | Argmax Pro license key (starts with `ax_`). Never commit it. |
+| `ARGMAX_MODEL_DIR` | `~/Library/Caches/soteria-argmax-models` | Where the Argmax `tiny` model is downloaded and cached (override to relocate it) |
 | `MATE_TRANSCRIBE_TIMEOUT` | `300` | Seconds before a transcription attempt is abandoned |
 | `MATE_MAX_AUDIO_BYTES` | `26214400` | Largest accepted recording (25 MiB) |
 
