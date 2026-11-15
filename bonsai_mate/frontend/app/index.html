@@ -1,0 +1,84 @@
+<!doctype html>
+<!-- Soteria app. Plain HTML + JS, no build step, no CDN: everything must load with no internet.
+     Served at /app/. Shares its typeface and design language with the landing page at /. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Soteria</title>
+<meta name="theme-color" content="#111820" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F3EF" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111820'/%3E%3Cpath d='M5 23.5 12.5 10l3.6 6.2 2.4-3.7 8.5 11' fill='none' stroke='%23F4F3EF' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-mark" viewBox="0 0 32 24"><path d="M2 21.5 11 5l4.4 7.6L18.3 8 30 21.5"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9.5" y="3.5" width="5" height="10" rx="2.5"/><path d="M6.5 11.5a5.5 5.5 0 0 0 11 0M12 17v3.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+</svg>
+
+<header class="bar">
+  <a class="logo" href="/" aria-label="Soteria home page">
+    <svg class="logo__mark" aria-hidden="true"><use href="#i-mark"/></svg>
+    <span class="logo__word">Soteria</span>
+  </a>
+  <nav class="tabs" aria-label="Views">
+    <button id="tab-assist" class="tab active" type="button">Assist</button>
+    <button id="tab-cards" class="tab" type="button">Protocols</button>
+  </nav>
+  <div class="bar__tools">
+    <span id="status" class="status" role="status">Checking…</span>
+    <label class="toggle"><input type="checkbox" id="speak-toggle"><span>Read aloud</span></label>
+    <button id="reset" class="btn btn--outline" type="button">New incident</button>
+  </div>
+</header>
+
+<main id="view-assist">
+  <aside id="known" hidden aria-label="What I know so far">
+    <details id="known-details">
+      <summary>What I know so far</summary>
+      <div id="known-body"></div>
+    </details>
+  </aside>
+
+  <div class="chat">
+    <div id="log" aria-live="polite">
+      <section id="welcome">
+        <p class="eyebrow"><i></i>Offline · On this device</p>
+        <h1>How can I help you today?</h1>
+        <p class="lede">Say it, type it, or choose the closest match. The most urgent step comes first.</p>
+        <div id="quick" class="quick"></div>
+      </section>
+    </div>
+
+    <form id="form" class="composer">
+      <button type="button" id="mic" class="mic" disabled aria-pressed="false" title="Voice input is loading">
+        <svg aria-hidden="true"><use href="#i-mic"/></svg>
+        <span id="mic-label">Speak</span>
+      </button>
+      <textarea id="input" rows="1" placeholder="Describe what's happening…" aria-label="Describe what's happening"></textarea>
+      <button type="submit" id="send" class="send"><span>Send</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </form>
+    <p class="notice">Prototype. Unreviewed guidance, not medical advice. If you can reach emergency services by any means, do that first.</p>
+  </div>
+</main>
+
+<main id="view-cards" hidden>
+  <div class="library">
+    <p class="eyebrow"><i></i>Stored on this device</p>
+    <h1>Protocols</h1>
+    <label class="search">
+      <svg aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="card-search" type="search" placeholder="Search protocols" aria-label="Search protocols">
+    </label>
+    <div id="card-list"></div>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

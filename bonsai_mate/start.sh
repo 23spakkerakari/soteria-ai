@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Start Bonsai Mate on macOS / Linux.
+# Start Soteria on macOS / Linux.
 #   ./start.sh            # model server (4B) + app on http://localhost:8000
 #   ./start.sh 2B         # 2B | 4B | 9B
 #   NO_MODEL=1 ./start.sh # app only: protocol cards still work without the model
@@ -34,5 +34,5 @@ if [ -z "${NO_MODEL:-}" ]; then
   trap 'kill $! 2>/dev/null || true' EXIT
 fi
 
-echo; echo "Open http://localhost:$PORT in your browser."; echo
+echo; echo "App:          http://localhost:$PORT/app/"; echo "Landing page: http://localhost:$PORT/"; echo
 .venv/bin/python -m uvicorn backend.main:app --port "$PORT"

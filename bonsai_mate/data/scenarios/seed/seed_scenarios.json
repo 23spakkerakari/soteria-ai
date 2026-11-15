@@ -3,7 +3,7 @@
     "scenario_id": "WILD_0001",
     "title": "Cold, wet hiker who cannot stop shaking",
     "tags": ["cold", "hypothermia"],
-    "source": { "organization": "Bonsai Mate", "source_type": "synthetic", "source_url": null, "license_verified": true },
+    "source": { "organization": "Soteria", "source_type": "synthetic", "source_url": null, "license_verified": true },
     "environment": { "type": "wilderness", "weather": "cold rain", "connectivity": "none", "distance_to_help": "6 hours on foot" },
     "patient": { "age": 24, "sex": "unknown", "medical_history": "unknown" },
     "presentation": {
@@ -30,7 +30,7 @@
     "scenario_id": "WILD_0002",
     "title": "Desert hiker confused in the heat",
     "tags": ["heat", "heat_stroke"],
-    "source": { "organization": "Bonsai Mate", "source_type": "synthetic", "source_url": null, "license_verified": true },
+    "source": { "organization": "Soteria", "source_type": "synthetic", "source_url": null, "license_verified": true },
     "environment": { "type": "desert", "weather": "hot, full sun", "connectivity": "none", "distance_to_help": "4 hours on foot" },
     "patient": { "age": 41, "sex": "unknown", "medical_history": "unknown" },
     "presentation": {
@@ -57,7 +57,7 @@
     "scenario_id": "WILD_0003",
     "title": "Blow to the head from rockfall",
     "tags": ["trauma", "head_injury"],
-    "source": { "organization": "Bonsai Mate", "source_type": "synthetic", "source_url": null, "license_verified": true },
+    "source": { "organization": "Soteria", "source_type": "synthetic", "source_url": null, "license_verified": true },
     "environment": { "type": "mountain", "weather": "clear", "connectivity": "none", "distance_to_help": "remote" },
     "patient": { "age": 33, "sex": "unknown", "medical_history": "unknown" },
     "presentation": {
@@ -84,7 +84,7 @@
     "scenario_id": "WILD_0004",
     "title": "Rolled ankle with the cold setting in",
     "tags": ["trauma", "limb_injury", "cold", "multi_condition"],
-    "source": { "organization": "Bonsai Mate", "source_type": "synthetic", "source_url": null, "license_verified": true },
+    "source": { "organization": "Soteria", "source_type": "synthetic", "source_url": null, "license_verified": true },
     "environment": { "type": "wilderness", "weather": "cold, getting dark", "connectivity": "none", "distance_to_help": "5 miles from trailhead" },
     "patient": { "age": 16, "sex": "unknown", "medical_history": "none" },
     "presentation": {
@@ -111,7 +111,7 @@
     "scenario_id": "WILD_0005",
     "title": "Bee sting with a swelling throat",
     "tags": ["allergy", "anaphylaxis"],
-    "source": { "organization": "Bonsai Mate", "source_type": "synthetic", "source_url": null, "license_verified": true },
+    "source": { "organization": "Soteria", "source_type": "synthetic", "source_url": null, "license_verified": true },
     "environment": { "type": "wilderness", "weather": "warm", "connectivity": "none", "distance_to_help": "2 hours on foot" },
     "patient": { "age": 29, "sex": "unknown", "medical_history": "known bee allergy" },
     "presentation": {
@@ -138,7 +138,7 @@
     "scenario_id": "WILD_0006",
     "title": "Snakebite on the lower leg",
     "tags": ["bite", "snakebite"],
-    "source": { "organization": "Bonsai Mate", "source_type": "synthetic", "source_url": null, "license_verified": true },
+    "source": { "organization": "Soteria", "source_type": "synthetic", "source_url": null, "license_verified": true },
     "environment": { "type": "desert", "weather": "warm", "connectivity": "none", "distance_to_help": "3 hours on foot" },
     "patient": { "age": 37, "sex": "unknown", "medical_history": "unknown" },
     "presentation": {
@@ -165,7 +165,7 @@
     "scenario_id": "WILD_0007",
     "title": "Deep axe cut to the thigh",
     "tags": ["trauma", "bleeding"],
-    "source": { "organization": "Bonsai Mate", "source_type": "synthetic", "source_url": null, "license_verified": true },
+    "source": { "organization": "Soteria", "source_type": "synthetic", "source_url": null, "license_verified": true },
     "environment": { "type": "wilderness", "weather": "mild", "connectivity": "none", "distance_to_help": "remote" },
     "patient": { "age": 45, "sex": "unknown", "medical_history": "unknown" },
     "presentation": {
@@ -192,7 +192,7 @@
     "scenario_id": "WILD_0008",
     "title": "Collapse on the trail",
     "tags": ["cardiac", "cpr"],
-    "source": { "organization": "Bonsai Mate", "source_type": "synthetic", "source_url": null, "license_verified": true },
+    "source": { "organization": "Soteria", "source_type": "synthetic", "source_url": null, "license_verified": true },
     "environment": { "type": "wilderness", "weather": "mild", "connectivity": "none", "distance_to_help": "1 hour on foot" },
     "patient": { "age": 62, "sex": "unknown", "medical_history": "unknown" },
     "presentation": {

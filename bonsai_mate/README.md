@@ -1,4 +1,4 @@
-# Bonsai Mate: offline emergency-support assistant
+# Soteria: offline emergency-support assistant
 
 A first-aid assistant for people in the wilderness or anywhere without a connection. You talk to it or type. It tells you the most urgent thing to do, asks questions to understand the situation, and then gives a plan fitted to your answers. Everything runs on your own machine:
 
@@ -20,7 +20,7 @@ A first-aid assistant for people in the wilderness or anywhere without a connect
 ```
 **macOS / Linux:** `./start.sh` (`NO_MODEL=1`, `NO_VOICE=1`)
 
-Then open **http://localhost:8000**.
+Then open **http://localhost:8000/app/** for the app. The landing page is at **http://localhost:8000/**.
 
 The first run needs internet for Python packages, the llama.cpp runtime and the language model (through [`../bonsai-models/gguf`](../bonsai-models/gguf/README.md)), and the Argmax `tiny` speech model. After that everything works offline.
 
@@ -154,11 +154,16 @@ Things to know:
 - **The model's output varies from run to run.** The same hypothermia description produced the "get emergency help now" line in one run and not in the next. The built-in warning does not vary.
 - **Keep the benchmark separate.** The synthetic scenarios test the assistant precisely because they are not in the case-study index. Evaluating on the wildmed cases themselves would be circular.
 
-## Landing page
+## Landing page and app design
 
-A marketing page for the product under the name **TerraMind** lives in [`frontend/landing/`](frontend/landing/) and is served at **http://localhost:8000/landing/** (the app itself stays at `/`). It is plain HTML, CSS and a small script, with local photographs and a self-hosted typeface, so it also loads offline. Photo and font sources are in [`frontend/landing/CREDITS.md`](frontend/landing/CREDITS.md).
+| Address | What | Files |
+|---|---|---|
+| `/` | Landing page for the product, under the name **Soteria** | `frontend/index.html`, `landing.css`, `landing.js` |
+| `/app/` | The app | `frontend/app/` (`index.html`, `style.css`, `app.js`) |
 
-Its "Get the App" and "Download" buttons open the local app at `/`; there is no store listing yet. The phone on the page is a drawn preview, not a screenshot. Two lines of its copy ("grounded in established medical resources", "built around established medical and first-aid resources") describe the goal, not the current data: see **Data** above.
+Both are plain HTML, CSS and a small script, and share one design language: charcoal, slate and off-white with forest green, the Instrument Sans typeface (self-hosted in `frontend/assets/fonts/`), and thin rules instead of boxes. The app is dark by default and switches to a light theme when the system asks for one, which is easier to read in full sun. A rust tone is used only for warnings. Photo and font sources are in [`frontend/CREDITS.md`](frontend/CREDITS.md).
+
+The landing page's "Get the App" and "Download" buttons open the app at `/app/`; there is no store listing yet. The phone on that page is a drawn preview, not a screenshot. Two lines of its copy ("grounded in established medical resources", "built around established medical and first-aid resources") describe the goal, not the current data: see **Data** above.
 
 ## Scenario pipeline
 
