@@ -84,12 +84,18 @@ function renderCase(c) {
 }
 
 // ---------- "What I know so far" panel ----------
-const PHASES = {
-  triage: "Step 1 of 3 · Urgent action",
-  assessment: "Step 2 of 3 · Questions",
-  plan: "Step 3 of 3 · Plan",
-  follow_up: "Step 3 of 3 · Plan given",
-};
+const STEPS = [["triage", "Urgent action"], ["assessment", "Questions"], ["plan", "Plan"]];
+function renderSteps(phase) {
+  const current = phase === "follow_up" ? STEPS.length : STEPS.findIndex(([key]) => key === phase);
+  const steps = el("ol", "steps");
+  STEPS.forEach(([, label], i) => {
+    const step = el("li", i < current ? "done" : i === current ? "now" : "");
+    if (i === current) step.setAttribute("aria-current", "step");
+    step.append(el("span", null, String(i + 1).padStart(2, "0")), el("b", null, label));
+    steps.append(step);
+  });
+  return steps;
+}
 const GROUNDING = {
   card: "",
   case: "From a similar case study. No protocol card covers this.",
@@ -100,7 +106,7 @@ function renderKnown(meta) {
   const known = meta.known;
   const body = $("known-body");
   const section = (title, node) => { if (node) body.append(el("h4", null, title), node); };
-  body.replaceChildren(el("p", "phase", PHASES[meta.phase]));
+  body.replaceChildren(renderSteps(meta.phase));
   section("You reported", el("p", null, known.reported));
   const couldBe = [...meta.cards.map((c) => c.title), ...meta.cases.map((c) => `${c.condition} (similar case)`)];
   section("Could be", couldBe.length ? list("ul", couldBe) : el("p", "muted", "Nothing in the protocols or case studies matches."));
@@ -118,7 +124,7 @@ function renderKnown(meta) {
   }
   if ($("known").hidden) {
     $("known").hidden = false;
-    $("known-details").open = window.matchMedia("(min-width: 900px)").matches; // closed on a phone
+    $("known-details").open = window.matchMedia("(min-width: 960px)").matches; // closed on a phone
   }
 }
 
@@ -127,17 +133,20 @@ async function refreshStatus() {
   const status = $("status");
   try {
     health = await (await fetch("/api/health")).json();
-    const voiceNote = health.voice.listen === "ready" ? "voice ready"
-      : health.voice.listen === "loading" ? "voice loading…" : "no voice input";
+    const voiceNote = health.voice.listen === "ready" ? "voice on"
+      : health.voice.listen === "loading" ? "voice loading…" : "no voice";
     if (health.model) {
-      status.textContent = `Model ready: ${health.model.split(/[\\/]/).pop()} · ${voiceNote}`;
+      status.textContent = `Offline · Ready · ${voiceNote}`;
+      status.title = `Model: ${health.model.split(/[\\/]/).pop()}`;
       status.className = "status ready";
     } else {
-      status.textContent = `Model not running: protocol cards only · ${voiceNote}`;
+      status.textContent = `Protocols only · model not running`;
+      status.title = "Start the language model to get written guidance. Protocol cards and warnings still work.";
       status.className = "status offline";
     }
   } catch {
     status.textContent = "App server not reachable";
+    status.title = "";
     status.className = "status offline";
   }
   const listen = health.voice.listen;
@@ -287,6 +296,7 @@ async function submit(text, planNow = false) {
   text = text.trim();
   if (!text || busy) return;
   $("input").value = "";
+  fitInput();
   busy = true;
   $("send").disabled = true;
   try {
@@ -306,12 +316,21 @@ $("input").addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("form").requestSubmit(); }
 });
 $("reset").addEventListener("click", () => location.reload());
-for (const [label, text] of QUICK) {
-  const button = el("button", null, label);
+QUICK.forEach(([label, text], i) => {
+  const button = el("button");
   button.type = "button";
+  button.append(el("span", null, String(i + 1).padStart(2, "0")), label);
   button.addEventListener("click", () => submit(text));
   $("quick").append(button);
+});
+
+// The text box grows with what is typed or transcribed, up to a few lines.
+function fitInput() {
+  const input = $("input");
+  input.style.height = "auto";
+  input.style.height = `${Math.min(input.scrollHeight, 160)}px`;
 }
+$("input").addEventListener("input", fitInput);
 
 // ---------- voice input ----------
 // Push-to-talk, file-based transcription. The browser captures 16 kHz mono PCM
@@ -335,6 +354,7 @@ const recorder = {
 
 function micState(label, recording, disabled) {
   $("mic-label").textContent = label;
+  $("mic").dataset.state = label === "Speak" ? "idle" : "busy"; // the phone layout shows the label only while busy
   $("mic").setAttribute("aria-pressed", String(recording));
   $("mic").classList.toggle("live", recording);
   if (disabled !== undefined) $("mic").disabled = disabled;
@@ -449,6 +469,7 @@ async function transcribeToList(wav) {
     const text = (data.text || "").trim();
     if (!text) throw new Error("No speech detected. Try again.");
     $("input").value = text;
+    fitInput();
     $("input").focus();
     $("send").disabled = false;
   } catch (err) {

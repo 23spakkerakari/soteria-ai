@@ -1,4 +1,4 @@
-# Start Bonsai Mate on Windows.
+# Start Soteria on Windows.
 #   .\start.ps1                 # model server (4B, Vulkan) + app on http://localhost:8000
 #   .\start.ps1 -Size 2B        # 2B | 4B | 9B
 #   .\start.ps1 -NoModel        # app only: protocol cards still work without the model
@@ -47,6 +47,6 @@ if (-not $NoModel) {
     Start-Process powershell -ArgumentList "-ExecutionPolicy", "Bypass", "-File", "`"$llm`"", "-Size", $Size, "-Backend", $Backend
 }
 
-Write-Host "`nOpen http://localhost:$Port in your browser.`n"
+Write-Host "`nApp:          http://localhost:$Port/app/`nLanding page: http://localhost:$Port/`n"
 Set-Location $root
 & $python -m uvicorn backend.main:app --port $Port

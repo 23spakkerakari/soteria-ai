@@ -1,4 +1,4 @@
-"""Bonsai Mate API + static frontend.  Run:  uvicorn backend.main:app --port 8000"""
+"""Soteria API + static frontend.  Run:  uvicorn backend.main:app --port 8000"""
 import asyncio
 import json
 import mimetypes
@@ -6,7 +6,7 @@ import threading
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import StreamingResponse
+from fastapi.responses import RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
 from . import assistant, config, db, incident, knowledge, llm, transcribe, voice
@@ -27,7 +27,7 @@ async def lifespan(app: FastAPI):
     warm_up.cancel()
 
 
-app = FastAPI(title="Bonsai Mate", lifespan=lifespan)
+app = FastAPI(title="Soteria", lifespan=lifespan)
 
 
 @app.get("/api/health")
@@ -117,5 +117,11 @@ async def transcribe_audio(request: Request):
 mimetypes.add_type("image/webp", ".webp")
 mimetypes.add_type("font/woff2", ".woff2")
 
-# Last, so /api routes win. The landing page is frontend/landing/, served at /landing/.
+@app.get("/landing")
+@app.get("/landing/")
+def old_landing_address():
+    return RedirectResponse("/")
+
+
+# Last, so /api routes win. frontend/index.html is the landing page (/), frontend/app/ is the app (/app/).
 app.mount("/", StaticFiles(directory=config.FRONTEND, html=True), name="frontend")

@@ -25,7 +25,7 @@
       "The person is pale, cold, sweaty, confused, or faint",
       "The wound is to the chest, belly, neck, or groin"
     ],
-    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "source": { "organization": "Soteria (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
     "clinical_review": "pending"
   },
   {
@@ -59,7 +59,7 @@
       "Drowsy, hard to wake, or unresponsive",
       "No improvement after an hour of rewarming"
     ],
-    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "source": { "organization": "Soteria (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
     "clinical_review": "pending"
   },
   {
@@ -88,7 +88,7 @@
       "Vomiting that keeps them from drinking",
       "No improvement after 30 minutes of rest and cooling"
     ],
-    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "source": { "organization": "Soteria (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
     "clinical_review": "pending"
   },
   {
@@ -121,7 +121,7 @@
       "Seizure, weakness, numbness, or unequal pupils",
       "Clear fluid or blood from the nose or ears"
     ],
-    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "source": { "organization": "Soteria (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
     "clinical_review": "pending"
   },
   {
@@ -154,7 +154,7 @@
       "The injury is to the thigh, hip, pelvis, back, or neck",
       "They cannot bear any weight and you are far from the trailhead"
     ],
-    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "source": { "organization": "Soteria (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
     "clinical_review": "pending"
   },
   {
@@ -184,7 +184,7 @@
       "Dizziness, fainting, or collapse",
       "No epinephrine is available"
     ],
-    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "source": { "organization": "Soteria (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
     "clinical_review": "pending"
   },
   {
@@ -212,7 +212,7 @@
     "escalate_when": [
       "Always: an unresponsive person needs emergency help by any means available"
     ],
-    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "source": { "organization": "Soteria (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
     "clinical_review": "pending"
   },
   {
@@ -243,7 +243,7 @@
       "Burns from electricity, lightning, or chemicals",
       "Breathing trouble, a hoarse voice, or soot around the mouth and nose"
     ],
-    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "source": { "organization": "Soteria (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
     "clinical_review": "pending"
   },
   {
@@ -273,7 +273,7 @@
     "escalate_when": [
       "Always: any suspected venomous snakebite needs evacuation to a hospital"
     ],
-    "source": { "organization": "Bonsai Mate (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
+    "source": { "organization": "Soteria (unsourced draft)", "source_type": "synthetic", "source_url": null, "license_verified": false },
     "clinical_review": "pending"
   }
 ]

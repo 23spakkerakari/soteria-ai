@@ -11,7 +11,7 @@
       "var:phrasing"
     ],
     "source": {
-      "organization": "Bonsai Mate",
+      "organization": "Soteria",
       "source_type": "synthetic",
       "source_url": null,
       "license_verified": true
@@ -74,7 +74,7 @@
       "var:phrasing"
     ],
     "source": {
-      "organization": "Bonsai Mate",
+      "organization": "Soteria",
       "source_type": "synthetic",
       "source_url": null,
       "license_verified": true
@@ -137,7 +137,7 @@
       "var:phrasing"
     ],
     "source": {
-      "organization": "Bonsai Mate",
+      "organization": "Soteria",
       "source_type": "synthetic",
       "source_url": null,
       "license_verified": true
@@ -200,7 +200,7 @@
       "var:alone"
     ],
     "source": {
-      "organization": "Bonsai Mate",
+      "organization": "Soteria",
       "source_type": "synthetic",
       "source_url": null,
       "license_verified": true
@@ -267,7 +267,7 @@
       "var:no_supplies"
     ],
     "source": {
-      "organization": "Bonsai Mate",
+      "organization": "Soteria",
       "source_type": "synthetic",
       "source_url": null,
       "license_verified": true
@@ -334,7 +334,7 @@
       "var:has_supplies"
     ],
     "source": {
-      "organization": "Bonsai Mate",
+      "organization": "Soteria",
       "source_type": "synthetic",
       "source_url": null,
       "license_verified": true
@@ -401,7 +401,7 @@
       "var:bad_weather"
     ],
     "source": {
-      "organization": "Bonsai Mate",
+      "organization": "Soteria",
       "source_type": "synthetic",
       "source_url": null,
       "license_verified": true
@@ -468,7 +468,7 @@
       "var:high_altitude"
     ],
     "source": {
-      "organization": "Bonsai Mate",
+      "organization": "Soteria",
       "source_type": "synthetic",
       "source_url": null,
       "license_verified": true
@@ -535,7 +535,7 @@
       "var:denies_problem"
     ],
     "source": {
-      "organization": "Bonsai Mate",
+      "organization": "Soteria",
       "source_type": "synthetic",
       "source_url": null,
       "license_verified": true
@@ -602,7 +602,7 @@
       "var:worsening"
     ],
     "source": {
-      "organization": "Bonsai Mate",
+      "organization": "Soteria",
       "source_type": "synthetic",
       "source_url": null,
       "license_verified": true

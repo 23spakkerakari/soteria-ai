@@ -1,62 +1,324 @@
 <!doctype html>
-<!-- Bonsai Mate. Plain HTML + JS, no build step, no CDN: everything must load with no internet. -->
+<!--
+  Soteria landing page. Plain HTML + CSS + a little JS: no build step, no CDN.
+  Served at / (backend/main.py mounts the whole frontend folder). The app itself is at /app/.
+  Photos and the typeface are local files; sources and licences are in CREDITS.md.
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bonsai Mate</title>
-<link rel="stylesheet" href="style.css">
+<title>Soteria | Offline-first medical guidance for remote places</title>
+<meta name="description" content="Soteria is an offline-first AI health assistant for hikers, paddlers and travelers. Clear, step-by-step guidance for injuries, sudden illness and environmental emergencies, with no signal required.">
+<meta name="theme-color" content="#111820">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Soteria | Expert medical guidance. Even off the grid.">
+<meta property="og:description" content="An offline-first AI health assistant for the places where help is far away.">
+<meta property="og:image" content="assets/img/hero-wide-1600.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111820'/%3E%3Cpath d='M5 23.5 12.5 10l3.6 6.2 2.4-3.7 8.5 11' fill='none' stroke='%23F4F3EF' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(min-width: 768px) and (min-aspect-ratio: 5/4)"
+      imagesrcset="assets/img/hero-wide-1600.webp 1600w, assets/img/hero-wide-2400.webp 2400w, assets/img/hero-wide-3200.webp 3200w" imagesizes="100vw">
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(max-width: 767px), (max-aspect-ratio: 5/4)"
+      imagesrcset="assets/img/hero-tall-800.webp 800w, assets/img/hero-tall-1400.webp 1400w" imagesizes="135vw">
+<link rel="stylesheet" href="landing.css">
+<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
-<header>
-  <div class="brand">
-    <h1>Bonsai Mate</h1>
-    <span id="status" class="status">checking…</span>
+
+<!-- Icons are defined once and reused with <use>. -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-mark" viewBox="0 0 32 24"><path d="M2 21.5 11 5l4.4 7.6L18.3 8 30 21.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <!-- capabilities -->
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx=".5"/><path d="M9.5 3.5v3M14.5 3.5v3M9.5 17.5v3M14.5 17.5v3M3.5 9.5h3M3.5 14.5h3M17.5 9.5h3M17.5 14.5h3"/></symbol>
+  <symbol id="i-peaks" viewBox="0 0 24 24"><path d="M2.5 19.5 9 8l3.4 5.8 2.3-3.3 6.8 9Z"/><path d="m7 11.6 2 1.6 2-1.4"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5c-1.8-1.3-4.3-1.8-8-1.6v13c3.7-.2 6.2.3 8 1.6 1.8-1.3 4.3-1.8 8-1.6v-13c-3.7-.2-6.2.3-8 1.6Z"/><path d="M12 6.5v13M15 10.8h3M16.5 9.3v3"/></symbol>
+  <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7"/><path d="M12 13.5 15 10M10 3.5h4M12 3.5v3"/></symbol>
+  <!-- use cases -->
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m15.3 8.7-1.9 4.7-4.7 1.9 1.9-4.7Z"/></symbol>
+  <symbol id="i-water" viewBox="0 0 24 24"><path d="M3 10c1.5-1.3 3-1.3 4.5 0s3 1.3 4.5 0 3-1.3 4.5 0 3 1.3 4.5 0M3 15c1.5-1.3 3-1.3 4.5 0s3 1.3 4.5 0 3-1.3 4.5 0 3 1.3 4.5 0"/><path d="M12 3.5v3.5"/></symbol>
+  <symbol id="i-road" viewBox="0 0 24 24"><path d="M9 3.5 4 20.5M15 3.5l5 17M12 4.5v2.5M12 10.5v3M12 17v3.5"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M12 2.8c.8 0 1.3.9 1.3 2v4.3l7.2 4.4v1.8l-7.2-2.1v3.7l2.2 1.7v1.5L12 19.1l-3.5 1v-1.5l2.2-1.7v-3.7l-7.2 2.1v-1.8l7.2-4.4V4.8c0-1.1.5-2 1.3-2Z"/></symbol>
+  <!-- phone -->
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12.5h4l2-5 3.5 10 2.5-7 1.5 2H21"/></symbol>
+  <symbol id="i-bandage" viewBox="0 0 24 24"><rect x="2.5" y="8" width="19" height="8" rx="4" transform="rotate(-45 12 12)"/><path d="m9.5 9.5 5 5M12 11.5v1M11.5 12h1"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m4 11 8-6.5 8 6.5v8.5h-5.5V14h-5v5.5H4Z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.3M12 18.2v2.3M3.5 12h2.3M18.2 12h2.3M6 6l1.6 1.6M16.4 16.4 18 18M6 18l1.6-1.6M16.4 7.6 18 6"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9.5" y="3.5" width="5" height="10" rx="2.5"/><path d="M6.5 11.5a5.5 5.5 0 0 0 11 0M12 17v3.5"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav__row">
+    <a class="logo" href="#top" aria-label="Soteria home">
+      <svg class="logo__mark" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span class="logo__word">Soteria</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#product">Product</a>
+      <a href="#use-cases">Use Cases</a>
+      <a href="#safety">Safety</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn btn--outline nav__cta" href="/app/">Download</a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
   </div>
-  <nav>
-    <button id="tab-assist" class="tab active" type="button">Assist</button>
-    <button id="tab-cards" class="tab" type="button">Protocols</button>
-    <label class="toggle"><input type="checkbox" id="speak-toggle"> Read aloud</label>
-    <button id="reset" class="ghost" type="button">New incident</button>
-  </nav>
+  <div class="menu" id="menu" hidden>
+    <nav class="wrap" aria-label="Mobile">
+      <a href="#product">Product</a>
+      <a href="#use-cases">Use Cases</a>
+      <a href="#safety">Safety</a>
+      <a href="#about">About</a>
+      <a class="btn btn--light" href="/app/">Download</a>
+    </nav>
+  </div>
 </header>
 
-<p class="notice">
-  Prototype. The protocols and case studies here are unreviewed, not medical advice.
-  If you can reach emergency services by any means, do that first.
-</p>
+<main id="main">
 
-<main id="view-assist">
-  <aside id="known" hidden>
-    <details id="known-details">
-      <summary>What I know so far</summary>
-      <div id="known-body"></div>
-    </details>
-  </aside>
-  <div class="chat">
-  <div id="log">
-    <section id="welcome">
-      <h2>What's happening?</h2>
-      <p>Tap the microphone and say it, type it, or tap the closest match.</p>
-      <div id="quick" class="quick"></div>
-    </section>
-  </div>
-  <form id="form">
-    <button type="button" id="mic" disabled aria-pressed="false" title="Voice input is loading">
-      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2Z"/></svg>
-      <span id="mic-label">Speak</span>
-    </button>
-    <textarea id="input" rows="2" placeholder="e.g. My friend fell and hit her head, she's dizzy…"></textarea>
-    <button type="submit" id="send">Send</button>
-  </form>
-  </div>
+  <!-- ============ Hero ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <!-- Wide frame on desktop (open sky on the left for the type), taller frame with more sky on phones. -->
+    <picture>
+      <source media="(min-width: 768px) and (min-aspect-ratio: 5/4)" type="image/webp" sizes="100vw" width="3200" height="1572"
+              srcset="assets/img/hero-wide-1600.webp 1600w, assets/img/hero-wide-2400.webp 2400w, assets/img/hero-wide-3200.webp 3200w">
+      <img class="hero__img" alt="A hiker with a backpack stands on a ridge, looking out over layered mountains in mist."
+           src="assets/img/hero-tall-800.webp" srcset="assets/img/hero-tall-800.webp 800w, assets/img/hero-tall-1400.webp 1400w"
+           sizes="(min-width: 768px) 100vw, 135vw" width="1400" height="1708" fetchpriority="high" decoding="async">
+    </picture>
+    <div class="wrap hero__content">
+      <p class="eyebrow eyebrow--rule">Built for the unexpected</p>
+      <h1 id="hero-title">Expert medical guidance.<br>Even off the grid.</h1>
+      <p class="hero__lede">An offline-first AI health assistant for the places where help is far away.</p>
+      <div class="hero__actions">
+        <a class="btn btn--light" href="/app/">Get the App <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="link" href="#product">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Core capabilities ============ -->
+  <section class="caps" id="capabilities" aria-label="Core capabilities">
+    <ul class="wrap caps__row">
+      <li class="cap" data-reveal>
+        <svg aria-hidden="true"><use href="#i-chip"/></svg>
+        <div><h2>On-Device AI</h2><p>No signal? No problem.</p></div>
+      </li>
+      <li class="cap" data-reveal>
+        <svg aria-hidden="true"><use href="#i-peaks"/></svg>
+        <div><h2>Built for the Outdoors</h2><p>From remote trails to backcountry roads.</p></div>
+      </li>
+      <li class="cap" data-reveal>
+        <svg aria-hidden="true"><use href="#i-book"/></svg>
+        <div><h2>Trusted Medical Knowledge</h2><p>Guidance grounded in established medical resources.</p></div>
+      </li>
+      <li class="cap" data-reveal>
+        <svg aria-hidden="true"><use href="#i-timer"/></svg>
+        <div><h2>Fast &amp; Reliable</h2><p>Designed for critical moments.</p></div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ Product showcase ============ -->
+  <section class="product" id="product" aria-labelledby="product-title">
+    <div class="wrap product__grid">
+      <div class="product__copy" data-reveal>
+        <p class="eyebrow eyebrow--green">Be prepared</p>
+        <h2 class="display" id="product-title">Real-world support in critical moments.</h2>
+        <p class="lede">Get clear, structured guidance for injuries, sudden illness, and environmental emergencies, even when you're offline.</p>
+        <ol class="points">
+          <li><span>01</span>Understand symptoms and potential warning signs.</li>
+          <li><span>02</span>Access first-aid and wilderness-care information.</li>
+          <li><span>03</span>Know when to seek emergency assistance.</li>
+        </ol>
+        <a class="btn btn--dark" href="#capabilities">Explore Features <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+
+      <figure class="product__device" data-reveal>
+        <!-- A drawn preview of the app. Hidden from screen readers; described by the label. -->
+        <div class="phone" role="img" aria-label="Preview of the Soteria app home screen in offline mode, asking 'How can I help you today?' with three options: Assess a Symptom, Outdoor Injury Guide, and First Aid Quick Reference.">
+          <div class="phone__screen" aria-hidden="true">
+            <div class="phone__island"></div>
+            <div class="phone__status">
+              <span>9:41</span>
+              <span class="phone__status-right">
+                <svg viewBox="0 0 18 12" class="phone__signal"><path d="M1 10.5v-2M5.5 10.5v-4M10 10.5v-6M14.5 10.5v-9" opacity=".3"/><path d="M1 1.5l15.5 9"/></svg>
+                <svg viewBox="0 0 26 12" class="phone__battery"><rect x=".7" y=".7" width="21.6" height="10.6" rx="3"/><rect x="2.4" y="2.4" width="14" height="7.2" rx="1.5" class="fill"/><path d="M24.3 4v4"/></svg>
+              </span>
+            </div>
+
+            <div class="app">
+              <div class="app__bar">
+                <span class="app__brand"><svg><use href="#i-mark"/></svg>Soteria</span>
+                <span class="app__offline"><i></i>Offline Mode</span>
+              </div>
+
+              <p class="app__hint">All guidance is stored on this device.</p>
+              <p class="app__title">How can I help you today?</p>
+
+              <ul class="app__actions">
+                <li>
+                  <span class="app__icon"><svg><use href="#i-pulse"/></svg></span>
+                  <span class="app__text"><b>Assess a Symptom</b><small>Get guidance for your symptoms.</small></span>
+                  <svg class="app__go"><use href="#i-chevron"/></svg>
+                </li>
+                <li>
+                  <span class="app__icon"><svg><use href="#i-bandage"/></svg></span>
+                  <span class="app__text"><b>Outdoor Injury Guide</b><small>Explore common outdoor injuries.</small></span>
+                  <svg class="app__go"><use href="#i-chevron"/></svg>
+                </li>
+                <li>
+                  <span class="app__icon"><svg><use href="#i-list"/></svg></span>
+                  <span class="app__text"><b>First Aid Quick Reference</b><small>Essential steps at a glance.</small></span>
+                  <svg class="app__go"><use href="#i-chevron"/></svg>
+                </li>
+              </ul>
+
+              <div class="app__ask"><span>Describe what's happening…</span><svg><use href="#i-mic"/></svg></div>
+
+              <div class="app__tabs">
+                <span class="is-active"><svg><use href="#i-home"/></svg>Home</span>
+                <span><svg><use href="#i-book"/></svg>Library</span>
+                <span><svg><use href="#i-gear"/></svg>Settings</span>
+              </div>
+              <div class="phone__home"></div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Product preview. The interface shown is illustrative.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ Use cases ============ -->
+  <section class="uses" id="use-cases" aria-labelledby="uses-title">
+    <div class="wrap uses__head" data-reveal>
+      <div>
+        <p class="eyebrow eyebrow--sage">Use cases</p>
+        <h2 class="display display--light" id="uses-title">Made for the places signal doesn't reach.</h2>
+      </div>
+      <p>The same calm, step-by-step guidance, whether you are a day's walk from the trailhead or thirty-five thousand feet up.</p>
+    </div>
+
+    <div class="uses__grid">
+      <article class="use">
+        <img alt="" loading="lazy" decoding="async" width="1400" height="919" style="object-position: 30% 50%"
+             src="assets/img/hiking-800.webp" srcset="assets/img/hiking-800.webp 800w, assets/img/hiking-1400.webp 1400w"
+             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw">
+        <div class="use__text">
+          <svg aria-hidden="true"><use href="#i-compass"/></svg>
+          <h3>Hiking &amp; Trekking</h3>
+          <p>Be ready on the trail.</p>
+        </div>
+      </article>
+      <article class="use">
+        <img alt="" loading="lazy" decoding="async" width="1400" height="933" style="object-position: 52% 50%"
+             src="assets/img/rafting-800.webp" srcset="assets/img/rafting-800.webp 800w, assets/img/rafting-1400.webp 1400w"
+             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw">
+        <div class="use__text">
+          <svg aria-hidden="true"><use href="#i-water"/></svg>
+          <h3>Rafting &amp; Kayaking</h3>
+          <p>Handle the unexpected.</p>
+        </div>
+      </article>
+      <article class="use">
+        <img alt="" loading="lazy" decoding="async" width="1400" height="934" style="object-position: 58% 50%"
+             src="assets/img/driving-800.webp" srcset="assets/img/driving-800.webp 800w, assets/img/driving-1400.webp 1400w"
+             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw">
+        <div class="use__text">
+          <svg aria-hidden="true"><use href="#i-road"/></svg>
+          <h3>Driving in Remote Areas</h3>
+          <p>Stay prepared wherever you are.</p>
+        </div>
+      </article>
+      <article class="use">
+        <img alt="" loading="lazy" decoding="async" width="1400" height="930" style="object-position: 60% 50%"
+             src="assets/img/flying-800.webp" srcset="assets/img/flying-800.webp 800w, assets/img/flying-1400.webp 1400w"
+             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw">
+        <div class="use__text">
+          <svg aria-hidden="true"><use href="#i-plane"/></svg>
+          <h3>Flying</h3>
+          <p>Access guidance when connectivity is limited.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ Safety ============ -->
+  <section class="safety" id="safety" aria-labelledby="safety-title">
+    <div class="wrap safety__grid">
+      <div data-reveal>
+        <p class="eyebrow eyebrow--green">Safety</p>
+        <h2 class="display" id="safety-title">A guide for the gap. Not a replacement for care.</h2>
+        <p class="safety__note">If you can reach emergency services by any means, do that first.</p>
+      </div>
+      <dl class="principles" data-reveal>
+        <div>
+          <dt>Emergencies come first</dt>
+          <dd>Soteria checks for warning signs before anything else, and says plainly when a situation calls for emergency help or evacuation.</dd>
+        </div>
+        <div>
+          <dt>Clear about its limits</dt>
+          <dd>It offers general first-aid guidance. It does not diagnose, and it is not a substitute for a doctor, emergency services, or professional medical care.</dd>
+        </div>
+        <div>
+          <dt>Yours alone</dt>
+          <dd>It runs on your device. What you describe is processed there, with no connection required.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ Closing ============ -->
+  <section class="closing" aria-labelledby="closing-title">
+    <img alt="" loading="lazy" decoding="async" width="2880" height="2122"
+         src="assets/img/dusk-1920.webp"
+         srcset="assets/img/dusk-1280.webp 1280w, assets/img/dusk-1920.webp 1920w, assets/img/dusk-2880.webp 2880w" sizes="100vw">
+    <div class="wrap closing__content" data-reveal>
+      <h2 class="display display--light" id="closing-title">Prepared today.<br>More confident tomorrow.</h2>
+      <p>Bring reliable medical guidance wherever life takes you.</p>
+      <a class="btn btn--light" href="/app/">Download the App <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
 </main>
 
-<main id="view-cards" hidden>
-  <input id="card-search" type="search" placeholder="Search protocols (works without the model)">
-  <div id="card-list"></div>
-</main>
+<!-- ============ Footer ============ -->
+<footer class="footer" id="about">
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <a class="logo" href="#top" aria-label="Soteria home">
+        <svg class="logo__mark" aria-hidden="true"><use href="#i-mark"/></svg>
+        <span class="logo__word">Soteria</span>
+      </a>
+      <p>Soteria is building an offline-first health assistant for people who travel beyond reliable coverage.</p>
+      <p class="footer__trust">Built around established medical and first-aid resources.</p>
+    </div>
+    <nav aria-label="Footer">
+      <h2>Explore</h2>
+      <a href="#product">Product</a>
+      <a href="#use-cases">Use Cases</a>
+      <a href="#safety">Safety</a>
+      <a href="#about">About</a>
+    </nav>
+    <nav aria-label="Legal">
+      <h2>Legal</h2>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </nav>
+  </div>
+  <div class="wrap footer__base">
+    <p>&copy; 2026 Soteria</p>
+    <p>Soteria provides general first-aid information. It is not a substitute for professional medical care or emergency services.</p>
+  </div>
+</footer>
 
-<script src="app.js"></script>
+<script src="landing.js" defer></script>
 </body>
 </html>

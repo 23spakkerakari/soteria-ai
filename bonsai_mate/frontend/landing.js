@@ -1,4 +1,4 @@
-// TerraMind landing page: navigation state, mobile menu, and entrance reveals.
+// Soteria landing page: navigation state, mobile menu, and entrance reveals.
 // The page reads fine without this file; it only adds polish.
 
 const nav = document.querySelector(".nav");
